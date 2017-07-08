@@ -8,6 +8,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class SessionService {
 
+  BASE_URL: string = 'http://localhost:3000';
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -15,31 +17,25 @@ export class SessionService {
   }
 
   signup(user) {
-    return this.http.post(`/signup`, user)
+    return this.http.post(`${this.BASE_URL}/signup`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
-    return this.http.post(`/login`, user)
+    return this.http.post(`${this.BASE_URL}/login`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.post(`/logout`, {})
+    return this.http.post(`${this.BASE_URL}/logout`, {})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   isLoggedIn() {
-    return this.http.get(`/loggedin`)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-
-  getPrivateData() {
-    return this.http.get(`/private`)
+    return this.http.get(`${this.BASE_URL}/loggedin`)
       .map(res => res.json())
       .catch(this.handleError);
   }
