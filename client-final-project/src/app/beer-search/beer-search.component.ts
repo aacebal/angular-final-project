@@ -8,6 +8,7 @@ import { BeerService } from '../beer.service';
   providers: [BeerService]
 })
 export class BeerSearchComponent implements OnInit {
+  beer;
 
   constructor( private BeerService: BeerService) { }
 
@@ -16,6 +17,9 @@ export class BeerSearchComponent implements OnInit {
 
   onSubmit(myForm) {
     this.BeerService.getBeer(myForm.name)
+      .subscribe((beer) => {
+        this.beer = beer;
+      })
   }
 
 }
