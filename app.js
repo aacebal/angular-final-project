@@ -6,6 +6,11 @@ const cookieParser  = require('cookie-parser');
 const bodyParser    = require('body-parser');
 const mongoose      = require('mongoose');
 const cors          = require('cors');
+const session       = require('express-session');
+const passport      = require('passport');
+const passportSetup = require('./config/passport');
+require("dotenv").config();
+passportSetup(passport);
 
 const index         = require('./routes/index');
 const users         = require('./routes/users');
@@ -30,9 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
-const beerFinder = require('./routes/api/beer-finder');
-app.use('/api', beerFinder);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -9,12 +9,13 @@ import { SessionService } from '../session.service';
 export class SignupLoginComponent implements OnInit {
 
   user: any;
-formInfo = {
-  username: '',
-  password: ''
-};
-error: string;
-privateData: any = '';
+  formInfo = {
+    name: '',
+    lastName: '',
+    username: '',
+    password: ''
+  };
+  error: string;
 
 constructor(private session: SessionService) { }
 
@@ -46,14 +47,6 @@ logout() {
     .subscribe(
       () => this.successCb(null),
       (err) => this.errorCb(err)
-    );
-}
-
-getPrivateData() {
-  this.session.getPrivateData()
-    .subscribe(
-      (data) => this.privateData = data,
-      (err) => this.error = err
     );
 }
 

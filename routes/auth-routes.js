@@ -8,6 +8,8 @@ const User       = require('../models/user-model');
 const authRoutes = express.Router();
 
 authRoutes.post('/signup', (req, res, next) => {
+  const name = req.body.name;
+  const lastName = req.body.lastName;
   const username = req.body.username;
   const password = req.body.password;
 
