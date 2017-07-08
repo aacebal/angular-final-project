@@ -3,16 +3,15 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class JournalService {
+export class BeerService {
 
   BASE_URL: string = 'http://localhost:3000';
 
   constructor( private http: Http ) { }
 
-  getBeer() {
-    return this.http.get(`${this.BASE_URL}/api/beer-finder`)
+  getBeer(name) {
+    return this.http.get(`${this.BASE_URL}/api/beer-finder/${name}`)
       .map((res) => res.json());
   }
-
 
 }
