@@ -4,7 +4,7 @@ import { routes } from './app.routing';
 import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import * as dotenv from 'dotenv';
+import * as dotenv from 'dotenv';;
 
 import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';

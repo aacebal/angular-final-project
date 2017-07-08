@@ -19,6 +19,7 @@ export class BeerSearchComponent implements OnInit {
     this.BeerService.getBeer(myForm.name)
       .subscribe((beer) => {
         this.beer = beer;
+        console.log(beer);
       })
   }
 

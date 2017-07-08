@@ -10,7 +10,7 @@ export class BeerService {
   constructor( private http: Http ) { }
 
   getBeer(name) {
-    return this.http.get(`${this.BASE_URL}/?name=${name}&key=process.env.BEER_API_KEY`)
+    return this.http.get(`${this.BASE_URL}/?name=${name}&key=31d91559b00b468e17fd134af7f3097a`)
       .map((res) => res.json());
   }
 
