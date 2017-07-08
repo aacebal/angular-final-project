@@ -3,11 +3,11 @@ const router        = express.Router();
 
 require('dotenv').config();
 
-router.get('http://api.brewerydb.com/v2/key=API_KEY/beer/', (req, res, next) => {
-  Entry.find({}, (err, entries) => {
+router.get(`http://api.brewerydb.com/v2/?name=:id&key=API_KEY`, (req, res, next) => {
+  Beer.find({}, (err, beer) => {
     if (err) { return res.json(err).status(500); }
 
-    return res.json(entries);
+    return res.json(beer);
   });
 });
 

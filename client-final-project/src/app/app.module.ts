@@ -7,11 +7,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
+import { BeerSearchComponent } from './beer-search/beer-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupLoginComponent
+    SignupLoginComponent,
+    BeerSearchComponent
   ],
   imports: [
     BrowserModule,
