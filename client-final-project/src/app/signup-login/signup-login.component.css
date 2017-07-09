@@ -43,7 +43,7 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 16px;
 }
 input[type=password], select {
     width: 100%;
@@ -53,7 +53,7 @@ input[type=password], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 16px;
 }
 .signup-form{
   border-bottom: 1px solid lightgrey;
