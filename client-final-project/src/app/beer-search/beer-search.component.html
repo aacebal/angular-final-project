@@ -10,3 +10,11 @@
 </div>
 
 <button (click)="logout()">Log Out</button>
+
+<div *ngIf="user">
+  <h1>{{ user.name }}</h1>
+</div>
+
+<div *ngIf="!user">
+  <h1>No user</h1>
+</div>

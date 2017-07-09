@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./signup-login.component.css']
 })
 export class SignupLoginComponent implements OnInit {
+  loginReady: boolean = false;
 
   user: any;
   formInfo = {
@@ -63,6 +64,10 @@ errorCb(err) {
 successCb(user) {
   this.user = user;
   this.error = null;
+}
+
+switchLoginReady() {
+  this.loginReady = !this.loginReady;
 }
 
 }

@@ -31,7 +31,7 @@
 
   <h2 id="slogan" style="text-align:center">Join a social platform for craft beer aficionados.</h2>
 
-  <div class="signup-form">
+  <div *ngIf="!loginReady" class="signup-form">
     <form>
       <input placeholder="Name" type="text" [(ngModel)]="formInfo.name" name="name"/>
       <br>
@@ -43,9 +43,12 @@
       <br>
       <button class="btn-lg"(click)="signup()"> Signup </button>
     </form>
+    <h3 style="text-align:center">Already a member? <button (click)="switchLoginReady()">Login</button></h3>
   </div>
 
-  <div class="login-form">
+
+
+  <div *ngIf="loginReady" class="login-form">
     <form>
       <h3 style="text-align:center">Already a member? Login</h3>
       <input placeholder="Username" type="text" [(ngModel)]="formInfo.loginUsername" name="loginUsername"/>
@@ -54,6 +57,7 @@
       <br>
       <button class="btn-lg"(click)="login()"> Login </button>
     </form>
+    <h3 style="text-align:center">Not a member? <button (click)="switchLoginReady()">Sign Up</button></h3>
   </div>
 
 </div>
