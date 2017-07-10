@@ -23,7 +23,6 @@ export class SessionService {
   }
 
   login(user) {
-    console.log(user);
     return this.http.post(`${this.BASE_URL}/login`, user)
       .map(res => res.json())
       .catch(this.handleError);

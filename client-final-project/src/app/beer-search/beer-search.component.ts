@@ -33,7 +33,6 @@ logout() {
       () => this.successCb(null),
       (err) => this.errorCb(err)
     );
-  this.router.navigate(['']);
 }
 
 errorCb(err) {
@@ -44,6 +43,7 @@ errorCb(err) {
 successCb(user) {
   this.user = user;
   this.error = null;
+  this.router.navigate(['']);
 }
 
 

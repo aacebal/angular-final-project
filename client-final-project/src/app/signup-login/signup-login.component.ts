@@ -34,7 +34,6 @@ login() {
       (user) => this.successCb(user),
       (err) => this.errorCb(err)
     );
-  this.router.navigate(['search']);
 }
 
 signup() {
@@ -44,7 +43,6 @@ signup() {
       (user) => this.successCb(user),
       (err) => this.errorCb(err)
     );
-  this.router.navigate(['search']);
 }
 
 logout() {
@@ -64,6 +62,7 @@ errorCb(err) {
 successCb(user) {
   this.user = user;
   this.error = null;
+  this.router.navigate(['search']);
 }
 
 switchLoginReady() {
