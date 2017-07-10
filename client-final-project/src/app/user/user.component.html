@@ -1,0 +1,7 @@
+<div *ngIf="!user">
+  <h3>John Appleseed</h3>
+</div>
+
+<div *ngIf="user">
+  <h3>{{ user.name }} {{ user.lastName }}</h3>
+</div>

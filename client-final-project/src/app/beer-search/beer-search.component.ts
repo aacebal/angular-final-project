@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
   providers: [BeerService]
 })
 export class BeerSearchComponent implements OnInit {
+  
   beer;
   user: any;
   error: string;

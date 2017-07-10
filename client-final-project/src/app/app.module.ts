@@ -10,12 +10,14 @@ import * as dotenv from 'dotenv';;
 import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { BeerSearchComponent } from './beer-search/beer-search.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupLoginComponent,
-    BeerSearchComponent
+    BeerSearchComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
