@@ -9,9 +9,9 @@ import { Output, EventEmitter } from "@angular/core";
   styleUrls: ['./signup-login.component.css']
 })
 export class SignupLoginComponent implements OnInit {
-  @Output() userUpdated = new EventEmitter();
 
   loginReady: boolean = false;
+  lower: boolean = false;
 
   user: any;
   formInfo = {
@@ -23,7 +23,6 @@ export class SignupLoginComponent implements OnInit {
   error: string;
 
 constructor(private session: SessionService, private router: Router) {
-  this.userUpdated.emit(this.user);
 }
 
 ngOnInit() {
@@ -72,6 +71,5 @@ successCb(user) {
 
 switchLoginReady() {
   this.loginReady = !this.loginReady;
-}
-
+  }
 }

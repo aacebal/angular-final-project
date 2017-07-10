@@ -11,7 +11,6 @@ const session       = require('express-session');
 const passport      = require('passport');
 const passportSetup = require('./config/passport');
 require("dotenv").config();
-passportSetup(passport);
 
 mongoose.connect('mongodb://localhost/beer-finder');
 
@@ -52,6 +51,8 @@ app.use((req, res, next) => {
 });
 
 require('dotenv').config();
+
+passportSetup(passport);
 
 
 // catch 404 and forward to error handler
