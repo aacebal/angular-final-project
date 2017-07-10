@@ -12,6 +12,19 @@
   </div>
 </div>
 
-<div class="my-container my-beers">
+<div class="my-container">
   <h3>My beers</h3>
+  <div *ngIf="user" class="my-beers">
+    <ul *ngFor= "let beer of user.beers">
+      <li>{{ beer.name }}</li> <button onclick="drink()">Drink</button><button onclick="trade()">Trade</button>
+    </ul>
+  </div>
+</div>
+
+<div class="my-container my-events">
+    <h3>My events</h3>
+</div>
+
+<div class="my-container my-places">
+    <h3>My places</h3>
 </div>
