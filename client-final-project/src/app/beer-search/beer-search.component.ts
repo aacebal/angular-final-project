@@ -3,6 +3,7 @@ import { BeerService } from '../beer.service';
 import { SessionService } from '../session.service';
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: 'app-beer-search',
   templateUrl: './beer-search.component.html',
@@ -17,6 +18,10 @@ export class BeerSearchComponent implements OnInit {
 constructor(private BeerService: BeerService, private session: SessionService, private router: Router) { }
 
 ngOnInit() {
+  this.session.isLoggedIn()
+    .subscribe(
+      (user) => this.successCb(user)
+    );
 }
 
 onSubmit(myForm) {
@@ -45,8 +50,6 @@ successCb(user) {
   this.error = null;
   this.router.navigate(['']);
 }
-
-
 
 
 }

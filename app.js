@@ -31,9 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 app.use(session({
   secret: 'beer finder secret',
-  resave: true,
   saveUninitialized: true,
-  cookie : { httpOnly: true, maxAge: 2419200000 }
+  resave: true,
+  cookie: { httpOnly: true, maxAge: 2419200000 }
 }));
 
 

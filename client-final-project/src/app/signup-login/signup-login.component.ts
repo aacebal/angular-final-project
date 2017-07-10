@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router } from "@angular/router";
+import { Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: 'app-signup-login',
@@ -8,6 +9,8 @@ import { Router } from "@angular/router";
   styleUrls: ['./signup-login.component.css']
 })
 export class SignupLoginComponent implements OnInit {
+  @Output() userUpdated = new EventEmitter();
+
   loginReady: boolean = false;
 
   user: any;
@@ -19,7 +22,9 @@ export class SignupLoginComponent implements OnInit {
   };
   error: string;
 
-constructor(private session: SessionService, private router: Router) { }
+constructor(private session: SessionService, private router: Router) {
+  this.userUpdated.emit(this.user);
+}
 
 ngOnInit() {
   this.session.isLoggedIn()
