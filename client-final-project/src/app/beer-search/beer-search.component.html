@@ -4,6 +4,10 @@
       <h2 class="title-container">Friendly Beer Finder</h2>
 
     </div>
+    <div class="nav navbar-nav navbar-right">
+      <button class="btn-sm" (click)="logout()">Log Out</button>
+    </div>
+
   </div>
 </nav>
 
@@ -11,19 +15,17 @@
   <app-user></app-user>
 </div>
 
-<div class="container col-lg-5 col-md-5 col-sm-5 col-xs-5">
+<div class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
-  <p>Title:
+  <h1>Find New Beers:
     <input type="text" name="name" [(ngModel)]="name" #myName="ngModel">
-  </p>
-  <button type="submit"> Search</button>
+    <div *ngIf="beer">
+    <h1>{{ beer.data[0].name }}</h1>
+    </div>
+  </h1>
+  <button class="btn-lg" type="submit"> Search</button>
 </form>
 
-<div *ngIf="beer">
-<h1>{{ beer.data[0].name }}</h1>
-</div>
-
-<button (click)="logout()">Log Out</button>
 
 </div>

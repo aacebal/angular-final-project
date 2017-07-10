@@ -2,3 +2,41 @@
   font-family: SlimTony;
   color: rgb(248, 211, 53);
 }
+.search-container{
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}
+.btn-lg{
+  margin-bottom: 10px;
+  background-color: rgb(248, 211, 53);
+  color: white;
+  width: 33%;
+}
+.btn-sm{
+  margin-top: 20px;
+  background-color: rgb(248, 211, 53);
+  color: white;
+  width: 100%;
+}
+
+
+input[type=text], select {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+input[type=password], select {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
