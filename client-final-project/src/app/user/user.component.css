@@ -1,0 +1,13 @@
+.img-circle{
+  width: 50px;
+  margin-right: 5px;
+  float: left;
+}
+.user-name{
+  padding: 10px 0px;
+}
+.my-container{
+  margin-top: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}

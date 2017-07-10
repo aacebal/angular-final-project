@@ -27,11 +27,11 @@
   </div>
 </div>
 
-<div class="container right-panel col-lg-4 col-md-4 col-sm-4 col-xs-4">
+<div *ngIf="!loginReady" class="container right-panel col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
   <h2 id="slogan" style="text-align:center">Join a social platform for craft beer aficionados.</h2>
 
-  <div *ngIf="!loginReady" class="signup-form">
+  <div class="signup-form">
     <form>
       <input placeholder="Name" type="text" [(ngModel)]="formInfo.name" name="name"/>
       <br>
@@ -46,7 +46,11 @@
     <h3 style="text-align:center">Already a member? <button class="btn-login" (click)="switchLoginReady()">Login</button></h3>
   </div>
 
+  </div>
 
+  <div *ngIf="loginReady" class="container right-panel-login col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+  <h2 id="slogan" style="text-align:center">Join a social platform for craft beer aficionados.</h2>
 
   <div *ngIf="loginReady" class="login-form">
     <form>

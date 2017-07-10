@@ -24,6 +24,11 @@
   border: 1px solid lightgrey;
   border-radius: 8px;
 }
+.right-panel-login{
+  margin-top: 175px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}
 .lower{
   margin-top: 200px;
 }

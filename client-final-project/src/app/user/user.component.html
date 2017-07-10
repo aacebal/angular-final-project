@@ -1,7 +1,17 @@
 <div *ngIf="!user">
-  <h3>John Appleseed</h3>
+  <div class="user-information">
+      <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+    <h3 class="user-name">John Appleseed</h3>
+  </div>
 </div>
 
 <div *ngIf="user">
-  <h3>{{ user.name }} {{ user.lastName }}</h3>
+  <div class="user-information">
+      <img class="img-circle" src="{{user.profilePic}}" />
+    <h3 class="user-name">{{ user.name }} {{ user.lastName }}</h3>
+  </div>
+</div>
+
+<div class="my-container my-beers">
+  <h3>My beers</h3>
 </div>
