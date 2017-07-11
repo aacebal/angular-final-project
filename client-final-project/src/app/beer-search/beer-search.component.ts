@@ -59,5 +59,9 @@ successCb(user) {
   this.error = null;
 }
 
+addBeer(id) {
+  this.user.beers.push(id);
+}
+
 
 }
