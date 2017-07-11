@@ -2,21 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../beer.service';
 import { SessionService } from '../session.service';
 import { Router } from "@angular/router";
+import { HostBinding } from '@angular/core';
 
 
 @Component({
   selector: 'app-beer-search',
+  host : {
+        '[style.background-color]' : 'backgroundColor'
+    },
   templateUrl: './beer-search.component.html',
   styleUrls: ['./beer-search.component.css'],
   providers: [BeerService]
 })
 export class BeerSearchComponent implements OnInit {
-  
+
   beer;
   user: any;
   error: string;
+  backgroundColor: string;
 
-constructor(private BeerService: BeerService, private session: SessionService, private router: Router) { }
+constructor(private BeerService: BeerService, private session: SessionService, private router: Router) {
+  this.backgroundColor = "blue"
+}
 
 ngOnInit() {
   this.session.isLoggedIn()

@@ -1,3 +1,5 @@
+<div class="full-page">
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -18,14 +20,18 @@
 <div class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
-  <h1>Find New Beers:
+  <h1>Find New Beers:</h1>
     <input type="text" name="name" [(ngModel)]="name" #myName="ngModel">
-    <div *ngIf="beer">
+
+  <div *ngIf="beer" class="beer-information">
+    <img class="img-circle" src="{{beer.data[0].labels.large}}" />
     <h1>{{ beer.data[0].name }}</h1>
-    </div>
-  </h1>
+    <p>{{ beer.data[0].style.description }}</p>
+  </div>
+
   <button class="btn-lg" type="submit"> Search</button>
 </form>
 
+</div>
 
 </div>
