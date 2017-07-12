@@ -43,6 +43,9 @@ app.use(passport.session());
 const index = require('./routes/index');
 app.use('/', index);
 
+const users = require('./routes/users');
+app.use('/', users);
+
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
 
