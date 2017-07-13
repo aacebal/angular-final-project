@@ -6,7 +6,14 @@ const userSchema = new Schema({
   lastName: String,
   username: String,
   password: String,
-  beers: Array
+  beers: {
+    //beers currently owned by user
+    ownList: Array,
+    //beers the user wants
+    wishList: Array,
+    //all the beers the user has tried
+    historyList: Array
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',
