@@ -26,7 +26,7 @@
   <button class="btn btn-lg" type="submit"> Search</button>
 
   <div *ngIf="beer" class="beer-information">
-    <img class="img-profile" src="{{beer.data[0].labels.large}}" />
+    <img *ngIf="image" class="img-profile" src="{{image.large}}" />
     <h1>{{ beer.data[0].name }} <button class="btn btn-add" (click)="addBeer(beer.id)">Add to your beers</button> </h1>
     <p>{{ beer.data[0].style.description }}</p>
   </div>

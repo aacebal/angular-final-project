@@ -14,6 +14,7 @@ import { HostBinding } from '@angular/core';
 export class BeerSearchComponent implements OnInit {
 
   beer;
+  image;
   user: any;
   error: string;
 
@@ -31,6 +32,7 @@ onSubmit(myForm) {
   this.BeerService.getBeer(myForm.name)
     .subscribe((beer) => {
       this.beer = beer;
+      this.image = beer.data[0].labels;
       console.log(beer);
     })
 }
