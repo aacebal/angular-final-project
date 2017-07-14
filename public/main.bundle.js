@@ -170,7 +170,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/beer-search/beer-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"full-page\">\n\n<nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <h2 class=\"title-container\">Friendly Beer Finder</h2>\n\n    </div>\n    <div class=\"nav navbar-nav navbar-right\">\n      <button class=\"btn btn-sm\" (click)=\"logout()\">Log Out</button>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container col-lg-3 col-md-3 col-sm-3 col-xs-3\">\n  <app-user></app-user>\n</div>\n\n<div class=\"container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5\">\n\n<form (ngSubmit)=\"onSubmit(myForm.value)\" #myForm=\"ngForm\">\n  <h1>Find New Beers:</h1>\n    <input type=\"text\" name=\"name\" [(ngModel)]=\"name\" #myName=\"ngModel\">\n\n  <button class=\"btn btn-lg\" type=\"submit\"> Search</button>\n\n  <div *ngIf=\"beer\" class=\"beer-information\">\n    <img class=\"img-profile\" src=\"{{beer.data[0].labels.large}}\" />\n    <h1>{{ beer.data[0].name }} <button class=\"btn btn-add\" (click)=\"addBeer(beer.id)\">Add to your beers</button> </h1>\n    <p>{{ beer.data[0].style.description }}</p>\n  </div>\n</form>\n\n</div>\n\n</div>\n"
+module.exports = "<div class=\"full-page\">\n\n<nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <h2 class=\"title-container\">Friendly Beer Finder</h2>\n\n    </div>\n    <div class=\"nav navbar-nav navbar-right\">\n      <button class=\"btn btn-sm\" (click)=\"logout()\">Log Out</button>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container col-lg-3 col-md-3 col-sm-3 col-xs-3\">\n  <app-user></app-user>\n</div>\n\n<div class=\"container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5\">\n\n<form (ngSubmit)=\"onSubmit(myForm.value)\" #myForm=\"ngForm\">\n  <h1>Find New Beers:</h1>\n    <input type=\"text\" name=\"name\" [(ngModel)]=\"name\" #myName=\"ngModel\">\n\n  <button class=\"btn btn-lg\" type=\"submit\"> Search</button>\n\n  <div *ngIf=\"beer\" class=\"beer-information\">\n    <img *ngIf=\"image\" class=\"img-profile\" src=\"{{image.large}}\" />\n    <h1>{{ beer.data[0].name }} <button class=\"btn btn-add\" (click)=\"addBeer(beer.id)\">Add to your beers</button> </h1>\n    <p>{{ beer.data[0].style.description }}</p>\n  </div>\n</form>\n\n</div>\n\n</div>\n"
 
 /***/ }),
 
@@ -212,6 +212,7 @@ var BeerSearchComponent = (function () {
         this.BeerService.getBeer(myForm.name)
             .subscribe(function (beer) {
             _this.beer = beer;
+            _this.image = beer.data[0].labels;
             console.log(beer);
         });
     };
@@ -276,8 +277,18 @@ var BeerService = (function () {
         this.http = http;
         this.BASE_URL = 'http://api.brewerydb.com/v2/beers';
     }
+    BeerService.prototype.createAuthorizationHeader = function (headers) {
+        headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
+        headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        headers.append('Access-Control-Allow-Headers', 'application/json,X-Requested-With,content-type');
+        headers.append('Access-Control-Allow-Credentials', 'true');
+    };
     BeerService.prototype.getBeer = function (name) {
-        return this.http.get(this.BASE_URL + "/?name=" + name + "&key=31d91559b00b468e17fd134af7f3097a")
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        this.createAuthorizationHeader(headers);
+        return this.http.get(this.BASE_URL + "/?name=" + name + "&key=31d91559b00b468e17fd134af7f3097a", {
+            headers: headers
+        })
             .map(function (res) { return res.json(); });
     };
     return BeerService;
@@ -429,6 +440,7 @@ var SignupLoginComponent = (function () {
     };
     SignupLoginComponent.prototype.login = function () {
         var _this = this;
+        console.log(this.formInfo);
         this.session.login(this.formInfo)
             .subscribe(function (user) { return _this.successCb(user); }, function (err) { return _this.errorCb(err); });
     };

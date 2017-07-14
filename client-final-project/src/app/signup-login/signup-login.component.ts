@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router } from "@angular/router";
 import { Output, EventEmitter } from "@angular/core";
+import { User } from "../models/user.model"
+
 
 @Component({
   selector: 'app-signup-login',
@@ -13,7 +15,7 @@ export class SignupLoginComponent implements OnInit {
   loginReady: boolean = false;
   lower: boolean = false;
 
-  user: any;
+  user: User;
   formInfo = {
     name: '',
     lastName: '',
@@ -33,6 +35,7 @@ ngOnInit() {
 }
 
 login() {
+  console.log(this.formInfo);
   this.session.login(this.formInfo)
     .subscribe(
       (user) => this.successCb(user),
