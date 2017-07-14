@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     this.userService.userInfoSubject.subscribe(
       userInfo => {
         this.user = userInfo;
-        console.log(this.user);
+        console.log("USER IN USER COMPONENT" + this.user.name);
       });
   }
 

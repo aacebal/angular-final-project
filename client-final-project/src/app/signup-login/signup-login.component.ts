@@ -70,7 +70,8 @@ errorCb(err) {
 successCb(user) {
   this.user = user;
   this.error = null;
-  this.router.navigate(['search', { user: this.user }]);
+  this.router.navigate(['search']);
+  console.log("USER IN SIGNUP COMPONENT" + this.user.name);
   this.userService.sendUserInfo(this.user);
 }
 

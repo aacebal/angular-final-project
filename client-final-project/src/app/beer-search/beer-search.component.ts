@@ -17,7 +17,7 @@ export class BeerSearchComponent implements OnInit {
 
   private beer;
   private image;
-  private user: Object;
+  private user: User;
   private error: string;
 
 constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
@@ -29,9 +29,10 @@ ngOnInit() {
       (user) => this.successCb(user)
     );
 
-  this.userService.userInfoSubject.subscribe(
-    userInfo => {
-      this.user = userInfo;
+    this.userService.userInfoSubject.subscribe(
+      userInfo => {
+        this.user = userInfo;
+        console.log("USER IN BEER SEARCH COMPONENT" + this.user.name);
       });
     }
 
