@@ -12,8 +12,8 @@ import { Router } from "@angular/router";
 })
 export class UserComponent implements OnInit {
 
-  user: User;
-  error: string;
+  private user: User;
+  private error: string;
 
   constructor(private session: SessionService, private userService: UserService, private router: Router) { }
 

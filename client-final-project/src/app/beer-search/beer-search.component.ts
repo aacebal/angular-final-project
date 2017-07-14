@@ -15,10 +15,10 @@ import { HostBinding } from '@angular/core';
 })
 export class BeerSearchComponent implements OnInit {
 
-  beer;
-  image;
-  user: User;
-  error: string;
+  private beer;
+  private image;
+  private user: Object;
+  private error: string;
 
 constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
 }
@@ -31,7 +31,6 @@ ngOnInit() {
 
   this.userService.userInfoSubject.subscribe(
     userInfo => {
-      console.log(userInfo);
       this.user = userInfo;
       });
     }

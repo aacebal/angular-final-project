@@ -58,7 +58,7 @@
       <br>
       <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="loginPassword"/>
       <br>
-      <button class="btn btn-lg"(click)="login()"> Login </button>
+      <button class="btn btn-lg"(click)="login(); false"> Login </button>
     </form>
     <h3 style="text-align:center">Not a member? <button class="btn btn-login" (click)="switchLoginReady()">Sign Up</button></h3>
   </div>

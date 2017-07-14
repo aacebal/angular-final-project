@@ -70,8 +70,8 @@ errorCb(err) {
 successCb(user) {
   this.user = user;
   this.error = null;
+  this.router.navigate(['search', { user: this.user }]);
   this.userService.sendUserInfo(this.user);
-  this.router.navigate(['search']);
 }
 
 switchLoginReady() {
