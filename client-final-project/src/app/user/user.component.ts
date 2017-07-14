@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../beer.service';
 import { SessionService } from '../session.service';
+import { UserService } from '../user.service';
+import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,16 +12,22 @@ import { Router } from "@angular/router";
 })
 export class UserComponent implements OnInit {
 
-  user: any;
+  user: User;
   error: string;
 
-  constructor(private session: SessionService, private router: Router) { }
+  constructor(private session: SessionService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.session.isLoggedIn()
       .subscribe(
         (user) => this.successCb(user)
       );
+
+    this.userService.userInfoSubject.subscribe(
+      userInfo => {
+        this.user = userInfo;
+        console.log(this.user);
+      });
   }
 
   errorCb(err) {

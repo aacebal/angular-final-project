@@ -5,6 +5,8 @@ import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SessionService } from './session.service';
+import { UserService } from './user.service';
+import { BeerService } from './beer.service';
 import * as dotenv from 'dotenv';;
 
 import { AppComponent } from './app.component';
@@ -25,7 +27,7 @@ import { UserComponent } from './user/user.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, UserService, BeerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../beer.service';
 import { SessionService } from '../session.service';
+import { UserService } from '../user.service';
+import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
 
@@ -15,10 +17,10 @@ export class BeerSearchComponent implements OnInit {
 
   beer;
   image;
-  user: any;
+  user: User;
   error: string;
 
-constructor(private BeerService: BeerService, private session: SessionService, private router: Router) {
+constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
 }
 
 ngOnInit() {
@@ -26,7 +28,13 @@ ngOnInit() {
     .subscribe(
       (user) => this.successCb(user)
     );
-}
+
+  this.userService.userInfoSubject.subscribe(
+    userInfo => {
+      console.log(userInfo);
+      this.user = userInfo;
+      });
+    }
 
 onSubmit(myForm) {
   this.BeerService.getBeer(myForm.name)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
+import { UserService } from '../user.service';
 import { Router } from "@angular/router";
 import { Output, EventEmitter } from "@angular/core";
 import { User } from "../models/user.model"
@@ -24,7 +25,7 @@ export class SignupLoginComponent implements OnInit {
   };
   error: string;
 
-constructor(private session: SessionService, private router: Router) {
+constructor(private session: SessionService, private userService: UserService, private router: Router) {
 }
 
 ngOnInit() {
@@ -69,10 +70,13 @@ errorCb(err) {
 successCb(user) {
   this.user = user;
   this.error = null;
+  this.userService.sendUserInfo(this.user);
   this.router.navigate(['search']);
 }
 
 switchLoginReady() {
   this.loginReady = !this.loginReady;
   }
+
+
 }
