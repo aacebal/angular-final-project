@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../session.service';
-import { UserService } from '../user.service';
+import { SessionService } from '../services/session.service';
+import { UserService } from '../services/user.service';
 import { Router } from "@angular/router";
 import { Output, EventEmitter } from "@angular/core";
 import { User } from "../models/user.model"
+import { StopClickDefaultDirective } from "../directives/stop-click-default.directive"
 
 
 @Component({
@@ -71,8 +72,6 @@ successCb(user) {
   this.error = null;
   this.userService.sendUserInfo(this.user);
   this.router.navigate(['search']);
-  event.preventDefault();
-  event.stopPropagation();
 }
 
 switchLoginReady() {

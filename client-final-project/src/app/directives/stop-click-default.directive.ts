@@ -2,7 +2,6 @@ import { Directive } from '@angular/core';
 
 @Directive({
   selector: '[appStopClickDefault]',
-  events: stopClick($event)
 })
 export class StopClickDefaultDirective {
 
@@ -12,6 +11,5 @@ export class StopClickDefaultDirective {
   }
 
   constructor() { }
-
 
 }

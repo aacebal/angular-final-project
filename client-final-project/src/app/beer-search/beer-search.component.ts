@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BeerService } from '../beer.service';
-import { SessionService } from '../session.service';
-import { UserService } from '../user.service';
+import { BeerService } from '../services/beer.service';
+import { SessionService } from '../services/session.service';
+import { UserService } from '../services/user.service';
 import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
