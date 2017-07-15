@@ -65,7 +65,7 @@ successCb(user) {
 }
 
 addBeer(id) {
-  this.session.addBeer(id)
+  this.userService.addBeer(id)
     .subscribe()
 }
 

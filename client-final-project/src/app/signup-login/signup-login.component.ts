@@ -71,6 +71,8 @@ successCb(user) {
   this.error = null;
   this.userService.sendUserInfo(this.user);
   this.router.navigate(['search']);
+  event.preventDefault();
+  event.stopPropagation();
 }
 
 switchLoginReady() {

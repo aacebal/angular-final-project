@@ -43,7 +43,7 @@
       <br>
       <button class="btn btn-lg"(click)="signup()"> Signup </button>
     </form>
-    <h3 style="text-align:center">Already a member? <button class="btn btn-login" (click)="switchLoginReady()">Login</button></h3>
+    <h3 style="text-align:center">Already a member? <button class="btn btn-login" (click)="switchLoginReady($event) click-stop-propagation">Login</button></h3>
   </div>
 
   </div>

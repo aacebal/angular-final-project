@@ -39,9 +39,4 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-  addBeer(id) {
-    return this.http.post(`${this.BASE_URL}/addBeer`, id)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
 }

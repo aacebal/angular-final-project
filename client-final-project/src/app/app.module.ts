@@ -13,13 +13,15 @@ import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { BeerSearchComponent } from './beer-search/beer-search.component';
 import { UserComponent } from './user/user.component';
+import { StopClickDefaultDirective } from './stop-click-default.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupLoginComponent,
     BeerSearchComponent,
-    UserComponent
+    UserComponent,
+    StopClickDefaultDirective
   ],
   imports: [
     BrowserModule,
