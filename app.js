@@ -12,7 +12,7 @@ const passport      = require('passport');
 const passportSetup = require('./config/passport');
 require("dotenv").config();
 
-mongoose.connect('mongodb://localhost/beer-finder');
+mongoose.connect(process.env.MONGODB_URI);
 
 const app           = express();
 
@@ -38,27 +38,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'application/json,X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
-});
-
-const index = require('./routes/index');
-app.use('/', index);
+app.user(cors({
+  credentials: true,
+  origin: [ 'http://localhost:4200' ]
+}));
 
 const users = require('./routes/users');
 app.use('/', users);

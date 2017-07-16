@@ -65,6 +65,7 @@ successCb(user) {
 }
 
 addBeer(id) {
+  console.log(id)
   this.userService.addBeer(id)
     .subscribe()
 }

@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../services/session.service';
 import { UserService } from '../services/user.service';
 import { Router } from "@angular/router";
-import { Output, EventEmitter } from "@angular/core";
 import { User } from "../models/user.model"
-import { StopClickDefaultDirective } from "../directives/stop-click-default.directive"
 
 
 @Component({
@@ -45,7 +43,6 @@ login() {
 }
 
 signup() {
-  console.log(this.formInfo);
   this.session.signup(this.formInfo)
     .subscribe(
       (user) => this.successCb(user),

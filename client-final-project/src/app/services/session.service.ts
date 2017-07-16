@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+
+import 'rxjs/add/operator/toPromise';
+import { Subject } from 'rxjs/Subject';
+
+import { User } from '../models/user.model'
 
 
 @Injectable()
 export class SessionService {
+
+  public loggedInSource = new Subject<User>();
 
   BASE_URL: string = 'http://localhost:3000';
 
@@ -16,27 +21,37 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
+  isLoggedIn() {
+    return this.http.get(`${this.BASE_URL}/api/loggedin`,
+    { withCredentials: true }
+  )
+    .toPromise()
+    .then(res => res.json());
+  }
+
   signup(user) {
-    return this.http.post(`${this.BASE_URL}/signup`, user)
-      .map(res => res.json())
-      .catch(this.handleError);
+    return this.http.post(`${this.BASE_URL}/api/signup`, user,
+    { withCredentials: true }
+  )
+      .toPromise()
+      .then(res => res.json());
   }
 
   login(user) {
-    return this.http.post(`${this.BASE_URL}/login`, user)
-      .map(res => res.json())
-      .catch(this.handleError);
+    return this.http.post(`${this.BASE_URL}/api/login`, user,
+    { withCredentials: true}
+  )
+    .toPromise()
+    .then(res => res.json())
   }
 
   logout() {
-    return this.http.post(`${this.BASE_URL}/logout`, {})
-      .map(res => res.json())
-      .catch(this.handleError);
+    return this.http.post(`${this.BASE_URL}/api/logout`, {},
+    { withCredentials: true}
+  )
+    .toPromise()
+    .then(res => res.json())
   }
 
-  isLoggedIn() {
-    return this.http.get(`${this.BASE_URL}/loggedin`)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
+
 }
