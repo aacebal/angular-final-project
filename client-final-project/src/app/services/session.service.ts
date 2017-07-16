@@ -11,7 +11,9 @@ import { User } from '../models/user.model'
 @Injectable()
 export class SessionService {
 
-  public loggedInSource = new Subject<User>();
+  private loggedInSource = new Subject<User>();
+
+  loggedIn$ = this.loggedInSource.asObservable();
 
   BASE_URL: string = 'http://localhost:3000';
 
@@ -20,6 +22,11 @@ export class SessionService {
   handleError(e) {
     return Observable.throw(e.json().message);
   }
+
+  loggedIn (userInfo) {
+    this.loggedInSource.next(userInfo);
+  }
+
 
   isLoggedIn() {
     return this.http.get(`${this.BASE_URL}/api/loggedin`,

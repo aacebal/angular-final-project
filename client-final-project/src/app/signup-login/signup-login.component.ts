@@ -24,30 +24,31 @@ export class SignupLoginComponent implements OnInit {
   };
   error: string;
 
+  errorMessage: string;
+
 constructor(private session: SessionService, private userService: UserService, private router: Router) {
 }
 
-ngOnInit() {
-  this.session.isLoggedIn()
-    .subscribe(
-      (user) => this.successCb(user)
-    );
-}
+ngOnInit() { }
 
 login() {
   this.session.login(this.formInfo)
-    .subscribe(
-      (user) => this.successCb(user),
-      (err) => this.errorCb(err)
-    );
+    .then((userFromApi) => {
+      this.router.navigate(['/search']);
+      this.session.loggedIn(userFromApi);
+    })
+    .catch((errResponse) => {
+        const apiInfo = errResponse.json();
+        this.errorMessage = apiInfo.message;
+    });
 }
 
 signup() {
   this.session.signup(this.formInfo)
-    .subscribe(
-      (user) => this.successCb(user),
-      (err) => this.errorCb(err)
-    );
+    .then((userFromApi) => {
+      this.router.navigate(['/search']);
+      this.session.loggedIn(userFromApi);
+    })
 }
 
 logout() {
@@ -59,17 +60,6 @@ logout() {
   this.router.navigate(['']);
 }
 
-errorCb(err) {
-  this.error = err;
-  this.user = null;
-}
-
-successCb(user) {
-  this.user = user;
-  this.error = null;
-  this.userService.sendUserInfo(this.user);
-  this.router.navigate(['search']);
-}
 
 switchLoginReady() {
   this.loginReady = !this.loginReady;

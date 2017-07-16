@@ -25,15 +25,10 @@ constructor(private BeerService: BeerService, private session: SessionService, p
 
 ngOnInit() {
   this.session.isLoggedIn()
-    .subscribe(
+    .then(
       (user) => this.successCb(user)
     );
 
-    this.userService.userInfoSubject.subscribe(
-      userInfo => {
-        this.user = userInfo;
-        console.log("USER IN BEER SEARCH COMPONENT" + this.user.name);
-      });
     }
 
 onSubmit(myForm) {
@@ -47,11 +42,10 @@ onSubmit(myForm) {
 
 logout() {
   this.session.logout()
-    .subscribe(
+    .then(
       () => this.successCb(null),
       (err) => this.errorCb(err)
     );
-  this.router.navigate(['']);
 }
 
 errorCb(err) {
@@ -65,10 +59,7 @@ successCb(user) {
 }
 
 addBeer(id) {
-  console.log(id)
-  this.userService.addBeer(id)
-    .subscribe()
-}
 
+}
 
 }
