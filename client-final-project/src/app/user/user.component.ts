@@ -17,26 +17,6 @@ export class UserComponent implements OnInit {
 
   constructor(private session: SessionService, private userService: UserService, private router: Router) { }
 
-  ngOnInit() {
-    this.session.isLoggedIn()
-      .subscribe(
-        (user) => this.successCb(user)
-      );
+  ngOnInit() { }
 
-    this.userService.userInfoSubject.subscribe(
-      userInfo => {
-        this.user = userInfo;
-        console.log("USER IN USER COMPONENT" + this.user.name);
-      });
-  }
-
-  errorCb(err) {
-    this.error = err;
-    this.user = null;
-  }
-
-  successCb(user) {
-    this.user = user;
-    this.error = null;
-  }
 }

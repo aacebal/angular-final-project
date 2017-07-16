@@ -1,0 +1,26 @@
+.navbar-default{
+  background-color: white;
+}
+.title-container{
+  font-family: SlimTony;
+  color: rgb(248, 211, 53);
+}
+.search-container{
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  background-color: white;
+}
+.btn-lg{
+  margin-bottom: 10px;
+  background-color: rgb(248, 211, 53);
+  color: white;
+  width: 33%;
+}
+.navbar-right{
+  margin-right: 0px;
+}
+.btn-sm{
+  margin-top: 20px;
+  background-color: rgb(248, 211, 53);
+  color: white;
+}

@@ -51,16 +51,6 @@ signup() {
     })
 }
 
-logout() {
-  this.session.logout()
-    .subscribe(
-      () => this.successCb(null),
-      (err) => this.errorCb(err)
-    );
-  this.router.navigate(['']);
-}
-
-
 switchLoginReady() {
   this.loginReady = !this.loginReady;
   }
