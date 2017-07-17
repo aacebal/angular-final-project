@@ -12,11 +12,24 @@ import { Router } from "@angular/router";
 })
 export class UserComponent implements OnInit {
 
+  isLoggedIn: boolean = false;
   private user: User;
   private error: string;
 
   constructor(private session: SessionService, private userService: UserService, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.session.isLoggedIn()
+      .then((userInfo) => {
+        this.user = userInfo
+        this.isLoggedIn = true;
+      })
+      .catch((err) => {
+        this.router.navigate(['/']);
+      })
+
+   }
+
+
 
 }
