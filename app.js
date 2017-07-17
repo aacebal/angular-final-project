@@ -10,6 +10,7 @@ const cors          = require('cors');
 const session       = require('express-session');
 const passport      = require('passport');
 const passportSetup = require('./config/passport');
+
 require("dotenv").config();
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -43,11 +44,14 @@ app.use(cors({
   origin: [ 'http://localhost:4200' ]
 }));
 
-const users = require('./routes/users');
-app.use('/', users);
+const usersRoutes = require('./routes/users-routes');
+app.use('/', usersRoutes);
 
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
+
+const beerRoutes = require('./routes/beer-routes');
+app.use('/', beerRoutes);
 
 app.use((req, res, next) => {
   res.sendfile(__dirname + '/public/index.html');
