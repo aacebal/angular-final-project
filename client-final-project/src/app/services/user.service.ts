@@ -18,7 +18,9 @@ export class UserService {
   }
 
   addBeer(id) {
-    return this.http.post(`${this.BASE_URL}/addBeer`, id)
+    return this.http.post(`${this.BASE_URL}/addBeer`, id,
+    {withCredentials: true}
+  )
       .toPromise()
       .then(res => res.json());
   }

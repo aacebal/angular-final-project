@@ -15,6 +15,7 @@ import { HostBinding } from '@angular/core';
 })
 export class BeerSearchComponent implements OnInit {
 
+  isLoggedIn: boolean;
   private beer;
   private image;
   private user: User;
@@ -25,11 +26,14 @@ constructor(private BeerService: BeerService, private session: SessionService, p
 
 ngOnInit() {
   this.session.isLoggedIn()
-    .then(
-      (user) => this.successCb(user)
-    );
-
-    }
+    .then((userInfo) => {
+      this.user = userInfo
+      this.isLoggedIn = true;
+    })
+    .catch((err) => {
+      this.router.navigate(['/']);
+    })
+}
 
 onSubmit(myForm) {
   this.BeerService.getBeer(myForm.name)
@@ -40,25 +44,9 @@ onSubmit(myForm) {
     })
 }
 
-logout() {
-  this.session.logout()
-    .then(
-      () => this.successCb(null),
-      (err) => this.errorCb(err)
-    );
-}
-
-errorCb(err) {
-  this.error = err;
-  this.user = null;
-}
-
-successCb(user) {
-  this.user = user;
-  this.error = null;
-}
-
 addBeer(id) {
+  this.userService.addBeer(id)
+    .then(res => res.json())
 
 }
 
