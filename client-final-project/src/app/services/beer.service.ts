@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BeerService {
@@ -10,10 +12,11 @@ export class BeerService {
   constructor( private http: Http ) { }
 
   getBeer(name) {
-    return this.http.post(`${this.BASE_URL}/api/beers`, name,
+    return this.http.get(`${this.BASE_URL}/api/beers/${name}`,
       { withCredentials: true }
     )
-      .map((res) => res.json());
+    .toPromise()
+    .then(res => res.json())
   }
 
 }

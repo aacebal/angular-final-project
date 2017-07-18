@@ -37,10 +37,8 @@ ngOnInit() {
 
 onSubmit(myForm) {
   this.BeerService.getBeer(myForm.name)
-    .subscribe((beer) => {
+    .then((beer) => {
       this.beer = beer;
-      this.image = beer.data[0].labels;
-      console.log(beer);
     })
 }
 

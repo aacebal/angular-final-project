@@ -10,6 +10,7 @@ const cors          = require('cors');
 const session       = require('express-session');
 const passport      = require('passport');
 const passportSetup = require('./config/passport');
+const request       = require('request');
 
 require("dotenv").config();
 
