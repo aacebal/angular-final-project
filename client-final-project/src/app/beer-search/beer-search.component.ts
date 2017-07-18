@@ -38,14 +38,16 @@ ngOnInit() {
 onSubmit(myForm) {
   this.BeerService.getBeer(myForm.name)
     .then((beer) => {
-      this.beer = beer;
+      this.beer = JSON.parse(beer);
+      this.image = this.beer.data[0].labels
     })
 }
 
 addBeer(id) {
   this.userService.addBeer(id)
-    .then(res => res.json())
-
+    .then((updatedUser) => {
+      this.user = updatedUser;
+    })
 }
 
 }

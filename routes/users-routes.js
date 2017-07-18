@@ -6,14 +6,15 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/addBeer', (req, res, next) => {
-  const userId = req.user._id;
+router.post('/api/addBeer', (req, res, next) => {
+  const userBeers = req.user.beers;
 
-  const beerAdded = {
-    beers: beers.ownList.push(req.body.id)
-  };
+  const beerAdded = req.body.id;
+  console.log(beerAdded);
 
-  User.findByIdAndUpdate(userId, beerAdded, (err, theUser) => {
+  User.findByIdAndUpdate(req.user._id,
+    { $push: { ownList: beerAdded } },
+    (err, theUser) => {
     if (err) {
       res.status(500).json({ message: 'Update not successful '});
       return;

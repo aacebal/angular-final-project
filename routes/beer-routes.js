@@ -10,24 +10,12 @@ const beerRoutes = express.Router();
 
 const BASE_URL = 'http://api.brewerydb.com/v2/beers/';
 
-beerRoutes.post('/api/beers/', (req, res, next) => {
-  const beerName = req.body.name;
+beerRoutes.get('/api/beers/:id', (req, res, next) => {
+  const beerName = req.params.id;
 
-    request.get('http://api.brewerydb.com/v2/beers/?name=hop stimulator&key=31d91559b00b468e17fd134af7f3097a', (err, foundBeer) => {
-      if (err) {
-        res.status(401).json({ message: "error finding beer" });
-        return;
-      }
-      if (foundBeer, (err) => {
-        if (err) {
-          res.status(500).json({ message: "error retrieving beer" });
-          return;
-        }
-       {
-        res.status(200).json(foundBeer);
-      }
+    request(`${BASE_URL}/?name=${beerName}&key=${process.env.API_KEY}`, (error, response, body) => {
+      res.status(200).json(body);
     });
   });
-});
 
 module.exports = beerRoutes;
