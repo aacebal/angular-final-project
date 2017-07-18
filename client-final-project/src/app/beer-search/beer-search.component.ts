@@ -43,8 +43,8 @@ onSubmit(myForm) {
     })
 }
 
-addBeer(id) {
-  this.userService.addBeer(id)
+addBeer(beer) {
+  this.userService.addBeer(beer)
     .then((updatedUser) => {
       this.user = updatedUser;
     })
