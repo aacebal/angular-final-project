@@ -18,8 +18,7 @@ export class UserService {
   }
 
   addBeer(id) {
-    return this.http.post(`${this.BASE_URL}/api/addBeer/`, id,
-    {withCredentials: true}
+    return this.http.get(`${this.BASE_URL}/api/addBeer/${id}`,
   )
       .toPromise()
       .then(res => res.json());

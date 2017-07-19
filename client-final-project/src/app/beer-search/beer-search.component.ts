@@ -21,6 +21,8 @@ export class BeerSearchComponent implements OnInit {
   private user: User;
   private error: string;
 
+  private beerId: string;
+
 constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
 }
 
@@ -46,7 +48,8 @@ onSubmit(myForm) {
 addBeer(id) {
   this.userService.addBeer(id)
     .then((string) => {
-
+      this.beerId = string;
+      console.log(this.beerId);
     })
 }
 
