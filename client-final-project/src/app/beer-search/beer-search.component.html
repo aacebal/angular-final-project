@@ -13,7 +13,7 @@
 
   <div *ngIf="beer" class="beer-information">
     <img *ngIf="image" class="img-profile" src="{{image.large}}" />
-    <h1>{{ beer.data[0].name }} <button class="btn btn-add" (click)="addBeer(beer)">Add to your beers</button> </h1>
+    <h1>{{ beer.data[0].name }} <button class="btn btn-add" (click)="addBeer(beer.data[0].id)">Add to your beers</button> </h1>
     <p>{{ beer.data[0].style.description }}</p>
   </div>
 </form>
