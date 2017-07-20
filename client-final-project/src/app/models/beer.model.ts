@@ -1,5 +1,11 @@
+export class Beer {
+  id: string;
+  name: string;
+  image?: string;
+}
+
 export class Beers {
-    ownnList: String[];
-    wishList: String[];
-    historyList: String[];
+    ownnList: Beer[];
+    wishList: Beer[];
+    historyList: Beer[];
 }

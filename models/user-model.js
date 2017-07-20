@@ -8,11 +8,21 @@ const userSchema = new Schema({
   password: String,
   beers: {
     //beers currently owned by user
-    ownList: Array,
+    ownList: [
+      { id: String,
+        name: String,
+        image: String
+      }],
     //beers the user wants
-    wishList: Array,
+    wishList: [{ id: String,
+      name: String,
+      image: String
+    }],
     //all the beers the user has tried
-    historyList: Array
+    historyList: [{ id: String,
+      name: String,
+      image: String
+    }]
   }
 }, {
   timestamps: {
