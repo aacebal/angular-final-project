@@ -45,11 +45,11 @@ onSubmit(myForm) {
     })
 }
 
-addBeer(beer) {
-  this.userService.addBeer(beer)
+addBeer(beer, list) {
+  this.userService.addBeer(beer, list)
     .then((updatedUser) => {
-      this.newUser = updatedUser;
-      console.log(this.newUser);
+      this.user = updatedUser;
+      console.log(this.user);
     })
 }
 

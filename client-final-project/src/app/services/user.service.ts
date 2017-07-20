@@ -17,8 +17,8 @@ export class UserService {
     return Observable.throw(e.json().message);
   }
 
-  addBeer(beer) {
-    return this.http.post(`${this.BASE_URL}/api/addBeer/`, beer,
+  addBeer(beer, list) {
+    return this.http.post(`${this.BASE_URL}/api/addBeer/${list}`, beer,
     { withCredentials: true })
       .toPromise()
       .then(res => res.json());
