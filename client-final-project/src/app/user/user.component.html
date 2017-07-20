@@ -2,5 +2,8 @@
   <div class="user-information">
       <img class="img-circle" src="{{user.profilePic}}" />
     <h3 class="user-name">{{ user.name }} {{ user.lastName }}</h3>
+    <ul *ngFor="let ownedBeer of user.beers.ownList">
+      <li>{{ ownedBeer }}</li>
+    </ul>
   </div>
 </div>
