@@ -23,6 +23,14 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
+  getUser(): Observable<any> {
+        return this.loggedInSource.asObservable();
+    }
+
+  sendUser(user: User) {
+      this.loggedInSource.next(user);
+  }
+
   loggedIn (userInfo) {
     this.loggedInSource.next(userInfo);
   }

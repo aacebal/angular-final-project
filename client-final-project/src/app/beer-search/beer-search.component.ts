@@ -49,7 +49,7 @@ addBeer(beer, list) {
   this.userService.addBeer(beer, list)
     .then((updatedUser) => {
       this.user = updatedUser;
-      console.log(this.user);
+      this.session.sendUser(this.user);
     })
 }
 

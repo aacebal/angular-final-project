@@ -24,16 +24,4 @@ export class UserService {
       .then(res => res.json());
   }
 
-  addBeerWishList(id) {
-    return this.http.post(`${this.BASE_URL}/addBeerWishList`, id)
-      .toPromise()
-      .then(res => res.json());
-  }
-
-  addBeerHistory(id) {
-    return this.http.post(`${this.BASE_URL}/addBeerHistory`, id)
-      .toPromise()
-      .then(res => res.json());
-  }
-
 }
