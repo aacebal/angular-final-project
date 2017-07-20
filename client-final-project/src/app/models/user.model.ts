@@ -1,4 +1,4 @@
-import { Beer } from '../models/beer.model'
+import { Beers } from '../models/beer.model'
 
 export class User {
     id: number;
@@ -6,5 +6,5 @@ export class User {
     lastName: string;
     username: string;
     password: string;
-    beers: Beer;
+    beers: Beers;
 }

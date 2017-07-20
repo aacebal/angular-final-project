@@ -4,11 +4,17 @@ const User = require('../models/user-model');
 
 const usersRoutes = express.Router();
 
-usersRoutes.get('/api/addBeer/:id', (req, res, next) => {
+usersRoutes.post('/api/addBeer', (req, res, next) => {
 
-  var beerId = req.params.id;
-
-  res.status(200).json(beerId);
+  User.findByIdAndUpdate(req.user._id,
+  { $push: { beers: ownList: req.body.data[0].id }  },
+  (err, updatedUser) => {
+    if (err) {
+      res.status(500).json({ message: "User update failed" });
+      return;
+    }
+    res.status(200).json(updatedUser);
+  });
 
 });
 
