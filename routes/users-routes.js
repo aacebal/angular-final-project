@@ -6,16 +6,14 @@ const usersRoutes = express.Router();
 
 usersRoutes.post('/api/addBeer', (req, res, next) => {
 
-  const beerId = req.body.data[0].id;
+  User.findById(req.user._id, (err, theUser) => {
+    const beerId = req.body.data[0].id;
 
-  User.findByIdAndUpdate(req.user._id, {
-    beers: { $push: { ownList: beerId } }
-  },
-  (err, updatedUser) => {
-    if (err) {
-      res.status(500).json({ message: "no luck" });
-    }
-    res.status(200).json(updatedUser);
+  theUser.beers.ownList.push(beerId);
+
+  theUser.save((err) => {
+    res.status(200).json(theUser);
+    });
   });
 });
 
