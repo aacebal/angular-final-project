@@ -5,6 +5,8 @@ import { UserService } from '../services/user.service';
 import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
 
 
 @Component({
@@ -22,6 +24,7 @@ export class BeerSearchComponent implements OnInit {
   private data;
   private user: User;
   private error: string;
+  subscription: Subscription;
 
   private newUser;
 
@@ -44,7 +47,6 @@ onSubmit(myForm) {
   this.BeerService.getBeer(myForm.name)
     .then((beer) => {
       this.beer = JSON.parse(beer);
-      console.log(this.beer);
       this.data = this.beer.data;
       this.image = this.beer.data[0].labels;
       this.brewery = this.beer.data[0].breweries[0].name;

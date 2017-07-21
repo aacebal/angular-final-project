@@ -25,7 +25,7 @@ export class UserService {
   }
 
   deleteBeer(id, list) {
-    return this.http.post(`${this.BASE_URL}/api/beers/${list}/${id}/delete`,
+    return this.http.post(`${this.BASE_URL}/api/delete/${list}/`, id,
     { withCredentials: true})
       .toPromise()
       .then(res => res.json());

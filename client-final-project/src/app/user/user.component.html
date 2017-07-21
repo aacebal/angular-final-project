@@ -14,9 +14,9 @@
         <ul class="beer-list" *ngFor="let ownedBeer of user.beers.ownList">
           <li><img class="beer-image" src="{{ownedBeer.image}}">{{ ownedBeer.name }}</li>
           <div class="buttons">
-            <button title="delete" class="btn btn-delete" (click)="deleteBeer(ownedBeer.id, 'ownList')"></button>
-            <button title="history" class="btn btn-history" (click)="historyBeer(ownedBeer.id, 'ownList')"></button>
-            <button title="events" class="btn btn-event" (click)="eventBeer(ownedBeer.id, 'ownList')"></button>
+            <button title="delete" class="btn btn-delete" (click)="deleteBeer(ownedBeer, 'ownList')"></button>
+            <button title="history" class="btn btn-history" (click)="historyBeer(ownedBeer, 'ownList')"></button>
+            <button title="events" class="btn btn-event" (click)="eventBeer(ownedBeer, 'ownList')"></button>
           </div>
         </ul>
     </div>

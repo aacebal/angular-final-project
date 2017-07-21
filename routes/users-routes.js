@@ -61,28 +61,30 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
   });
 });
 
-usersRoutes.post('/api/beers/:list/:id/delete', (req, res, next) => {
+usersRoutes.post('/api/delete/:list', (req, res, next) => {
 
   User.findById(req.user._id, (err, theUser) => {
-    var beerId = req.params.id;
+    var beerId = req.body.id;
+    console.log(beerId);
+    var beerList = req.params.list;
     var idArray = [];
     var foundId;
 
-    if (req.params.list === "ownList") {
+    if (beerList === "ownList") {
       theUser.beers.ownList.forEach((oneBeer) => {
         idArray.push(oneBeer.id);
       });
+      console.log(idArray);
       foundId = idArray.indexOf(beerId);
-      console.log(foundId);
+      theUser.beers.ownList.splice(foundId, 1);
     }
-
-    theUser.beers.ownList.splice(foundId, 1);
 
     theUser.save((err) => {
       res.status(200).json(theUser);
     });
   });
 });
+
 
 
 module.exports = usersRoutes;
