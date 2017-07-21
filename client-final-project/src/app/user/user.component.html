@@ -10,11 +10,13 @@
         <div class="user-counter col-lg-2 col-md-2 col-sm-2 col-xs-2">
           <h3>{{ user.beers.ownList.length }}</h3>
         </div>
+
+        <ul class="beer-list" *ngFor="let ownedBeer of user.beers.ownList">
+          <li><img class="beer-image" src="{{ownedBeer.image}}">{{ ownedBeer.name }}</li>
+        </ul>
     </div>
 
-    <ul *ngFor="let ownedBeer of user.beers.ownList">
-      <li><img class="beer-image" src="{{ownedBeer.image}}">{{ ownedBeer.name }}</li>
-    </ul>
+
     <div class="beers-counter">
       <div class="user-header col-lg-10 col-md-10 col-sm-10 col-xs-10">
         <h3>Wish List</h3>
@@ -23,11 +25,13 @@
       <div class="user-counter col-lg-2 col-md-2 col-sm-2 col-xs-2">
         <h3>{{ user.beers.wishList.length }}</h3>
       </div>
+
+      <ul class="beer-list" *ngFor="let wishedBeer of user.beers.wishList">
+        <li><img class="beer-image" src="{{wishedBeer.image}}">{{ wishedBeer.name }}</li>
+      </ul>
     </div>
 
-    <ul *ngFor="let wishedBeer of user.beers.wishList">
-      <li><img class="beer-image" src="{{wishedBeer.image}}">{{ wishedBeer.name }}</li>
-    </ul>
+
     <div class="beers-counter">
       <div class="user-header col-lg-10 col-md-10 col-sm-10 col-xs-10">
         <h3>History List</h3>
@@ -37,10 +41,12 @@
         <h3>{{ user.beers.historyList.length }}</h3>
       </div>
 
+      <ul class="beer-list" *ngFor="let hadBeer of user.beers.historyList">
+        <li><img class="beer-image" src="{{hadBeer.image}}">{{ hadBeer.name }}</li>
+      </ul>
+
     </div>
 
-    <ul *ngFor="let hadBeer of user.beers.historyList">
-      <li><img class="beer-image" src="{{hadBeer.image}}">{{ hadBeer.name }}</li>
-    </ul>
+
   </div>
 </div>
