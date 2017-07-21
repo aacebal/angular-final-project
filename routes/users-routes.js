@@ -61,9 +61,28 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
   });
 });
 
-function searchArray(id, beerId) {
-  console.log(id);
-  return id.id == beerId;
-}
+usersRoutes.post('/api/beers/:list/:id/delete', (req, res, next) => {
+
+  User.findById(req.user._id, (err, theUser) => {
+    var beerId = req.params.id;
+    var idArray = [];
+    var foundId;
+
+    if (req.params.list === "ownList") {
+      theUser.beers.ownList.forEach((oneBeer) => {
+        idArray.push(oneBeer.id);
+      });
+      foundId = idArray.indexOf(beerId);
+      console.log(foundId);
+    }
+
+    theUser.beers.ownList.splice(foundId, 1);
+
+    theUser.save((err) => {
+      res.status(200).json(theUser);
+    });
+  });
+});
+
 
 module.exports = usersRoutes;

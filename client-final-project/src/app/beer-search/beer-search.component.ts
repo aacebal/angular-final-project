@@ -26,7 +26,7 @@ export class BeerSearchComponent implements OnInit {
   private newUser;
 
 constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
-}
+this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
 ngOnInit() {
   this.session.isLoggedIn()

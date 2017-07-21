@@ -14,9 +14,9 @@
         <ul class="beer-list" *ngFor="let ownedBeer of user.beers.ownList">
           <li><img class="beer-image" src="{{ownedBeer.image}}">{{ ownedBeer.name }}</li>
           <div class="buttons">
-            <button title="delete" class="btn btn-delete"></button>
-            <button title="history" class="btn btn-history"></button>
-            <button title="events" class="btn btn-event"></button>
+            <button title="delete" class="btn btn-delete" (click)="deleteBeer(ownedBeer.id, 'ownList')"></button>
+            <button title="history" class="btn btn-history" (click)="historyBeer(ownedBeer.id, 'ownList')"></button>
+            <button title="events" class="btn btn-event" (click)="eventBeer(ownedBeer.id, 'ownList')"></button>
           </div>
         </ul>
     </div>
@@ -34,8 +34,8 @@
       <ul class="beer-list" *ngFor="let wishedBeer of user.beers.wishList">
         <li><img class="beer-image" src="{{wishedBeer.image}}">{{ wishedBeer.name }}</li>
         <div class="buttons">
-          <button title="delete" class="btn btn-delete"></button>
-          <button title="events" class="btn btn-event"></button>
+          <button title="delete" class="btn btn-delete" (click)="deleteBeer(ownedBeer.id, 'wishList')"></button>
+          <button title="events" class="btn btn-event" (click)="ownBeer(ownedBeer.id, 'wishList')"></button>
         </div>
       </ul>
     </div>
@@ -53,7 +53,7 @@
       <ul class="beer-list" *ngFor="let hadBeer of user.beers.historyList">
         <li><img class="beer-image" src="{{hadBeer.image}}">{{ hadBeer.name }}</li>
         <div class="buttons">
-          <button title="delete" class="btn btn-delete"></button>
+          <button title="delete" class="btn btn-delete" (click)="deleteBeer(ownedBeer.id, 'wishList')"></button>
         </div>
       </ul>
 

@@ -33,4 +33,13 @@ export class UserComponent implements OnInit {
 
    }
 
+   deleteBeer(id, list) {
+     this.userService.deleteBeer(id, list)
+      .then((updatedUser) => {
+        this.user = updatedUser;
+        this.session.sendUser(this.user);
+      })
+
+   }
+
 }

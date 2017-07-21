@@ -24,4 +24,11 @@ export class UserService {
       .then(res => res.json());
   }
 
+  deleteBeer(id, list) {
+    return this.http.post(`${this.BASE_URL}/api/beers/${list}/${id}/delete`,
+    { withCredentials: true})
+      .toPromise()
+      .then(res => res.json());
+  }
+
 }
