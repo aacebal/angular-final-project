@@ -4,15 +4,15 @@
     <h2 class="user-name">{{ user.name }} {{ user.lastName }}</h2>
     <h3>Beers Owned</h3><h3>{{ user.beers.ownList.length }}</h3>
     <ul *ngFor="let ownedBeer of user.beers.ownList">
-      <li>{{ ownedBeer.name }}</li>
+      <li><img class="beer-image" src="{{ownedBeer.image}}">{{ ownedBeer.name }}</li>
     </ul>
     <h3>Wish List</h3><h3>{{ user.beers.wishList.length }}</h3>
     <ul *ngFor="let wishedBeer of user.beers.wishList">
-      <li>{{ wishedBeer.name }}</li>
+      <li><img class="beer-image" src="{{wishedBeer.image}}">{{ wishedBeer.name }}</li>
     </ul>
     <h3>History List</h3><h3>{{ user.beers.historyList.length }}</h3>
     <ul *ngFor="let hadBeer of user.beers.historyList">
-      <li>{{ hadBeer.name }}</li>
+      <li><img  src="{{hadBeer.image}}">{{ hadBeer.name }}</li>
     </ul>
   </div>
 </div>

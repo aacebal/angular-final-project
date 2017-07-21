@@ -11,10 +11,19 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
     var foundId;
     const beerId = req.body.data[0].id;
     const beerName = req.body.data[0].name;
+    var beerImage;
+
     if (req.body.data[0].labels) {
       const beerImage = req.body.data[0].labels.large;
     }
     const beerList = req.params.list;
+
+    if (req.body.data[0].labels) {
+      beerImage = req.body.data[0].labels.large;
+    }
+    else {
+      beerImage = "../assets/images/beer-flat.png";
+    }
 
     if (beerList === "ownList") {
       theUser.beers.ownList.forEach((oneBeer) => {
@@ -23,7 +32,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.ownList.push({ id: beerId, name: beerName, image: "" });
+        theUser.beers.ownList.push({ id: beerId, name: beerName, image: beerImage });
       }
 
     }
@@ -35,7 +44,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.wishList.push({ id: beerId, name: beerName, image: "" });
+        theUser.beers.wishList.push({ id: beerId, name: beerName, image: beerImage });
     }
 
     }
@@ -46,7 +55,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.historyList.push({ id: beerId, name: beerName, image: ""});
+        theUser.beers.historyList.push({ id: beerId, name: beerName, image: beerImage});
     }
     }
 
