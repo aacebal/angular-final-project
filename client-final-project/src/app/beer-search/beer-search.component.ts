@@ -18,6 +18,8 @@ export class BeerSearchComponent implements OnInit {
   isLoggedIn: boolean;
   private beer;
   private image;
+  private brewery;
+  private data;
   private user: User;
   private error: string;
 
@@ -38,10 +40,14 @@ ngOnInit() {
 }
 
 onSubmit(myForm) {
+  this.beer = "";
   this.BeerService.getBeer(myForm.name)
     .then((beer) => {
       this.beer = JSON.parse(beer);
-      this.image = this.beer.data[0].labels
+      console.log(this.beer);
+      this.data = this.beer.data;
+      this.image = this.beer.data[0].labels;
+      this.brewery = this.beer.data[0].breweries[0].name;
     })
 }
 

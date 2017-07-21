@@ -28,7 +28,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.ownList.push({ id: beerId, name: beerName, image: beerImage });
+        theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage });
       }
 
     }
@@ -40,7 +40,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.wishList.push({ id: beerId, name: beerName, image: beerImage });
+        theUser.beers.wishList.unshift({ id: beerId, name: beerName, image: beerImage });
     }
 
     }
@@ -51,7 +51,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.historyList.push({ id: beerId, name: beerName, image: beerImage});
+        theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage});
     }
     }
 

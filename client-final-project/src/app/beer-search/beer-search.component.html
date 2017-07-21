@@ -10,16 +10,23 @@
     <input type="text" name="name" [(ngModel)]="name" #myName="ngModel">
 
   <button class="btn btn-lg" type="submit"> Search</button>
+</form>
 
   <div *ngIf="beer" class="beer-information">
     <div class="beer-header">
       <img *ngIf="image" class="img-profile" src="{{image.large}}" />
       <img *ngIf="!image" class="img-profile" src="../assets/images/beer-flat.png" />
+      <div *ngIf="!data">
+        <h2>Oops! We can't find that beer. <br> Try again.</h2>
+      </div>
       <h1>{{ beer.data[0].name }} <h1 style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
-          <br>
+      <h3 style="margin-bottom= 0px" *ngIf="brewery">{{ beer.data[0].breweries[0].name }}</h3>
+      <div *ngIf="data">
         <button class="btn btn-add" (click)="addBeer(beer, 'ownList')">Own</button>
         <button class="btn btn-add" (click)="addBeer(beer, 'wishList')">Want</button>
         <button class="btn btn-add" (click)="addBeer(beer, 'historyList')">Had</button>
+      </div>
+
       </h1>
     </div>
 
@@ -27,7 +34,10 @@
     <p>{{ beer.data[0].description }}</p>
   </div>
     <p *ngIf="!beer.data[0].description">{{ beer.data[0].style.description }}</p>
+
   </div>
-</form>
+
+
+
 
 </div>
