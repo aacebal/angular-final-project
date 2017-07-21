@@ -11,12 +11,8 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
     var foundId;
     const beerId = req.body.data[0].id;
     const beerName = req.body.data[0].name;
-    var beerImage;
-
-    if (req.body.data[0].labels) {
-      const beerImage = req.body.data[0].labels.large;
-    }
     const beerList = req.params.list;
+    var beerImage;
 
     if (req.body.data[0].labels) {
       beerImage = req.body.data[0].labels.large;

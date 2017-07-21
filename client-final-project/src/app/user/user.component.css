@@ -21,3 +21,7 @@
 li{
   list-style-type: none;
 }
+.beers-counter h3{
+  display: inline-block;
+  margin-top: 20px;
+}
