@@ -53,3 +53,33 @@ li{
   position: relative;
   top: 10px;
 }
+.btn{
+  padding: 6px;
+}
+.btn-delete{
+  margin-bottom: 10px;
+  background-color: #FF5F58;
+  color: white;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+.btn-history{
+  margin-bottom: 10px;
+  background-color: #88D7FA;
+  color: white;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+.btn-event{
+  margin-bottom: 10px;
+  background-color: #F9D414;
+  color: white;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+.buttons{
+  margin-left: 50px;
+}
