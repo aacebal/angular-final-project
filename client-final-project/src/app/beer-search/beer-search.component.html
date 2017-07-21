@@ -12,12 +12,21 @@
   <button class="btn btn-lg" type="submit"> Search</button>
 
   <div *ngIf="beer" class="beer-information">
-    <img *ngIf="image" class="img-profile" src="{{image.large}}" />
-    <h1>{{ beer.data[0].name }} <button class="btn btn-add" (click)="addBeer(beer, 'ownList')">Own</button>
-    <button class="btn btn-add" (click)="addBeer(beer, 'wishList')">Want</button>
-    <button class="btn btn-add" (click)="addBeer(beer, 'historyList')">Had</button>
-  </h1>
-    <p>{{ beer.data[0].style.description }}</p>
+    <div class="beer-header">
+      <img *ngIf="image" class="img-profile" src="{{image.large}}" />
+      <img *ngIf="!image" class="img-profile" src="../assets/images/beer-flat.png" />
+      <h1>{{ beer.data[0].name }} <h1 style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
+          <br>
+        <button class="btn btn-add" (click)="addBeer(beer, 'ownList')">Own</button>
+        <button class="btn btn-add" (click)="addBeer(beer, 'wishList')">Want</button>
+        <button class="btn btn-add" (click)="addBeer(beer, 'historyList')">Had</button>
+      </h1>
+    </div>
+
+  <div *ngIf="beer.data[0].description" class="beer-description">
+    <p>{{ beer.data[0].description }}</p>
+  </div>
+    <p *ngIf="!beer.data[0].description">{{ beer.data[0].style.description }}</p>
   </div>
 </form>
 
