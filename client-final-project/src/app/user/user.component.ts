@@ -39,7 +39,14 @@ export class UserComponent implements OnInit {
         this.user = updatedUser;
         this.session.sendUser(this.user);
       })
+   }
 
+   historyBeer(id, list) {
+     this.userService.historyBeer(id, list)
+        .then((updatedUser) => {
+          this.user = updatedUser;
+          this.session.sendUser(this.user);
+        })
    }
 
 }

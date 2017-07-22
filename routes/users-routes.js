@@ -97,15 +97,16 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       theUser.beers.historyList.splice(foundId, 1);
     }
 
-
       theUser.save((err) => {
       res.status(200).json(theUser);
-
 
     });
   });
 });
 
+  usersRoutes.post('/api/history/:list', (req, res, next) => {
+    
+  })
 
 
 module.exports = usersRoutes;

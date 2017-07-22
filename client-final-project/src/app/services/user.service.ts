@@ -31,4 +31,11 @@ export class UserService {
       .then(res => res.json());
   }
 
+  historyBeer(id, list) {
+    return this.http.post(`${this.BASE_URL}/api/history/${list}`, id,
+    {withCredentials: true})
+    .toPromise()
+    .then(res => res.json());
+  }
+
 }
