@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../services/beer.service';
 import { SessionService } from '../services/session.service';
 import { UserService } from '../services/user.service';
+import { MapService } from '../services/map.service';
 import { User } from '../models/user.model';
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
@@ -23,7 +24,7 @@ export class BrewerySearchComponent implements OnInit {
   private error: string;
   subscription: Subscription;
 
-  constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
+  constructor(private mapService: MapService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
   ngOnInit() {
@@ -42,8 +43,13 @@ export class BrewerySearchComponent implements OnInit {
     this.BeerService.getBrewery(myForm.name)
       .then((brewery) => {
         this.brewery = JSON.parse(brewery);
-
+        this.data = this.brewery.data;
+        this.image = this.brewery.data[0].images;
       })
+      this.mapService.findBrewer(myForm.name)
+        .then((breweryLocation) => {
+          this.breweryLocation = JSON.parse(breweryLocation);
+        })
   }
 
 }
