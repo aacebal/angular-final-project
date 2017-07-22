@@ -33,16 +33,16 @@ export class UserComponent implements OnInit {
 
    }
 
-   deleteBeer(id, list) {
-     this.userService.deleteBeer(id, list)
+   deleteBeer(beer, list) {
+     this.userService.deleteBeer(beer, list)
       .then((updatedUser) => {
         this.user = updatedUser;
         this.session.sendUser(this.user);
       })
    }
 
-   historyBeer(id, list) {
-     this.userService.historyBeer(id, list)
+   historyBeer(beer, list) {
+     this.userService.historyBeer(beer, list)
         .then((updatedUser) => {
           this.user = updatedUser;
           this.session.sendUser(this.user);

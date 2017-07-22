@@ -65,7 +65,6 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
 
   User.findById(req.user._id, (err, theUser) => {
     var beerId = req.body.id;
-    console.log(beerId);
     var beerList = req.params.list;
     var idArray = [];
     var foundId;
@@ -98,15 +97,44 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
     }
 
       theUser.save((err) => {
-      res.status(200).json(theUser);
-
+        res.status(200).json(theUser);
     });
   });
 });
 
   usersRoutes.post('/api/history/:list', (req, res, next) => {
-    
-  })
+
+    User.findById(req.user._id, (err, theUser) => {
+      const beerId = req.body.id;
+      const beerName = req.body.name;
+      const beerImage = req.body.image;
+      var foundId;
+      var idArray = [];
+      var foundIdHistory;
+      var idArrayHistory = [];
+
+
+      theUser.beers.ownList.forEach((oneBeer) => {
+        idArray.push(oneBeer.id);
+      });
+      foundId = idArray.indexOf(beerId);
+
+      theUser.beers.ownList.splice(foundId, 1);
+
+      theUser.beers.historyList.forEach((oneBeer) => {
+        idArrayHistory.push(oneBeer.id);
+      });
+      foundIdHistory = idArrayHistory.indexOf(beerId);
+
+        if (foundIdHistory == -1) {
+          theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage});
+      }
+
+      theUser.save((err) => {
+        res.status(200).json(theUser);
+      });
+    });
+  });
 
 
 module.exports = usersRoutes;

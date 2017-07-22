@@ -24,15 +24,15 @@ export class UserService {
       .then(res => res.json());
   }
 
-  deleteBeer(id, list) {
-    return this.http.post(`${this.BASE_URL}/api/delete/${list}/`, id,
+  deleteBeer(beer, list) {
+    return this.http.post(`${this.BASE_URL}/api/delete/${list}/`, beer,
     { withCredentials: true})
       .toPromise()
       .then(res => res.json());
   }
 
-  historyBeer(id, list) {
-    return this.http.post(`${this.BASE_URL}/api/history/${list}`, id,
+  historyBeer(beer, list) {
+    return this.http.post(`${this.BASE_URL}/api/history/${list}`, beer,
     {withCredentials: true})
     .toPromise()
     .then(res => res.json());
