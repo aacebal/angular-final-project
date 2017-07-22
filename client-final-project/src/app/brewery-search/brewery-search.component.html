@@ -1,12 +1,5 @@
-
-<div class="container col-lg-3 col-md-3 col-sm-3 col-xs-3">
-  <app-user></app-user>
-</div>
-
-<div class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
-  <h1>Find New Beers:</h1>
+  <h1>Find New Breweries:</h1>
     <input type="text" name="name" [(ngModel)]="name" #myName="ngModel">
 
   <button class="btn btn-lg" type="submit"> Search</button>
@@ -36,11 +29,3 @@
     <p *ngIf="!beer.data[0].description">{{ beer.data[0].style.description }}</p>
 
   </div>
-
-</div>
-
-<div style="margin-top: 20px"class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-  <app-brewery-search></app-brewery-search>
-
-</div>
