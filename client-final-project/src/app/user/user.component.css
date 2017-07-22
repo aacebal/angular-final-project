@@ -35,14 +35,29 @@ li{
   display: inline-block;
   margin: 20px 10px;
 }
-.user-header{
+.yellow-header{
   background-color: rgb(248, 211, 53);
+}
+.green-header{
+  background-color: rgba(89, 233, 75, 0.75);
+}
+.blue-header{
+  background-color: #88D7FA;
 }
 .user-header h3{
   margin: 5px 10px;
 }
-.user-counter{
+.yellow-counter{
   background-color: rgb(248, 211, 53);
+}
+.blue-counter{
+  background-color: #88D7FA;
+}
+.green-counter{
+  background-color: rgba(89, 233, 75, 0.75);
+}
+.user-counter{
+
   text-align: right;
 }
 .user-counter h3{

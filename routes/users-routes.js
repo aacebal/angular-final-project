@@ -79,8 +79,29 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       theUser.beers.ownList.splice(foundId, 1);
     }
 
-    theUser.save((err) => {
+    else if (beerList === "wishList") {
+      theUser.beers.wishList.forEach((oneBeer) => {
+        idArray.push(oneBeer.id);
+      });
+      console.log(idArray);
+      foundId = idArray.indexOf(beerId);
+      theUser.beers.wishList.splice(foundId, 1);
+    }
+
+    else if (beerList === "historyList") {
+      theUser.beers.historyList.forEach((oneBeer) => {
+        idArray.push(oneBeer.id);
+      });
+      console.log(idArray);
+      foundId = idArray.indexOf(beerId);
+      theUser.beers.historyList.splice(foundId, 1);
+    }
+
+
+      theUser.save((err) => {
       res.status(200).json(theUser);
+
+
     });
   });
 });
