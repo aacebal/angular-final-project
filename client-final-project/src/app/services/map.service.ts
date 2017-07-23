@@ -11,8 +11,8 @@ export class MapService {
 
   constructor(private http: Http) { }
 
-  getBreweryLocation() {
-    return this.http.get(`${this.BASE_URL}/api/brewery-location`,
+  getBreweryLocation(breweryName) {
+    return this.http.get(`${this.BASE_URL}/api/brewery-location/${breweryName}`,
     {withCredentials: true}
   )
       .toPromise()

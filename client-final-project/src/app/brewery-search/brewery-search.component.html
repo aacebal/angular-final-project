@@ -13,6 +13,10 @@
         <h2>Oops! We can't find that brewery. <br> Try again.</h2>
       </div>
       <h1>{{ brewery.data[0].name }}</h1>
+      <div class="brewery-description">
+        <p>{{ brewery.data[0].description }}</p>
+      </div>
+
       <agm-map [latitude]="lat" [longitude]="lng">
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
       </agm-map>

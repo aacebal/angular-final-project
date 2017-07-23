@@ -55,8 +55,11 @@ input[type=password], select {
   margin-right: 15px;
   float: left;
 }
-
 agm-map {
   height: 250px;
   margin: 10px;
+}
+.brewery-description{
+  height: 100px;
+  overflow: scroll;
 }

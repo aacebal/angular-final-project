@@ -26,8 +26,8 @@ export class BrewerySearchComponent implements OnInit {
   private error: string;
   private breweryAddress;
   subscription: Subscription;
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number;
+  lng: number;
 
   constructor(private mapService: MapService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
@@ -56,9 +56,12 @@ export class BrewerySearchComponent implements OnInit {
         this.data = this.brewery.data;
         this.image = this.brewery.data[0].images;
       })
+
     this.mapService.getBreweryLocation(myForm.name)
       .then((breweryLocation) => {
-        this.breweryAddress = JSON.parse(breweryLocation)
+        this.breweryAddress = JSON.parse(breweryLocation);
+        this.lat = this.breweryAddress.results[0].geometry.location.lat;
+        this.lng = this.breweryAddress.results[0].geometry.location.long;
       })
   }
 

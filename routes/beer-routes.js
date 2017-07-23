@@ -8,7 +8,11 @@ const Brewery    = require('../models/brewery-model');
 
 const beerRoutes = express.Router();
 
+var latitude;
+var longigute;
+
 const BASE_URL = 'http://api.brewerydb.com/v2/';
+const MAPS_URL = 'https://maps.googleapis.com/maps/api/geocode';
 
 beerRoutes.get('/api/beers/:name', (req, res, next) => {
   const beerName = req.params.name;
@@ -47,5 +51,15 @@ beerRoutes.get('/api/beers/:name', (req, res, next) => {
       res.status(200).json(breweryNames);
     });
   });
+
+  beerRoutes.get('/api/brewery-location/:name', (req, res, next) => {
+    var breweryName = req.params.name;
+
+    request(`${MAPS_URL}/json?address=${breweryName}&key=${process.env.MAPS_KEY}`, (error, response, body) => {
+      console.log(body);
+      res.status(200).json(body);
+    });
+
+});
 
 module.exports = beerRoutes;
