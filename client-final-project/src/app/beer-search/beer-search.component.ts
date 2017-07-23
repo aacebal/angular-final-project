@@ -21,19 +21,22 @@ export class BeerSearchComponent implements OnInit {
 
   isLoggedIn: boolean;
   private beer;
-  private beers;
+  protected name: string;
+  protected names;
   private image;
   private brewery;
   private data;
   private user: User;
   private error: string;
+  protected searchData;
   subscription: Subscription;
 
   private newUser;
 
 constructor(private completerService: CompleterService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
 this.subscription = this.session.getUser().subscribe(user => { this.user = user; });
-this.dataService = completerService.local(this.beers, 'name', 'name')}
+this.dataService = completerService.local(this.searchData, 'name', 'name');
+}
 
 ngOnInit() {
   this.session.isLoggedIn()
@@ -44,11 +47,10 @@ ngOnInit() {
     .catch((err) => {
       this.router.navigate(['/']);
     })
-    
+
   this.BeerService.retrieveNames()
-    .then((allTheBeers) => {
-      this.beers = JSON.stringify(allTheBeers);
-      console.log(this.beers);
+    .then((allTheNames) => {
+      this.names = allTheNames;
     })
 }
 
