@@ -136,5 +136,39 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
     });
   });
 
+  usersRoutes.post('/api/own/:list', (req, res, next) => {
+
+    User.findById(req.user._id, (err, theUser) => {
+      const beerId = req.body.id;
+      const beerName = req.body.name;
+      const beerImage = req.body.image;
+      var foundId;
+      var idArray = [];
+      var foundIdOwn;
+      var idArrayOwn = [];
+
+
+      theUser.beers.wishList.forEach((oneBeer) => {
+        idArray.push(oneBeer.id);
+      });
+      foundId = idArray.indexOf(beerId);
+
+      theUser.beers.wishList.splice(foundId, 1);
+
+      theUser.beers.ownList.forEach((oneBeer) => {
+        idArrayOwn.push(oneBeer.id);
+      });
+      foundIdOwn = idArrayOwn.indexOf(beerId);
+
+        if (foundIdOwn == -1) {
+          theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage});
+      }
+
+      theUser.save((err) => {
+        res.status(200).json(theUser);
+      });
+    });
+  });
+
 
 module.exports = usersRoutes;

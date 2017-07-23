@@ -49,4 +49,12 @@ export class UserComponent implements OnInit {
         })
    }
 
+   ownBeer(beer, list) {
+     this.userService.ownBeer(beer, list)
+        .then((updatedUser) => {
+          this.user = updatedUser;
+          this.session.sendUser(this.user);
+        })
+   }
+
 }

@@ -61,7 +61,9 @@ export class BrewerySearchComponent implements OnInit {
       .then((breweryLocation) => {
         this.breweryAddress = JSON.parse(breweryLocation);
         this.lat = this.breweryAddress.results[0].geometry.location.lat;
-        this.lng = this.breweryAddress.results[0].geometry.location.long;
+        console.log(this.lat);
+        this.lng = this.breweryAddress.results[0].geometry.location.lng;
+        console.log(this.lng);
       })
   }
 

@@ -38,4 +38,11 @@ export class UserService {
     .then(res => res.json());
   }
 
+  ownBeer(beer, list) {
+    return this.http.post(`${this.BASE_URL}/api/own/${list}`, beer,
+    {withCredentials: true})
+    .toPromise()
+    .then(res => res.json());
+  }
+
 }
