@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
 import { BeerService } from './services/beer.service';
+import { MapService } from './services/map.service';
 
 import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
@@ -37,7 +38,7 @@ import { BrewerySearchComponent } from './brewery-search/brewery-search.componen
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService, UserService, BeerService],
+  providers: [SessionService, UserService, BeerService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

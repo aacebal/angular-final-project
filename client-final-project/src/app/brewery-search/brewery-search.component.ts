@@ -46,10 +46,6 @@ export class BrewerySearchComponent implements OnInit {
         this.data = this.brewery.data;
         this.image = this.brewery.data[0].images;
       })
-      this.mapService.findBrewer(myForm.name)
-        .then((breweryLocation) => {
-          this.breweryLocation = JSON.parse(breweryLocation);
-        })
   }
 
 }
