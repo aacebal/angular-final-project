@@ -20,6 +20,7 @@ import { EventsComponent } from './events/events.component';
 import { FriendsComponent } from './friends/friends.component';
 import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
 import { SearchPipe } from './pipe/search.pipe';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -40,7 +41,10 @@ import { SearchPipe } from './pipe/search.pipe';
     FormsModule,
     Ng2AutoCompleteModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0'
+    })
   ],
   providers: [SessionService, UserService, BeerService, MapService],
   bootstrap: [AppComponent]
