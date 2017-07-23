@@ -4,12 +4,12 @@ import { routes } from './app.routing';
 import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { Ng2CompleterModule } from "ng2-completer";
 
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
 import { BeerService } from './services/beer.service';
 import { MapService } from './services/map.service';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
@@ -38,7 +38,7 @@ import { SearchPipe } from './pipe/search.pipe';
   imports: [
     BrowserModule,
     FormsModule,
-    Ng2CompleterModule,
+    Ng2AutoCompleteModule,
     HttpModule,
     RouterModule.forRoot(routes)
   ],

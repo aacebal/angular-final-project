@@ -6,6 +6,7 @@ import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class BeerSearchComponent implements OnInit {
 
   private newUser;
 
-constructor(private completerService: CompleterService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
+constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
 this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
 ngOnInit() {
@@ -41,6 +42,11 @@ ngOnInit() {
     .catch((err) => {
       this.router.navigate(['/']);
     })
+
+    this.BeerService.retrieveNames()
+      .then((allTheBeers) => {
+        this.beers = allTheBeers
+      })
 }
 
 onSubmit(myForm) {
