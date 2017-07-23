@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @Component({
   selector: 'app-brewery-search',
@@ -19,6 +20,7 @@ export class BrewerySearchComponent implements OnInit {
   private beer;
   private image;
   private brewery;
+  private breweries;
   private data;
   private user: User;
   private error: string;
@@ -35,6 +37,11 @@ export class BrewerySearchComponent implements OnInit {
       })
       .catch((err) => {
         this.router.navigate(['/']);
+      })
+
+    this.BeerService.retrieveBreweries()
+      .then((allTheBreweries) => {
+        this.breweries = allTheBreweries;
       })
   }
 

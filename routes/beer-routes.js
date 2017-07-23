@@ -4,6 +4,7 @@ const request    = require('request');
 // Our user model
 const User       = require('../models/user-model');
 const Beer       = require('../models/beer-model');
+const Brewery    = require('../models/brewery-model');
 
 const beerRoutes = express.Router();
 
@@ -25,7 +26,7 @@ beerRoutes.get('/api/beers/:name', (req, res, next) => {
       });
     });
 
-  beerRoutes.get('/api/getNames', (req, res, next) => {
+  beerRoutes.get('/api/getBeers', (req, res, next) => {
     Beer.find({}, (err, theBeers) => {
       var beerNames =[];
 
@@ -33,6 +34,17 @@ beerRoutes.get('/api/beers/:name', (req, res, next) => {
         beerNames.push(oneBeer.name);
       });
       res.status(200).json(beerNames);
+    });
+  });
+
+  beerRoutes.get('/api/getBreweries', (req, res, next) => {
+    Brewery.find({}, (err, theBreweries) => {
+      var breweryNames =[];
+
+      theBreweries.forEach((oneBrewery) => {
+        breweryNames.push(oneBrewery.name);
+      });
+      res.status(200).json(breweryNames);
     });
   });
 

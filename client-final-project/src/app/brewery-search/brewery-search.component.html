@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
   <h1>Find New Breweries:</h1>
-    <input type="text" name="name" [(ngModel)]="name" #myName="ngModel">
+    <input auto-complete min-chars = '3' [source]="breweries" type="text" name="name" [(ngModel)]="name" #myName="ngModel">
 
   <button class="btn btn-lg" type="submit"> Search</button>
 </form>
