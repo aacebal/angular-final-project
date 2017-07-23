@@ -6,7 +6,6 @@ import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { CompleterService, CompleterData } from 'ng2-completer';
 
 
 @Component({
@@ -17,26 +16,21 @@ import { CompleterService, CompleterData } from 'ng2-completer';
 })
 export class BeerSearchComponent implements OnInit {
 
-  protected dataService: CompleterData;
-
   isLoggedIn: boolean;
   private beer;
-  protected name: string;
-  protected names;
+  private beers;
   private image;
   private brewery;
   private data;
   private user: User;
   private error: string;
-  protected searchData;
   subscription: Subscription;
+
 
   private newUser;
 
 constructor(private completerService: CompleterService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
-this.subscription = this.session.getUser().subscribe(user => { this.user = user; });
-this.dataService = completerService.local(this.searchData, 'name', 'name');
-}
+this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
 ngOnInit() {
   this.session.isLoggedIn()
@@ -46,11 +40,6 @@ ngOnInit() {
     })
     .catch((err) => {
       this.router.navigate(['/']);
-    })
-
-  this.BeerService.retrieveNames()
-    .then((allTheNames) => {
-      this.names = allTheNames;
     })
 }
 

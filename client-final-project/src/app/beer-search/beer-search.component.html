@@ -7,7 +7,7 @@
 
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
   <h1>Find New Beers:</h1>
-    <ng2-completer type="text" name="name" [(ngModel)]="name" #myName="ngModel" [datasource]="dataService" [minSearchLength]="3"></ng2-completer>
+    <input type="text" name="name" [(ngModel)]="name" #myName="ngModel">
 
   <button class="btn btn-lg" type="submit"> Search</button>
 </form>

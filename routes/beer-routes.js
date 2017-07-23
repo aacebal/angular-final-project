@@ -30,7 +30,7 @@ beerRoutes.get('/api/beers/:name', (req, res, next) => {
       var beerNames =[];
 
       theBeers.forEach((oneBeer) => {
-        beerNames.push({ name: oneBeer.name });
+        beerNames.push(oneBeer.name);
       });
       res.status(200).json(beerNames);
     });
