@@ -58,17 +58,13 @@ beerRoutes.get('/api/beers/:name', (req, res, next) => {
     var breweryName = req.params.name;
 
     request(`${MAPS_URL}/place/autocomplete/json?input=${breweryName}&key=${process.env.MAPS_KEY}`, (error, response, body) => {
-
       place = JSON.parse(body);
       placeId = place.predictions[0].place_id;
-      console.log(placeId);
-    });
 
-    request(`${MAPS_URL}/geocode/json?place_id=${placeId}&key=${process.env.MAPS_KEY}`, (error, response, body) => {
-      console.log(body);
-      res.status(200).json(body);
+        request(`${MAPS_URL}/geocode/json?place_id=${placeId}&key=${process.env.MAPS_KEY}`, (error, response, body) => {
+          res.status(200).json(body);
+        });
     });
-
-});
+  });
 
 module.exports = beerRoutes;
