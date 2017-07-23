@@ -4,6 +4,7 @@ import { routes } from './app.routing';
 import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Ng2CompleterModule } from "ng2-completer";
 
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
@@ -18,6 +19,7 @@ import { AllBeersComponent } from './all-beers/all-beers.component';
 import { EventsComponent } from './events/events.component';
 import { FriendsComponent } from './friends/friends.component';
 import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
+import { SearchPipe } from './pipe/search.pipe';
 
 
 
@@ -31,10 +33,12 @@ import { BrewerySearchComponent } from './brewery-search/brewery-search.componen
     EventsComponent,
     FriendsComponent,
     BrewerySearchComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    Ng2CompleterModule,
     HttpModule,
     RouterModule.forRoot(routes)
   ],

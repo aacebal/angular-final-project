@@ -3,6 +3,7 @@ const request    = require('request');
 
 // Our user model
 const User       = require('../models/user-model');
+const Beer       = require('../models/beer-model');
 
 const beerRoutes = express.Router();
 
@@ -23,5 +24,16 @@ beerRoutes.get('/api/beers/:name', (req, res, next) => {
         res.status(200).json(body);
       });
     });
+
+  beerRoutes.get('/api/getNames', (req, res, next) => {
+    Beer.find({}, (err, theBeers) => {
+      var beerNames =[];
+
+      theBeers.forEach((oneBeer) => {
+        beerNames.push({name: oneBeer.name});
+      });
+      res.status(200).json(beerNames);
+    });
+  });
 
 module.exports = beerRoutes;
