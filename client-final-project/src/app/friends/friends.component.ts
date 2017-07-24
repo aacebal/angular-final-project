@@ -18,6 +18,7 @@ export class FriendsComponent implements OnInit {
 
   private allUsers;
   private userNames: Object[] = [];
+  foundUser: User;
 
   constructor(private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) { }
 
@@ -27,9 +28,15 @@ export class FriendsComponent implements OnInit {
         this.allUsers = users;
         this.allUsers.forEach((oneUser) => {
           this.userNames.push({ value: oneUser.username, id: oneUser.name + " " + oneUser.lastName});
+        });
+      });
+    }
+
+    onSubmit(myForm) {
+      this.friendsService.findUser(myForm.name)
+        .then((user) => {
+          this.foundUser = user;
         })
-        console.log(this.userNames);
-        })
-  }
+    }
 
 }

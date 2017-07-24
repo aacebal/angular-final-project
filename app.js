@@ -55,7 +55,7 @@ const beerRoutes = require('./routes/beer-routes');
 app.use('/', beerRoutes);
 
 app.use((req, res, next) => {
-  res.sendfile(__dirname + '/public/index.html');
+  res.sendfFile(__dirname + '/public/index.html');
 });
 
 require('dotenv').config();

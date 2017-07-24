@@ -19,4 +19,12 @@ export class FriendsService {
     .then(res => res.json())
   }
 
+  findUser(username) {
+    return this.http.get(`${this.BASE_URL}/api/findUser/${username}`,
+    { withCredentials: true }
+  )
+    .toPromise()
+    .then(res => res.json());
+  }
+
 }
