@@ -6,14 +6,15 @@
   <button class="btn btn-lg" type="submit"> Search</button>
 </form>
 
-  <div *ngIf="brewery" class="beer-information">
-    <div class="beer-header">
-    <img *ngIf="image" class="img-profile" src="{{image.large}}" />
-    <img *ngIf="!image" class="img-profile" src="../assets/images/beer-flat.png" />
-    <div *ngIf="!data">
-      <h2>Oops! We can't find that brewery. <br> Try again.</h2>
+  <div *ngIf="foundUser" class="user-information">
+    <img *ngIf="image" class="img-found-profile" src="{{foundUser.large}}" />
+    <img *ngIf="!image" class="img-found-profile" src="../assets/images/beer-flat.png" />
+    <div class="found-user-name">
+      <h3>Name: {{ foundUser[0].name }} {{ foundUser[0].lastName }}</h3>
+      <h4>Username: {{ foundUser[0].username }}</h4>
     </div>
-    <h1>{{ brewery.data[0].name }}</h1>
-  <div class="brewery-description">
-    <p>{{ brewery.data[0].description }}</p>
-  </div>
+    <div class="found-user-beers">
+      <p>{{ foundUser.beers.wi }}</p>
+    </div>
+
+<img src="" alt="">

@@ -16,3 +16,8 @@ input[type=text], select {
   color: white;
   width: 20%;
 }
+.img-found-profile{
+  width: 40px;
+  margin: 5px 15px 0px 0px;
+  float: left;
+}
