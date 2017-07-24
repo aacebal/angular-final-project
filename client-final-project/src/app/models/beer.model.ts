@@ -5,7 +5,7 @@ export class Beer {
 }
 
 export class Beers {
-    ownnList: Beer[];
-    wishList: Beer[];
-    historyList: Beer[];
+  ownnList: Beer[];
+  wishList: Beer[];
+  historyList: Beer[];
 }

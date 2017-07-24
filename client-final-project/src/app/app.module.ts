@@ -9,6 +9,7 @@ import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
 import { BeerService } from './services/beer.service';
 import { MapService } from './services/map.service';
+import { FriendsService } from './services/friends.service';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { AppComponent } from './app.component';
@@ -44,7 +45,7 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0'
     })
   ],
-  providers: [SessionService, UserService, BeerService, MapService],
+  providers: [SessionService, UserService, BeerService, MapService, FriendsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

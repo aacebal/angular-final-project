@@ -3,50 +3,53 @@
   <app-user></app-user>
 </div>
 
-<div class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
+<div class="container col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
-<form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
-  <h1>Find New Beers:</h1>
-    <input auto-complete min-chars = '3' max-num-list = '10' type="text" name="name" [(ngModel)]="name" [source]="beers" #myName="ngModel">
+  <div class="container search-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
+      <h1>Find New Beers:</h1>
+        <input auto-complete min-chars = '3' max-num-list = '10' type="text" name="name" [(ngModel)]="name" [source]="beers" #myName="ngModel">
 
-  <button class="btn btn-lg" type="submit"> Search</button>
-</form>
+      <button class="btn btn-lg" type="submit"> Search</button>
+    </form>
 
-  <div *ngIf="beer" class="beer-information">
-    <div class="beer-header">
-      <img *ngIf="image" class="img-profile" src="{{image.large}}" />
-      <img *ngIf="!image" class="img-profile" src="../assets/images/beer-flat.png" />
-      <div *ngIf="!data">
-        <h2>Oops! We can't find that beer. <br> Try again.</h2>
+      <div *ngIf="beer" class="beer-information">
+        <div class="beer-header">
+          <img *ngIf="image" class="img-profile" src="{{image.large}}" />
+          <img *ngIf="!image" class="img-profile" src="../assets/images/beer-flat.png" />
+          <div *ngIf="!data">
+            <h2>Oops! We can't find that beer. <br> Try again.</h2>
+          </div>
+          <h1>{{ beer.data[0].name }} <h1 *ngIf="" style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
+          <h3 style="margin-bottom= 0px" *ngIf="brewery">{{ beer.data[0].breweries[0].name }}</h3>
+          <div *ngIf="data">
+            <button class="btn btn-add btn-yellow" (click)="addBeer(beer, 'ownList')">Own</button>
+            <button class="btn btn-add btn-green" (click)="addBeer(beer, 'wishList')">Want</button>
+            <button class="btn btn-add btn-blue" (click)="addBeer(beer, 'historyList')">Had</button>
+          </div>
+
+          </h1>
+        </div>
+
+      <div *ngIf="beer.data[0].description" class="beer-description">
+        <p>{{ beer.data[0].description }}</p>
       </div>
-      <h1>{{ beer.data[0].name }} <h1 *ngIf="" style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
-      <h3 style="margin-bottom= 0px" *ngIf="brewery">{{ beer.data[0].breweries[0].name }}</h3>
-      <div *ngIf="data">
-        <button class="btn btn-add btn-yellow" (click)="addBeer(beer, 'ownList')">Own</button>
-        <button class="btn btn-add btn-green" (click)="addBeer(beer, 'wishList')">Want</button>
-        <button class="btn btn-add btn-blue" (click)="addBeer(beer, 'historyList')">Had</button>
+        <p *ngIf="!beer.data[0].description">{{ beer.data[0].style.description }}</p>
+
       </div>
-
-      </h1>
-    </div>
-
-  <div *ngIf="beer.data[0].description" class="beer-description">
-    <p>{{ beer.data[0].description }}</p>
   </div>
-    <p *ngIf="!beer.data[0].description">{{ beer.data[0].style.description }}</p>
 
+  <div style="margin-top: 20px" class="container search-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <app-brewery-search></app-brewery-search>
   </div>
 
 </div>
 
-<div class="container col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+<div class="container friends-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
   <app-friends></app-friends>
 </div>
 
 <div style="margin-top: 20px" class="container col-lg-4 col-md-4 col-sm-4 col-xs-4">
   <app-events></app-events>
-</div>
-
-<div style="margin-top: 20px" class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
-  <app-brewery-search></app-brewery-search>
 </div>

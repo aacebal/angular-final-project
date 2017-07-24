@@ -1,5 +1,5 @@
-import { Beers } from '../models/beer.model'
-import { Friend } from '../model/fried.model'
+import { Friend } from './friend.model';
+import { Beers } from './beer.model';
 
 export class User {
     id: number;

@@ -170,5 +170,13 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
     });
   });
 
+  usersRoutes.get('/api/allUsers', (req, res, next) => {
+    var userNames = [];
+
+    User.find({}, (err, allUsers) => {
+      console.log(allUsers);
+    });
+  });
+
 
 module.exports = usersRoutes;
