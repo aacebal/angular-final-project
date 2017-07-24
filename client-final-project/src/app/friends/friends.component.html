@@ -1,6 +1,7 @@
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
   <h2>Connect with friends:</h2>
-    <input auto-complete min-chars = '3' max-num-list = '10' [source]="breweries" type="text" name="name" [(ngModel)]="name" #myName="ngModel">
+      <input type="text" name="name" [(ngModel)]="name" #myName="ngModel"
+      auto-complete min-chars = '2' max-num-list = '10' [source]="userNames">
 
   <button class="btn btn-lg" type="submit"> Search</button>
 </form>
