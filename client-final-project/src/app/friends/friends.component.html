@@ -6,15 +6,23 @@
   <button class="btn btn-lg" type="submit"> Search</button>
 </form>
 
-  <div *ngIf="foundUser" class="user-information">
+  <div *ngIf="foundUser">
+  <div class="user-information col-lg-9 col-md-9 col-sm-9 col-xs-9">
     <img *ngIf="image" class="img-found-profile" src="{{foundUser.large}}" />
     <img *ngIf="!image" class="img-found-profile" src="../assets/images/beer-flat.png" />
     <div class="found-user-name">
-      <h3>Name: {{ foundUser[0].name }} {{ foundUser[0].lastName }}</h3>
-      <h4>Username: {{ foundUser[0].username }}</h4>
+      <h3>Name: {{ foundUser.name }} {{ foundUser.lastName }}</h3>
+      <h4>Username: {{ foundUser.username }}</h4>
     </div>
     <div class="found-user-beers">
-      <p>{{ foundUser.beers.wi }}</p>
+      <p>Beers Owned: {{ foundUser.beers.ownList.length }} -
+        Wishlist: {{ foundUser.beers.wishList.length }} -
+        History list: {{ foundUser.beers.historyList.length }}</p>
     </div>
+  </div>
+    <div style="margin-top: 20px;" class="add-button col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <button class="btn btn-sm">Add Friend</button>
+    </div>
+  </div>
 
 <img src="" alt="">

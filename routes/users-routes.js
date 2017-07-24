@@ -180,9 +180,8 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
 
   usersRoutes.get('/api/findUser/:username', (req, res, next) => {
 
-    User.find({ username: req.params.username }, (err, foundUser) => {
+    User.findOne({ username: req.params.username }, (err, foundUser) => {
       res.status(200).json(foundUser);
-      console.log(foundUser);
     });
   });
 
