@@ -21,6 +21,7 @@ export class BeerSearchComponent implements OnInit {
   private beer;
   private beers;
   private image;
+  private abv;
   private brewery;
   private data;
   private user: User;
@@ -57,6 +58,7 @@ onSubmit(myForm) {
       this.data = this.beer.data;
       this.image = this.beer.data[0].labels;
       this.brewery = this.beer.data[0].breweries[0].name;
+      this.abv = beer.data[0].abv;
     })
 }
 

@@ -1,3 +1,18 @@
-<p>
-  friends works!
-</p>
+<form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
+  <h2>Connect with friends:</h2>
+    <input auto-complete min-chars = '3' max-num-list = '10' [source]="breweries" type="text" name="name" [(ngModel)]="name" #myName="ngModel">
+
+  <button class="btn btn-lg" type="submit"> Search</button>
+</form>
+
+  <div *ngIf="brewery" class="beer-information">
+    <div class="beer-header">
+    <img *ngIf="image" class="img-profile" src="{{image.large}}" />
+    <img *ngIf="!image" class="img-profile" src="../assets/images/beer-flat.png" />
+    <div *ngIf="!data">
+      <h2>Oops! We can't find that brewery. <br> Try again.</h2>
+    </div>
+    <h1>{{ brewery.data[0].name }}</h1>
+  <div class="brewery-description">
+    <p>{{ brewery.data[0].description }}</p>
+  </div>

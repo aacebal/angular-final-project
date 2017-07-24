@@ -19,7 +19,7 @@
       <div *ngIf="!data">
         <h2>Oops! We can't find that beer. <br> Try again.</h2>
       </div>
-      <h1>{{ beer.data[0].name }} <h1 style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
+      <h1>{{ beer.data[0].name }} <h1 *ngIf="" style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
       <h3 style="margin-bottom= 0px" *ngIf="brewery">{{ beer.data[0].breweries[0].name }}</h3>
       <div *ngIf="data">
         <button class="btn btn-add btn-yellow" (click)="addBeer(beer, 'ownList')">Own</button>
@@ -39,8 +39,14 @@
 
 </div>
 
-<div style="margin-top: 20px"class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
+<div class="container col-lg-4 col-md-4 col-sm-4 col-xs-4">
+  <app-friends></app-friends>
+</div>
 
+<div style="margin-top: 20px" class="container col-lg-4 col-md-4 col-sm-4 col-xs-4">
+  <app-events></app-events>
+</div>
+
+<div style="margin-top: 20px" class="container search-container col-lg-5 col-md-5 col-sm-5 col-xs-5">
   <app-brewery-search></app-brewery-search>
-
 </div>
