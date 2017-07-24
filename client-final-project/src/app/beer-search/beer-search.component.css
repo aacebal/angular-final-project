@@ -27,8 +27,16 @@
 .btn-add{
   width: 60px;
   margin: 0px 10px 0px 2px;
-  background-color: rgb(248, 211, 53);
   color: white;
+}
+.btn-yellow{
+  background-color: rgb(248, 211, 53);
+}
+.btn-green{
+  background-color: rgba(89, 233, 75, 0.75);
+}
+.btn-blue{
+  background-color: #88D7FA;
 }
 input[type=text], select {
     width: 100%;

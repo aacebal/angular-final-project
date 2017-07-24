@@ -59,7 +59,3 @@ agm-map {
   height: 250px;
   margin: 10px;
 }
-.brewery-description{
-  height: 100px;
-  overflow: scroll;
-}

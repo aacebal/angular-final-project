@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { BeerSearchComponent } from './beer-search/beer-search.component';
 import { UserComponent } from './user/user.component';
-import { AllBeersComponent } from './all-beers/all-beers.component';
 import { EventsComponent } from './events/events.component';
 import { FriendsComponent } from './friends/friends.component';
 import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
@@ -30,7 +29,6 @@ import { AgmCoreModule } from '@agm/core';
     SignupLoginComponent,
     BeerSearchComponent,
     UserComponent,
-    AllBeersComponent,
     EventsComponent,
     FriendsComponent,
     BrewerySearchComponent,
