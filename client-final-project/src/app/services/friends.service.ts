@@ -38,4 +38,12 @@ export class FriendsService {
     .then(res => res.json());
   }
 
+  acceptFriend(foundUser) {
+    return this.http.post(`${this.BASE_URL}/api/accept-friend`, foundUser,
+    { withCredentials: true }
+  )
+    .toPromise()
+    .then(res => res.json());
+  }
+
 }

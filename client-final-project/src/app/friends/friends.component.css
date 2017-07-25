@@ -23,6 +23,11 @@ input[type=text], select {
 }
 .btn-sm{
   margin-top: 20px;
-  background-color: rgb(248, 211, 53);
   color: white;
+}
+.btn-accept{
+  background-color: rgba(89, 233, 75, 0.75);
+}
+.btn-decline{
+  background-color: #FF5F58;
 }

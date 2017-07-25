@@ -34,5 +34,7 @@
     <p>Requests received:</p>
     <div *ngFor="let notification of notifications">
       <p>{{ notification.friendRequest }}</p>
+      <button class="btn btn-sm btn-accept" (click)="acceptFriend(foundUser)">Accept</button>
+      <button class="btn btn-sm btn-decline" (click)="declineFriend(foundUser)">Decline</button>
     </div>
   </div>
