@@ -52,24 +52,35 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
 });
 
   friendsRoutes.post('/api/accept-friend', (req, res, next) => {
-    var friendRequestedId = req.body._id;
-    var friendRequestedName = req.body.name + req.body.lastName;
+    var friendRequestedId = req.body.friendRequest;
     var requesterId = req.user._id;
-    var requesterName = req.user.name + req.user.lastName;
+    var requesterName = req.user.name + " " + req.user.lastName;
     var friendsArray = [];
     var foundId;
 
     User.findById(friendRequestedId, (err, theUser) => {
+
+      var friendRequestedName = theUser.name + " " + theUser.lastName;
+
       theUser.friends.forEach((oneFriend) => {
         friendsArray.push(JSON.stringify(oneFriend.id));
       });
-      foundId = friendsArra.indexOf(JSON.stringify(requesterId));
+      foundId = friendsArray.indexOf(JSON.stringify(requesterId));
 
       if (foundId == -1) {
-        theUser.friends.push({ id: requesterId, name: requesterName});
-        req.user.friends.push({ id: friendRequestedId, name: friendRequestedName });
+        theUser.friends.push({ id: requesterId, fullName: requesterName});
+        req.user.friends.push({ id: friendRequestedId, fullName: friendRequestedName });
       }
+      theUser.save((err) => {
+        if (err) {
+          res.status(500).json({ message: 'Saving user failed' });
+        }
+      });
+
+      req.user.save((err) => {
+        res.status(200).json(req.user);
     });
   });
+});
 
 module.exports = friendsRoutes;

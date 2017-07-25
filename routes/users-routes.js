@@ -28,7 +28,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage });
+        theUser.beers.ownList.unshift({ id: beerId, fullName: beerName, image: beerImage });
       }
 
     }

@@ -25,6 +25,9 @@ input[type=text], select {
   margin-top: 20px;
   color: white;
 }
+.btn-request{
+  background-color: rgb(248, 211, 53);
+}
 .btn-accept{
   background-color: rgba(89, 233, 75, 0.75);
 }

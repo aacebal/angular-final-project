@@ -21,7 +21,7 @@
     </div>
   </div>
     <div style="margin-top: 20px;" class="add-button col-lg-2 col-md-2 col-sm-2 col-xs-2">
-      <button (click)=addFriend(foundUser) class="btn btn-sm">Add Friend</button>
+      <button (click)=addFriend(foundUser) class="btn btn-sm btn-request">Add Friend</button>
     </div>
   </div>
 
@@ -29,12 +29,13 @@
     <p>Notifications: {{ notifications.length }}</p>
     <p>Requests sent:</p>
     <div *ngFor="let notification of notifications">
-      <p>{{ notification.requestSent }}</p>
+      <p *ngIf="notification.requestSent">{{ notification.requestSent }}</p>
     </div>
     <p>Requests received:</p>
     <div *ngFor="let notification of notifications">
-      <p>{{ notification.friendRequest }}</p>
-      <button class="btn btn-sm btn-accept" (click)="acceptFriend(foundUser)">Accept</button>
-      <button class="btn btn-sm btn-decline" (click)="declineFriend(foundUser)">Decline</button>
+      <p *ngIf="notification.friendRequest">{{ notification.friendRequest }} <br>
+        <button class="btn btn-sm btn-accept" (click)="acceptFriend(notification)">Accept</button>
+        <button class="btn btn-sm btn-decline" (click)="declineFriend(notification)">Decline</button>
+      </p>
     </div>
   </div>
