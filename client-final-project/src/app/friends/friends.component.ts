@@ -9,6 +9,7 @@ import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
+
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
@@ -17,10 +18,15 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 export class FriendsComponent implements OnInit {
 
   private allUsers;
+  private user: User;
   private userNames: Object[] = [];
+  private notifications;
   foundUser: User;
+  subscription: Subscription;
+  isLoggedIn: boolean = false;
 
-  constructor(private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) { }
+  constructor(private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
+  this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
   ngOnInit() {
     this.friendsService.getAllUsers()
@@ -30,12 +36,27 @@ export class FriendsComponent implements OnInit {
           this.userNames.push({ value: oneUser.username, id: oneUser.name + " " + oneUser.lastName});
         });
       });
+      this.session.isLoggedIn()
+        .then((userInfo) => {
+          this.user = userInfo
+          this.isLoggedIn = true;
+        })
+        .catch((err) => {
+          this.router.navigate(['/']);
+        })
     }
 
     onSubmit(myForm) {
       this.friendsService.findUser(myForm.name)
         .then((user) => {
           this.foundUser = user;
+        })
+    }
+
+    addFriend(foundUser) {
+      this.friendsService.sendRequest(foundUser)
+        .then((requestSent) => {
+          this.notifications.push(requestSent);
         })
     }
 

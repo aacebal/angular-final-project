@@ -27,4 +27,12 @@ export class FriendsService {
     .then(res => res.json());
   }
 
+  sendRequest(foundUser) {
+    return this.http.post(`${this.BASE_URL}/api/sendRequest`, foundUser,
+    { withCredentials: true }
+  )
+    .toPromise()
+    .then(res => res.json());
+  }
+
 }

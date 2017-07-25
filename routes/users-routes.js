@@ -170,20 +170,4 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
     });
   });
 
-  usersRoutes.get('/api/allUsers', (req, res, next) => {
-    var userNames = [];
-
-    User.find({}, (err, allUsers) => {
-      res.status(200).json(allUsers);
-    });
-  });
-
-  usersRoutes.get('/api/findUser/:username', (req, res, next) => {
-
-    User.findOne({ username: req.params.username }, (err, foundUser) => {
-      res.status(200).json(foundUser);
-    });
-  });
-
-
 module.exports = usersRoutes;
