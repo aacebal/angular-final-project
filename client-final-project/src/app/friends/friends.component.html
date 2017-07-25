@@ -23,9 +23,12 @@
     <div style="margin-top: 20px;" class="add-button col-lg-2 col-md-2 col-sm-2 col-xs-2">
       <button (click)=addFriend(foundUser) class="btn btn-sm">Add Friend</button>
     </div>
-    <div *ngIf="notifications">
-      {{ user.notifications.length }};
-    </div>
   </div>
 
-<img src="" alt="">
+  <div *ngIf="notifications" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+    <p>Notifications: {{ notifications.length }}</p>
+    <div *ngFor="let notification of notifications">
+      <p>{{ notification.requestSent }}</p>
+      <p>{{ notification.friendRequest }}</p>
+    </div>
+  </div>

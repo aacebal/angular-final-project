@@ -1,5 +1,6 @@
 import { Friend } from './friend.model';
 import { Beers } from './beer.model';
+import { Notification } from './notification.model';
 
 export class User {
     id: number;

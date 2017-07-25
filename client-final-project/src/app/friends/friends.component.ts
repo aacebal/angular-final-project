@@ -3,7 +3,8 @@ import { BeerService } from '../services/beer.service';
 import { SessionService } from '../services/session.service';
 import { UserService } from '../services/user.service';
 import { FriendsService } from '../services/friends.service';
-import { User } from '../models/user.model'
+import { User } from '../models/user.model';
+import { Notification } from '../models/notification.model';
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +21,7 @@ export class FriendsComponent implements OnInit {
   private allUsers;
   private user: User;
   private userNames: Object[] = [];
-  private notifications;
+  private notifications: Notification[];
   foundUser: User;
   subscription: Subscription;
   isLoggedIn: boolean = false;
@@ -40,6 +41,7 @@ export class FriendsComponent implements OnInit {
         .then((userInfo) => {
           this.user = userInfo
           this.isLoggedIn = true;
+          this.notifications = this.user.notifications;
         })
         .catch((err) => {
           this.router.navigate(['/']);
@@ -55,8 +57,8 @@ export class FriendsComponent implements OnInit {
 
     addFriend(foundUser) {
       this.friendsService.sendRequest(foundUser)
-        .then((requestSent) => {
-          this.notifications.push(requestSent);
+        .then((notifications) => {
+          this.notifications = notifications;
         })
     }
 
