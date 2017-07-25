@@ -10,28 +10,12 @@ import { Notification } from '../models/notification.model';
 @Injectable()
 export class FriendsService {
 
-  private notifiedSource = new Subject<Notification>();
-
-  notified$ = this.notifiedSource.asObservable();
-
   BASE_URL: string = 'http://localhost:3000';
 
   constructor( private http: Http) { }
 
-  getNotification(): Observable<any> {
-    return this.notifiedSource.asObservable();
-  }
-
-  sendNotification(notification: Notification) {
-    this.notifiedSource.next(notification);
-  }
-
-  notified (notification) {
-    this.notifiedSource.next(notification);
-  }
-
   getAllUsers() {
-    return this.http.get(`${this.BASE_URL}/api/allUsers`,
+    return this.http.get(`${this.BASE_URL}/api/all-users`,
     { withCredentials : true }
   )
     .toPromise()
@@ -39,15 +23,15 @@ export class FriendsService {
   }
 
   findUser(username) {
-    return this.http.get(`${this.BASE_URL}/api/findUser/${username}`,
+    return this.http.get(`${this.BASE_URL}/api/find-user/${username}`,
     { withCredentials: true }
   )
     .toPromise()
     .then(res => res.json());
   }
 
-  sendRequest(foundUser) {
-    return this.http.post(`${this.BASE_URL}/api/sendRequest`, foundUser,
+  addFriend(foundUser) {
+    return this.http.post(`${this.BASE_URL}/api/add-friend`, foundUser,
     { withCredentials: true }
   )
     .toPromise()

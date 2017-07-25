@@ -6,6 +6,12 @@ const userSchema = new Schema({
   lastName: String,
   username: String,
   password: String,
+  friends: [
+    { id: String,
+      fullName: String,
+      image: String
+    }
+  ],
   notifications: [
     { friendRequest: String,
       requestSent: String

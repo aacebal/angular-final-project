@@ -24,12 +24,10 @@ export class FriendsComponent implements OnInit {
   private notifications: Notification[];
   foundUser: User;
   subscription: Subscription;
-  notificationSubscription: Subscription;
   isLoggedIn: boolean = false;
 
   constructor(private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
-  this.subscription = this.session.getUser().subscribe(user => { this.user = user; });
-  this.notificationSubscription = this.friendsService.getNotification().subscribe(notification => { this.notifications = notification })}
+  this.subscription = this.session.getUser().subscribe(user => { this.user = user }); }
 
   ngOnInit() {
     this.friendsService.getAllUsers()
@@ -58,9 +56,10 @@ export class FriendsComponent implements OnInit {
     }
 
     addFriend(foundUser) {
-      this.friendsService.sendRequest(foundUser)
-        .then((notifications) => {
-          this.friendsService.sendNotification(notifications);
+      this.friendsService.addFriend(foundUser)
+        .then((updatedUser) => {
+          this.user = updatedUser;
+          this.session.sendUser(this.user);
         })
     }
 

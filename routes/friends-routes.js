@@ -4,7 +4,7 @@ const User = require('../models/user-model');
 
 const friendsRoutes = express.Router();
 
-friendsRoutes.get('/api/allUsers', (req, res, next) => {
+friendsRoutes.get('/api/all-users', (req, res, next) => {
   var userNames = [];
 
   User.find({}, (err, allUsers) => {
@@ -12,43 +12,44 @@ friendsRoutes.get('/api/allUsers', (req, res, next) => {
   });
 });
 
-friendsRoutes.get('/api/findUser/:username', (req, res, next) => {
+friendsRoutes.get('/api/find-user/:username', (req, res, next) => {
 
   User.findOne({ username: req.params.username }, (err, foundUser) => {
     res.status(200).json(foundUser);
   });
 });
 
-friendsRoutes.post('/api/sendRequest', (req, res, next) => {
+friendsRoutes.post('/api/add-friend', (req, res, next) => {
 
-  User.findById( req.body._id, (err, theUser) => {
-    foundRequest = theUser.notifications.indexOf( { friendRequest: req.user._id } );
+  var friendRequestedId = req.body._id;
+  var requesterId = req.user._id;
+  var requestsArray = [];
+  var foundId;
 
-    if (foundRequest === -1) {
-      User.findByIdAndUpdate( req.body._id,
-        { $push: { notifications: { friendRequest: req.user._id } } },
-        (err, foundUser) => {
-          if (err) {
-            res.status(500).json({ message: 'Problem updating user' });
-            return;
-          }
-      });
+  User.findById(friendRequestedId, (err, theUser) => {
+    theUser.notifications.forEach((oneNotification) => {
+      requestsArray.push(JSON.stringify(oneNotification.friendRequest));
+      requestsArray.push(JSON.stringify(oneNotification.requestSent));
+      console.log("request array" + requestsArray);
+    });
+    foundId = requestsArray.indexOf(JSON.stringify(requesterId));
+    console.log(foundId);
 
-      User.findByIdAndUpdate( req.user._id,
-        { $push: { notifications: { requestSent: req.body._id } } },
-        (err, theUser) => {
-          if (err) {
-            res.status(500).json({ message: 'Problem updating user' });
-            return;
-          }
-          res.status(200).json(theUser.notifications);
-      });
+    if (foundId == -1) {
+      theUser.notifications.push({ friendRequest: requesterId });
+      req.user.notifications.push({ requestSent: friendRequestedId });
     }
+
+    theUser.save((err) => {
+      if (err) {
+        res.status(500).json({ message: 'Saving user failed' });
+      }
+    });
+
+    req.user.save((err) => {
+      res.status(200).json(req.user);
+    });
   });
-
-
 });
-
-
 
 module.exports = friendsRoutes;

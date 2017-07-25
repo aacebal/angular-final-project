@@ -1,5 +1,5 @@
 export class Friend {
   id: string;
-  name: string;
+  fullName: string;
   image?: string;
 }
