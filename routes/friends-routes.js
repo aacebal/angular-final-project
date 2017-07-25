@@ -21,24 +21,32 @@ friendsRoutes.get('/api/findUser/:username', (req, res, next) => {
 
 friendsRoutes.post('/api/sendRequest', (req, res, next) => {
 
-  User.findByIdAndUpdate( req.body._id,
-    { $push: { notifications: { friendRequest: req.user._id } } },
-    (err, foundUser) => {
-      if (err) {
-        res.status(500).json({ message: 'Problem updating user' });
-        return;
-      }
+  User.findById( req.body._id, (err, theUser) => {
+    foundRequest = theUser.notifications.indexOf( { friendRequest: req.user._id } );
+
+    if (foundRequest === -1) {
+      User.findByIdAndUpdate( req.body._id,
+        { $push: { notifications: { friendRequest: req.user._id } } },
+        (err, foundUser) => {
+          if (err) {
+            res.status(500).json({ message: 'Problem updating user' });
+            return;
+          }
+      });
+
+      User.findByIdAndUpdate( req.user._id,
+        { $push: { notifications: { requestSent: req.body._id } } },
+        (err, theUser) => {
+          if (err) {
+            res.status(500).json({ message: 'Problem updating user' });
+            return;
+          }
+          res.status(200).json(theUser.notifications);
+      });
+    }
   });
 
-  User.findByIdAndUpdate( req.user._id,
-    { $push: { notifications: { requestSent: req.body._id } } },
-    (err, theUser) => {
-      if (err) {
-        res.status(500).json({ message: 'Problem updating user' });
-        return;
-      }
-      res.status(200).json(theUser.notifications);
-  });
+
 });
 
 
