@@ -24,6 +24,7 @@ export class BeerSearchComponent implements OnInit {
   private abv;
   private brewery;
   private data;
+  private description;
   private user: User;
   private error: string;
   subscription: Subscription;
@@ -56,9 +57,10 @@ onSubmit(myForm) {
     .then((beer) => {
       this.beer = JSON.parse(beer);
       this.data = this.beer.data;
+      this.description = this.beer.data[0].style.description;
       this.image = this.beer.data[0].labels;
       this.brewery = this.beer.data[0].breweries[0].name;
-      this.abv = beer.data[0].abv;
+      this.abv = this.beer.data[0].abv;
     })
 }
 

@@ -31,10 +31,10 @@
           </h1>
         </div>
 
-      <div *ngIf="beer.data[0].description" class="beer-description">
+      <div *ngIf="!description" class="beer-description">
         <p>{{ beer.data[0].description }}</p>
       </div>
-        <p *ngIf="!beer.data[0].description">{{ beer.data[0].style.description }}</p>
+        <p *ngIf="description">{{ beer.data[0].style.description }}</p>
 
       </div>
   </div>

@@ -20,8 +20,13 @@ friendsRoutes.get('/api/findUser/:username', (req, res, next) => {
 });
 
 friendsRoutes.post('/api/sendRequest', (req, res, next) => {
-  
-})
+  var foundUserId = req.body.id;
+
+  User.find({ id: foundUserId }, (err, foundUser) => {
+    foundUser.notifications.push({ friendRequest: req.user._id });
+    res.status(200).json({ sentRequest: foundUserId });
+  });
+});
 
 
 module.exports = friendsRoutes;

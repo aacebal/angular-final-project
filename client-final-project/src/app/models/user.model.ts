@@ -9,6 +9,6 @@ export class User {
     password: string;
     image: string;
     beers: Beers;
-    notifications: string[];
+    notifications: Notification[];
     friends: Friend[];
 }

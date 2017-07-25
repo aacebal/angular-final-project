@@ -6,6 +6,11 @@ const userSchema = new Schema({
   lastName: String,
   username: String,
   password: String,
+  notifications: [
+    { friendRequest: String,
+      requestSent: String
+    }
+  ],
   beers: {
     //beers currently owned by user
     ownList: [
