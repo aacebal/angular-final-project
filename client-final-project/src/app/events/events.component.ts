@@ -33,8 +33,8 @@ export class EventsComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   private events;
-  organizedEvents: string[] = [];
-
+  organizedEvents: Event[] = [];
+  invitedEvents: Event[] = [];
 
   constructor(private eventService: EventService, private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user }); }
@@ -46,7 +46,11 @@ export class EventsComponent implements OnInit {
         this.user = userInfo
         this.isLoggedIn = true;
         this.events = this.user.events;
-        this.organizedEvents = this.user.events.organized;
+        this.eventService.retrieveEvents(this.events)
+          .then((eventsInfo) => {
+            this.organizedEvents = eventsInfo.organized;
+            this.invitedEvents = eventsInfo.invited;
+          })
         this.user.friends.forEach((oneFriend) => {
           this.userNames.push({ id: oneFriend.username, itemName: oneFriend.fullName});
         });
@@ -73,12 +77,12 @@ export class EventsComponent implements OnInit {
  }
 
   onSubmit(event) {
-    console.log(event);
     this.eventService.createEvent(event)
       .then((userInfo) => {
         this.user = userInfo;
         this.events = this.user.events;
       })
-  }
+      this.eventWindow()
+    }
 
 }

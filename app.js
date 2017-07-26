@@ -57,6 +57,9 @@ app.use('/', beerRoutes);
 const friendsRoutes = require('./routes/friends-routes');
 app.use('/', friendsRoutes);
 
+const eventsRoutes = require('./routes/event-routes');
+app.use('/', eventsRoutes);
+
 app.use((req, res, next) => {
   res.sendfFile(__dirname + '/public/index.html');
 });

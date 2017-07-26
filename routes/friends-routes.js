@@ -62,12 +62,14 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
     var friendRequestedId = req.body.friendRequest;
     var requesterId = req.user._id;
     var requesterName = req.user.name + " " + req.user.lastName;
+    var requesterUsername = req.user.username;
     var foundUserIndexToDelete;
     var friendsArray = [];
     var foundId;
 
     User.findById(friendRequestedId, (err, theUser) => {
       var friendRequestedName = theUser.name + " " + theUser.lastName;
+      var friendRequestedUsermame = theUser.username;
       var indexToDelete = req.user.notifications.indexOf(JSON.stringify(notificationToDelete));
 
       theUser.friends.forEach((oneFriend) => {
@@ -81,8 +83,8 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
       if (foundId == -1) {
         req.user.notifications.splice(indexToDelete, 1);
         theUser.notifications.splice(foundUserIndexToDelete, 1);
-        theUser.friends.push({ id: requesterId, fullName: requesterName});
-        req.user.friends.push({ id: friendRequestedId, fullName: friendRequestedName });
+        theUser.friends.push({ id: requesterId, username: requesterUsername, fullName: requesterName});
+        req.user.friends.push({ id: friendRequestedId, username: friendRequestedUsermame, fullName: friendRequestedName });
       }
 
       theUser.save((err) => {

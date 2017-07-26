@@ -8,10 +8,7 @@ const userSchema = new Schema({
     fullName: String,
     image: String
   },
-  place: {
-    lng: String,
-    lat: String
-  },
+  address: String,
   guests: [
     { id: String,
       fullName: String,
@@ -31,5 +28,5 @@ const userSchema = new Schema({
     }],
 });
 
-const Event = mongoose.model('Event', userSchema);
-module.exports = Event;
+const myEvent = mongoose.model('Event', userSchema);
+module.exports = myEvent;

@@ -21,4 +21,12 @@ export class EventService {
     .then(res => res.json());
   }
 
+  retrieveEvents(events) {
+    return this.http.post(`${this.BASE_URL}/api/get-events`, events,
+    { withCredentials: true }
+  )
+    .toPromise()
+    .then(res => res.json())
+  }
+
 }

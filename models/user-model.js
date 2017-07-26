@@ -8,6 +8,7 @@ const userSchema = new Schema({
   password: String,
   friends: [
     { id: String,
+      username: String,
       fullName: String,
       image: String
     }
@@ -18,11 +19,10 @@ const userSchema = new Schema({
       requestSent: String
     }
   ],
-  events: [
+  events:
     { organized: [ String ],
       invited: [String]
-    }
-  ],
+    },
   beers: {
     //beers currently owned by user
     ownList: [
