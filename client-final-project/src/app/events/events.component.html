@@ -33,14 +33,20 @@
          ng2-google-place-autocomplete/>
 
         <label> Event Name: </label>
-        <input type="text" [(ngModel)]="name" name="name" required /><br>
+        <input type="text" [(ngModel)]="event" name="name" required /><br>
 
         <label> Date: </label>
         <input  type="date" [(ngModel)]="date" name="date" required/><br>
 
         <label> Guests: </label>
-        <input auto-complete min-chars = '2' max-num-list = '10' [source]="userNames"
-        type="text" name="guests" [(ngModel)]="guests" #myName="ngModel" />
+
+        <angular2-multiselect [data]="userNames" #myName="ngModel" name="guests" [(ngModel)]="guests"
+            [settings]="dropdownSettings"
+            (onDeSelect)="OnItemDeSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            (onDeSelectAll)="onDeSelectAll($event)">
+        </angular2-multiselect>
+
 
       </fieldset>
       <button class="btn btn-lg btn-submit" type="submit"> Submit </button>

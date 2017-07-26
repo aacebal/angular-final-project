@@ -4,7 +4,8 @@ import { routes } from './app.routing';
 import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {GooglePlaceModule} from 'ng2-google-place-autocomplete';
+import { GooglePlaceModule } from 'ng2-google-place-autocomplete';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
@@ -38,6 +39,7 @@ import { AgmCoreModule } from '@agm/core';
     SearchPipe,
   ],
   imports: [
+    AngularMultiSelectModule,
     GooglePlaceModule,
     BrowserModule,
     FormsModule,

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {GooglePlaceModule} from 'ng2-google-place-autocomplete';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GooglePlaceModule } from 'ng2-google-place-autocomplete';
 import { BeerService } from '../services/beer.service';
 import { SessionService } from '../services/session.service';
 import { UserService } from '../services/user.service';
@@ -9,9 +9,11 @@ import { User } from '../models/user.model';
 import { Beer } from '../models/beer.model';
 import { Event } from '../models/event.model';
 import { Router } from "@angular/router";
+import { FormsModule, NgForm } from '@angular/forms';
 import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
 @Component({
   selector: 'app-events',
@@ -27,9 +29,15 @@ export class EventsComponent implements OnInit {
   createEventWindow: boolean = false;
   private newEvent: Event;
   private userNames: Object[] = [];
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+
 
   constructor(private eventService: EventService, private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user }); }
+
+  @ViewChild('myForm') public myForm: NgForm;
 
   ngOnInit() {
     this.session.isLoggedIn()
@@ -37,12 +45,20 @@ export class EventsComponent implements OnInit {
         this.user = userInfo
         this.isLoggedIn = true;
         this.user.friends.forEach((oneFriend) => {
-          this.userNames.push({ value: oneFriend.username, id: oneFriend.fullName});
+          this.userNames.push({ id: oneFriend.username, itemName: oneFriend.fullName});
         });
       })
       .catch((err) => {
         this.router.navigate(['/']);
       })
+      this.dropdownSettings = {
+        singleSelection: false,
+        text:"Select Friends",
+        selectAllText:'Select All',
+        unSelectAllText:'UnSelect All',
+        enableSearchFilter: true,
+        classes:"myclass custom-class"
+      };
   }
 
   eventWindow(){
