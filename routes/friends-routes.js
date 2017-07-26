@@ -27,6 +27,10 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
   var foundId;
 
   User.findById(friendRequestedId, (err, theUser) => {
+    if (JSON.stringify(theUser) === JSON.stringify(req.user)) {
+      return;
+    }
+
     theUser.notifications.forEach((oneNotification) => {
       requestsArray.push(JSON.stringify(oneNotification.friendRequest));
       requestsArray.push(JSON.stringify(oneNotification.requestSent));
@@ -52,25 +56,37 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
 });
 
   friendsRoutes.post('/api/accept-friend', (req, res, next) => {
+    var notificationToDelete = req.body;
     var friendRequestedId = req.body.friendRequest;
     var requesterId = req.user._id;
     var requesterName = req.user.name + " " + req.user.lastName;
+    var foundUserIndexToDelete;
     var friendsArray = [];
     var foundId;
 
     User.findById(friendRequestedId, (err, theUser) => {
-
       var friendRequestedName = theUser.name + " " + theUser.lastName;
+
+      indexToDelete = req.user.notifications.indexOf(JSON.stringify(notificationToDelete));
+      foundId = friendsArray.indexOf(JSON.stringify(requesterId));
 
       theUser.friends.forEach((oneFriend) => {
         friendsArray.push(JSON.stringify(oneFriend.id));
       });
-      foundId = friendsArray.indexOf(JSON.stringify(requesterId));
+
+      theUser.notifications.forEach((oneFriend) => {
+        friendsArray.push(JSON.stringify(req.user._id));
+      });
+
+      foundUserIndexToDelete = friendsArray.indexOf(JSON.stringify(requesterId));
 
       if (foundId == -1) {
+        req.user.notifications.splice(indexToDelete, 1);
+        theUser.notifications.splice(foundUserIndexToDelete, 1);
         theUser.friends.push({ id: requesterId, fullName: requesterName});
         req.user.friends.push({ id: friendRequestedId, fullName: friendRequestedName });
       }
+
       theUser.save((err) => {
         if (err) {
           res.status(500).json({ message: 'Saving user failed' });
@@ -79,8 +95,11 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
 
       req.user.save((err) => {
         res.status(200).json(req.user);
+
+      });
     });
   });
-});
+
+
 
 module.exports = friendsRoutes;

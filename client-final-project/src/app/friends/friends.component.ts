@@ -63,8 +63,8 @@ export class FriendsComponent implements OnInit {
         })
     }
 
-    acceptFriend(foundUser) {
-      this.friendsService.acceptFriend(foundUser)
+    acceptFriend(notification) {
+      this.friendsService.acceptFriend(notification)
         .then((updatedUser) => {
           this.user = updatedUser;
           this.session.sendUser(this.user);
