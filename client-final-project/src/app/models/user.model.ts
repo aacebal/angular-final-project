@@ -12,4 +12,5 @@ export class User {
     beers: Beers;
     notifications: Notification[];
     friends: Friend[];
+    events: Event[];
 }

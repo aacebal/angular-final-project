@@ -18,6 +18,11 @@ const userSchema = new Schema({
       requestSent: String
     }
   ],
+  events: [
+    { organized: [ String ],
+      invited: [String]
+    }
+  ],
   beers: {
     //beers currently owned by user
     ownList: [
