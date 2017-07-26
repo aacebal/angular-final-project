@@ -4,9 +4,9 @@ import { Notification } from './notification.model';
 
 export class Event {
     name: string;
-    location: string;
+    organizer: string;
+    address: Object;
     date: Date;
-    place: Object;
     beers: Beer[];
     wishList: Beer[];
     guests: Friend[];

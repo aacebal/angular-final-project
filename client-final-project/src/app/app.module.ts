@@ -4,14 +4,16 @@ import { routes } from './app.routing';
 import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {GooglePlaceModule} from 'ng2-google-place-autocomplete';
 
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
 import { BeerService } from './services/beer.service';
 import { MapService } from './services/map.service';
 import { FriendsService } from './services/friends.service';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { EventService } from './services/event.service';
 
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { AppComponent } from './app.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { BeerSearchComponent } from './beer-search/beer-search.component';
@@ -36,16 +38,18 @@ import { AgmCoreModule } from '@agm/core';
     SearchPipe,
   ],
   imports: [
+    GooglePlaceModule,
     BrowserModule,
     FormsModule,
     Ng2AutoCompleteModule,
     HttpModule,
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0'
+      apiKey: 'AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0',
+      libraries: ["places"]
     })
   ],
-  providers: [SessionService, UserService, BeerService, MapService, FriendsService],
+  providers: [SessionService, UserService, BeerService, MapService, FriendsService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

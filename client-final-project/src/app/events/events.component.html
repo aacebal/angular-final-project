@@ -1,3 +1,51 @@
-<p>
-  events works!
-</p>
+<div class="my-events">
+  <h3>My Events </h3>
+  <button (click)=eventWindow() class="btn btn-add-event"> + Add new event</button>
+  <div *ngIf="createEventWindow" class="create-event-window">
+    <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
+      <fieldset>
+        <legend> New Event: </legend>
+        <label> Location: </label>
+        <input type="text" [(ngModel)] = "newEvent.address"
+         [options]='options'
+         (setAddress) = "getAddress($event)"
+         (street_number) = 'street_number=$event'
+         (street)= 'street=$event'
+         (city)= 'city=$event'
+         (state)='state=$event'
+         (district)='district=$event'
+         (country)='country=$event'
+         (postal_code)='postal_code=$event'
+         (lat)='lat=$event'
+         (lng)='lng=$event'
+         (adr_address)='adr_address=$event'
+         (name)='name=$event'
+         (place_id)='place_id=$event'
+         (types)='types=$event'
+         (url)='url=$event'
+         (utc_offset)='utc_offset=$event'
+         (vicinity)='vicinity=$event'
+         (photos)='photos=$event'
+         (airport)='airport=$event'
+         (CountryCodes)='CountryCodes=$event'
+          id="autocomplete"
+         ng2-google-place-autocomplete/>
+
+        <label> Event Name: </label>
+        <input type="text" [(ngModel)]="newEvent.name" name="name" required /><br>
+
+        <label> Date: </label>
+        <input  type="date" [(ngModel)]="newEvent.date" name="date" required/><br>
+
+        <label> Guests: </label>
+        <input auto-complete min-chars = '2' max-num-list = '10' [source]="userNames"
+        type="text" name="guests" [(ngModel)]="newEvent.guests" #myName="ngModel" />
+
+      </fieldset>
+      <button class="btn btn-lg btn-submit" type="submit"> Submit </button>
+    </form>
+</div>
+
+<div class="friend-events">
+  <h3>Friend Events</h3>
+</div>

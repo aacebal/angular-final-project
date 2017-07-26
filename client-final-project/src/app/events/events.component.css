@@ -1,0 +1,41 @@
+.create-event-window{
+  margin: 10px 0px;
+  width: 500px;
+  height: 400px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+label{
+  margin-left: 10px;
+  font-size: 18px;
+}
+legend{
+  padding: 5px 10px;
+  font-weight: bold;
+}
+input[type=text], select {
+  width: 70%;
+  padding: 10px 10px;
+  margin: 8px 3px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+input[type=date], select {
+  width: 70%;
+  padding: 10px 10px;
+  margin: 8px 3px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.btn-submit{
+  margin: 20px 10px;
+}
+agm-map {
+  height: 300px;
+}

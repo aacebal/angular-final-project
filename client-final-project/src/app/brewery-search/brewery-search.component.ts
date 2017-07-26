@@ -28,6 +28,9 @@ export class BrewerySearchComponent implements OnInit {
   subscription: Subscription;
   lat: number;
   lng: number;
+  latitude: number;
+  longitude: number;
+  zoom: number;
 
   constructor(private mapService: MapService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
@@ -64,5 +67,5 @@ export class BrewerySearchComponent implements OnInit {
         this.lng = this.breweryAddress.results[0].geometry.location.lng;
       })
   }
-
+  
 }
