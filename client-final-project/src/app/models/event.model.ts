@@ -7,7 +7,7 @@ export class Event {
     organizer: string;
     address: Object;
     date: Date;
-    beers: Beer[];
-    wishList: Beer[];
+    beers?: Beer[];
+    wishList?: Beer[];
     guests: Friend[];
 }

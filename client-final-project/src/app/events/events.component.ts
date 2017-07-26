@@ -25,7 +25,7 @@ export class EventsComponent implements OnInit {
   private user: User;
   private beersForEvent;
   createEventWindow: boolean = false;
-  newEvent: Event;
+  private newEvent: Event;
   private userNames: Object[] = [];
 
   constructor(private eventService: EventService, private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
@@ -37,7 +37,6 @@ export class EventsComponent implements OnInit {
         this.user = userInfo
         this.isLoggedIn = true;
         this.user.friends.forEach((oneFriend) => {
-          console.log(oneFriend);
           this.userNames.push({ value: oneFriend.username, id: oneFriend.fullName});
         });
       })
@@ -49,6 +48,10 @@ export class EventsComponent implements OnInit {
   eventWindow(){
     this.createEventWindow = !this.createEventWindow;
   }
+
+  getAddress(place:Object) {
+    console.log("Address", place);
+ }
 
   onSubmit(myForm) {
     console.log(myForm);

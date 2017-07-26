@@ -6,7 +6,7 @@
       <fieldset>
         <legend> New Event: </legend>
         <label> Location: </label>
-        <input type="text" [(ngModel)] = "newEvent.address"
+        <input name="address" type="text" [(ngModel)]="formatted_address"
          [options]='options'
          (setAddress) = "getAddress($event)"
          (street_number) = 'street_number=$event'
@@ -18,6 +18,7 @@
          (postal_code)='postal_code=$event'
          (lat)='lat=$event'
          (lng)='lng=$event'
+         (formatted_address)='formatted_address=$event'
          (adr_address)='adr_address=$event'
          (name)='name=$event'
          (place_id)='place_id=$event'
@@ -32,14 +33,14 @@
          ng2-google-place-autocomplete/>
 
         <label> Event Name: </label>
-        <input type="text" [(ngModel)]="newEvent.name" name="name" required /><br>
+        <input type="text" [(ngModel)]="name" name="name" required /><br>
 
         <label> Date: </label>
-        <input  type="date" [(ngModel)]="newEvent.date" name="date" required/><br>
+        <input  type="date" [(ngModel)]="date" name="date" required/><br>
 
         <label> Guests: </label>
         <input auto-complete min-chars = '2' max-num-list = '10' [source]="userNames"
-        type="text" name="guests" [(ngModel)]="newEvent.guests" #myName="ngModel" />
+        type="text" name="guests" [(ngModel)]="guests" #myName="ngModel" />
 
       </fieldset>
       <button class="btn btn-lg btn-submit" type="submit"> Submit </button>
