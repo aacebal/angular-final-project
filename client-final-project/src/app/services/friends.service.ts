@@ -12,7 +12,7 @@ export class FriendsService {
 
   BASE_URL: string = 'http://localhost:3000';
 
-  constructor( private http: Http) { }
+  constructor( private http: Http ) { }
 
   getAllUsers() {
     return this.http.get(`${this.BASE_URL}/api/all-users`,

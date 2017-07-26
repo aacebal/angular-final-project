@@ -38,7 +38,7 @@ export class BrewerySearchComponent implements OnInit {
   ngOnInit() {
     this.session.isLoggedIn()
       .then((userInfo) => {
-        this.user = userInfo
+        this.user = userInfo;
         this.isLoggedIn = true;
       })
       .catch((err) => {
@@ -67,5 +67,5 @@ export class BrewerySearchComponent implements OnInit {
         this.lng = this.breweryAddress.results[0].geometry.location.lng;
       })
   }
-  
+
 }

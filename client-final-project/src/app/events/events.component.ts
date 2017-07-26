@@ -32,18 +32,19 @@ export class EventsComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  private events;
 
 
   constructor(private eventService: EventService, private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user }); }
 
-  @ViewChild('myForm') public myForm: NgForm;
 
   ngOnInit() {
     this.session.isLoggedIn()
       .then((userInfo) => {
         this.user = userInfo
         this.isLoggedIn = true;
+        this.events = this.user.events;
         this.user.friends.forEach((oneFriend) => {
           this.userNames.push({ id: oneFriend.username, itemName: oneFriend.fullName});
         });
@@ -69,8 +70,13 @@ export class EventsComponent implements OnInit {
     console.log("Address", place);
  }
 
-  onSubmit(myForm) {
-    console.log(myForm);
+  onSubmit(event) {
+    console.log(event);
+    this.eventService.createEvent(event)
+      .then((userInfo) => {
+        this.user = userInfo;
+        this.events = this.user.events;
+      })
   }
 
 }
