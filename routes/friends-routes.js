@@ -68,17 +68,13 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
 
     User.findById(friendRequestedId, (err, theUser) => {
       var friendRequestedName = theUser.name + " " + theUser.lastName;
-
-      indexToDelete = req.user.notifications.indexOf(JSON.stringify(notificationToDelete));
-      foundId = friendsArray.indexOf(JSON.stringify(requesterId));
+      var indexToDelete = req.user.notifications.indexOf(JSON.stringify(notificationToDelete));
 
       theUser.friends.forEach((oneFriend) => {
         friendsArray.push(JSON.stringify(oneFriend.id));
       });
 
-      theUser.notifications.forEach((oneFriend) => {
-        friendsArray.push(JSON.stringify(req.user._id));
-      });
+      foundId = friendsArray.indexOf(JSON.stringify(requesterId));
 
       foundUserIndexToDelete = friendsArray.indexOf(JSON.stringify(requesterId));
 
@@ -101,6 +97,35 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
       });
     });
   });
+
+  friendsRoutes.post('/api/decline-friend', (req, res, next) => {
+    var notificationToDelete = req.body;
+    var indexToDelete = req.user.notifications.indexOf(JSON.stringify(notificationToDelete));
+    var requesterId = req.user._id;
+    var friendRequestedId = req.body.friendRequest;
+    var requestsArray = [];
+
+    User.findById(friendRequestedId, (err, theUser) => {
+      theUser.notifications.forEach((oneNotification) => {
+        requestsArray.push(JSON.stringify(oneNotification.requestSent));
+      });
+    foundUserIndexToDelete = requestsArray.indexOf(JSON.stringify(requesterId));
+
+    req.user.notifications.splice(indexToDelete, 1);
+    theUser.notifications.splice(foundUserIndexToDelete, 1);
+
+    theUser.save((err) => {
+      if (err) {
+        res.status(500).json({ message: 'Saving user failed' });
+      }
+    });
+
+    req.user.save((err) => {
+      res.status(200).json(req.user);
+    });
+
+  });
+});
 
 
 

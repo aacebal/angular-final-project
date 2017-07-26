@@ -24,8 +24,8 @@ export class SessionService {
   }
 
   getUser(): Observable<any> {
-        return this.loggedInSource.asObservable();
-    }
+      return this.loggedInSource.asObservable();
+  }
 
   sendUser(user: User) {
       this.loggedInSource.next(user);

@@ -13,6 +13,10 @@
       <button class="btn btn-lg" type="submit"> Search</button>
     </form>
 
+      <div *ngIf="!beer">
+        <h1>Find </h1>
+      </div>
+
       <div *ngIf="beer" class="beer-information">
         <div class="beer-header">
           <img *ngIf="image" class="img-profile" src="{{image.large}}" />
@@ -20,7 +24,7 @@
           <div *ngIf="!data">
             <h2>Oops! We can't find that beer. <br> Try again.</h2>
           </div>
-          <h1>{{ beer.data[0].name }} <h1 *ngIf="" style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
+          <h1>{{ beer.data[0].name }} <h1 style="display: inline; font-style: italic">{{ beer.data[0].abv }}%</h1>
           <h3 style="margin-bottom= 0px" *ngIf="brewery">{{ beer.data[0].breweries[0].name }}</h3>
           <div *ngIf="data">
             <button class="btn btn-add btn-yellow" (click)="addBeer(beer, 'ownList')">Own</button>

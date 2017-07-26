@@ -4,6 +4,7 @@ import { SessionService } from '../services/session.service';
 import { UserService } from '../services/user.service';
 import { FriendsService } from '../services/friends.service';
 import { User } from '../models/user.model';
+import { Friend } from '../models/friend.model';
 import { Notification } from '../models/notification.model';
 import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
@@ -20,6 +21,7 @@ export class FriendsComponent implements OnInit {
 
   private allUsers;
   private user: User;
+  private friends: Friend[];
   private userNames: Object[] = [];
   private notifications: Notification[];
   foundUser: User;
@@ -70,7 +72,18 @@ export class FriendsComponent implements OnInit {
           this.user = updatedUser;
           this.session.sendUser(this.user);
           this.notifications = this.user.notifications;
+          this.friends = this.user.friends;
         });
+    }
+
+    decline(notification) {
+      this.friendsService.decline(notification)
+        .then((updatedUser) => {
+          this.user = updatedUser;
+          this.session.sendUser(this.user);
+          this.notifications = this.user.notifications;
+          this.friends = this.user.friends;
+        })
     }
 
 }

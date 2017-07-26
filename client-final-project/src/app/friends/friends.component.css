@@ -34,3 +34,10 @@ input[type=text], select {
 .btn-decline{
   background-color: #FF5F58;
 }
+.dropdown-menu{
+  width: 300px;
+  padding: 10px;
+}
+.notifications{
+  padding-left: 0px;
+}

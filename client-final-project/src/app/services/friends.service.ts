@@ -46,8 +46,8 @@ export class FriendsService {
     .then(res => res.json());
   }
 
-  deleteNotification(notification) {
-    return this.http.post(`${this.BASE_URL}/api/delete-notification`, notification,
+  decline(notification) {
+    return this.http.post(`${this.BASE_URL}/api/decline-friend`, notification,
     { withCredentials: true }
   )
     .toPromise()

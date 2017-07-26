@@ -25,17 +25,26 @@
     </div>
   </div>
 
-  <div *ngIf="notifications" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-    <p>Notifications: {{ notifications.length }}</p>
-    <p>Requests sent:</p>
-    <div *ngFor="let notification of notifications">
-      <p *ngIf="notification.requestSent">Awaiting response from {{ notification.fullName }}</p>
+  <div *ngIf="notifications" class="notifications col-lg-9 col-md-9 col-sm-9 col-xs-9">
+    <div class="btn-group">
+    <button type="button" class="btn btn-friends dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Friends Requests: {{ notifications.length }}
+    </button>
+    <div class="dropdown-menu">
+      <div *ngFor="let notification of notifications">
+        <p *ngIf="notification.requestSent">Awaiting response from {{ notification.fullName }}</p>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div *ngFor="let notification of notifications">
+        <p *ngIf="notification.friendRequest">{{ notification.fullName }} hast sent you a notification<br>
+          <button class="btn btn-sm btn-accept" (click)="acceptFriend(notification)">Accept</button>
+          <button class="btn btn-sm btn-decline" (click)="decline(notification)">Decline</button>
+        </p>
+      </div>
     </div>
-    <p>Requests received:</p>
-    <div *ngFor="let notification of notifications">
-      <p *ngIf="notification.friendRequest">{{ notification.fullName }} hast sent you a notification<br>
-        <button class="btn btn-sm btn-accept" (click)="acceptFriend(notification)">Accept</button>
-        <button class="btn btn-sm btn-decline" (click)="declineFriend(notification)">Decline</button>
-      </p>
-    </div>
+  </div>
+  </div>
+
+  <div class="list-of-friends">
+
   </div>
