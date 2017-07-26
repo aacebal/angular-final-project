@@ -23,10 +23,12 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
 
   var friendRequestedId = req.body._id;
   var requesterId = req.user._id;
+  var requesterFullName = req.user.name + " " + req.user.lastName;
   var requestsArray = [];
   var foundId;
 
   User.findById(friendRequestedId, (err, theUser) => {
+    var friendRequestedFullName = theUser.name + " " + theUser.lastName;
     if (JSON.stringify(theUser) === JSON.stringify(req.user)) {
       return;
     }
@@ -39,8 +41,8 @@ friendsRoutes.post('/api/add-friend', (req, res, next) => {
 
 
     if (foundId == -1) {
-      theUser.notifications.push({ friendRequest: requesterId });
-      req.user.notifications.push({ requestSent: friendRequestedId });
+      theUser.notifications.push({ friendRequest: requesterId, fullName: requesterFullName });
+      req.user.notifications.push({ requestSent: friendRequestedId, fullName: friendRequestedFullName });
     }
 
     theUser.save((err) => {

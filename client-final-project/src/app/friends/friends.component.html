@@ -29,11 +29,11 @@
     <p>Notifications: {{ notifications.length }}</p>
     <p>Requests sent:</p>
     <div *ngFor="let notification of notifications">
-      <p *ngIf="notification.requestSent">{{ notification.requestSent }}</p>
+      <p *ngIf="notification.requestSent">Awaiting response from {{ notification.fullName }}</p>
     </div>
     <p>Requests received:</p>
     <div *ngFor="let notification of notifications">
-      <p *ngIf="notification.friendRequest">{{ notification.friendRequest }} <br>
+      <p *ngIf="notification.friendRequest">{{ notification.fullName }} hast sent you a notification<br>
         <button class="btn btn-sm btn-accept" (click)="acceptFriend(notification)">Accept</button>
         <button class="btn btn-sm btn-decline" (click)="declineFriend(notification)">Decline</button>
       </p>

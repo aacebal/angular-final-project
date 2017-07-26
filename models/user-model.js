@@ -14,6 +14,7 @@ const userSchema = new Schema({
   ],
   notifications: [
     { friendRequest: String,
+      fullName: String,
       requestSent: String
     }
   ],

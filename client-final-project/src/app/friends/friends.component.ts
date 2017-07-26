@@ -60,6 +60,7 @@ export class FriendsComponent implements OnInit {
         .then((updatedUser) => {
           this.user = updatedUser;
           this.session.sendUser(this.user);
+          this.notifications = this.user.notifications;
         })
     }
 
@@ -68,6 +69,7 @@ export class FriendsComponent implements OnInit {
         .then((updatedUser) => {
           this.user = updatedUser;
           this.session.sendUser(this.user);
+          this.notifications = this.user.notifications;
         });
     }
 
