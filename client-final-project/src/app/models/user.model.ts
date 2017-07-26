@@ -1,5 +1,6 @@
 import { Friend } from './friend.model';
 import { Beers } from './beer.model';
+import { Events } from './event.model';
 import { Notification } from './notification.model';
 
 export class User {
@@ -12,5 +13,5 @@ export class User {
     beers: Beers;
     notifications: Notification[];
     friends: Friend[];
-    events: Event[];
+    events: Events;
 }

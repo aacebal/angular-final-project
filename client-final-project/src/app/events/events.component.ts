@@ -33,6 +33,7 @@ export class EventsComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   private events;
+  organizedEvents: string[] = [];
 
 
   constructor(private eventService: EventService, private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
@@ -45,6 +46,7 @@ export class EventsComponent implements OnInit {
         this.user = userInfo
         this.isLoggedIn = true;
         this.events = this.user.events;
+        this.organizedEvents = this.user.events.organized;
         this.user.friends.forEach((oneFriend) => {
           this.userNames.push({ id: oneFriend.username, itemName: oneFriend.fullName});
         });

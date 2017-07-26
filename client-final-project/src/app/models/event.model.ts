@@ -11,3 +11,8 @@ export class Event {
     wishList?: Beer[];
     guests: Friend[];
 }
+
+export class Events {
+    organized: string[];
+    invited: string[];
+}
