@@ -5,6 +5,10 @@
   <button class="btn btn-lg" type="submit"> Search</button>
 </form>
 
+  <div *ngIf="!brewery">
+    <h3>Discover breweries and their location easily, then invite friends to enjoy events together.</h3>
+  </div>
+
   <div *ngIf="brewery" class="beer-information">
     <div class="beer-header">
       <img *ngIf="image" class="img-profile" src="{{image.large}}" />

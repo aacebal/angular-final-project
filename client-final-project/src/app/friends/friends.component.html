@@ -25,9 +25,9 @@
     </div>
   </div>
 
-  <div *ngIf="notifications" class="notifications col-lg-9 col-md-9 col-sm-9 col-xs-9">
+  <div *ngIf="notifications" class="notifications col-lg-6 col-md-6 col-sm-6 col-xs-6">
     <div class="btn-group">
-    <button type="button" class="btn btn-friends dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-notifications dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Friends Requests: {{ notifications.length }}
     </button>
     <div class="dropdown-menu">
@@ -43,8 +43,21 @@
       </div>
     </div>
   </div>
-  </div>
+</div>
 
-  <div class="list-of-friends">
-
+<div *ngIf="friends" class="friends col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <div class="btn-group">
+  <button type="button" class="btn btn-friends dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Friends: {{ friends.length }}
+  </button>
+  <div class="dropdown-menu">
+    <div *ngIf="notifications" class="notifications col-lg-9 col-md-9 col-sm-9 col-xs-9">
+      <div *ngIf="friends" class="list-of-friends">
+        <div *ngFor="let friend of friends">
+          <a><img src="{{friend.image}}">{{friend.fullName}}</a>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
+</div>

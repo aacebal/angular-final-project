@@ -44,6 +44,7 @@ export class FriendsComponent implements OnInit {
           this.user = userInfo
           this.isLoggedIn = true;
           this.notifications = this.user.notifications;
+          this.friends = this.user.friends;
         })
         .catch((err) => {
           this.router.navigate(['/']);
