@@ -37,7 +37,13 @@ input[type=date], select {
 agm-map {
   height: 300px;
 }
-
+.dropdown-menu{
+  width: 300px;
+}
+.dropdown-toggle{
+  margin: 10px 0px;
+  width: 150%;
+}
 .event-container{
   border: 1px solid lightgrey;
   border-radius: 3px;

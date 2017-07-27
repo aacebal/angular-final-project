@@ -8,6 +8,7 @@ const userSchema = new Schema({
     fullName: String,
     image: String
   },
+  date: Date,
   address: String,
   guests: [
     { id: String,

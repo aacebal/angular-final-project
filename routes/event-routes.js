@@ -24,6 +24,7 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
       id: req.user._id,
       fullName: organizerFullName,
     },
+    date: req.body.date,
     address: req.body.address,
     guests: guestArray,
   });

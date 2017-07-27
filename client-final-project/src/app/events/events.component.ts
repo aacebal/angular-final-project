@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
