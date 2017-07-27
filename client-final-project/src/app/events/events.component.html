@@ -1,18 +1,31 @@
-<div class="event-container my-events">
+<div class="my-events">
   <h3>My Events </h3>
-
   <div *ngIf="organizedEvents">
     <div *ngFor="let organizedEvent of organizedEvents">
-      <h4>Event: {{ organizedEvent.name }}</h4>
-      <h4>Organizer:</h4> <p>{{ organizedEvent.organizer.fullName }}</p>
-      <h4>Address:</h4> <p>{{ organizedEvent.address }}</p>
-      <h4>Guests:</h4>
-      <div *ngFor="let guest of organizedEvent.guests">
-        <p>{{ guest.fullName }}</p>
+
+      <div class="event-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4>{{ organizedEvent.name }}</h4>
       </div>
+      <div class="event-organizer col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <h5>Organized by:</h5>
+        <p>{{ organizedEvent.organizer.fullName}}</p>
+      </div>
+      <div class="event-guests col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <h5>Guests</h5>
+        <div *ngFor="let guest of organizedEvent.guests">
+          <p> {{ guest.fullName }}</p>
+        </div>
+      </div>
+      <div class="event-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h5>Address:</h5>
+        <p> {{ organizedEvent.address }}</p>
+      </div>
+
     </div>
   </div>
 </div>
+
+
 
   <button (click)=eventWindow() class="btn btn-add-event"> + Add new event</button>
   <div *ngIf="createEventWindow" class="create-event-window">
@@ -67,18 +80,27 @@
 </div>
 
 
-<div class="event-container friend-events">
-  <h3>Friend Events</h3>
+<div class="friend-events">
+  <h3>Friend Events </h3>
   <div *ngIf="invitedEvents">
-    <div *ngFor="let invitedEvent of invitedEvents">
-      Event Name: {{ invitedEvent.name }}
-      Organizer: {{ invitedEvent.organizer.fullName }}
-      Address: {{ invitedEvent.address }}
-      Guests:
-      <div *ngFor="let guest of invitedEvent.guests">
-        {{ guest.fullName }}
+    <div *ngFor="let invitedEvent of invitedEvents" class="event-container">
+      <div class="event-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4>{{ invitedEvent.name }}</h4>
       </div>
-
+      <div class="event-organizer col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <h5>Organized by:</h5>
+        <p>{{ invitedEvent.organizer.fullName}}</p>
+      </div>
+      <div class="event-guests col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <h5>Guests</h5>
+        <div *ngFor="let guest of invitedEvent.guests">
+          <p> {{ guest.fullName }}</p>
+        </div>
+      </div>
+      <div class="event-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h5>Address:</h5>
+        <p> {{ invitedEvent.address }}</p>
+      </div>
     </div>
   </div>
 </div>

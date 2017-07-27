@@ -38,6 +38,7 @@ agm-map {
   height: 300px;
 }
 
-.events-container{
-  
+.event-container{
+  border: 1px solid lightgrey;
+  border-radius: 3px;
 }
