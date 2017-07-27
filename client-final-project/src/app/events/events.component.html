@@ -1,5 +1,19 @@
-<div class="my-events">
+<div class="event-container my-events">
   <h3>My Events </h3>
+
+  <div *ngIf="organizedEvents">
+    <div *ngFor="let organizedEvent of organizedEvents">
+      <h4>Event: {{ organizedEvent.name }}</h4>
+      <h4>Organizer:</h4> <p>{{ organizedEvent.organizer.fullName }}</p>
+      <h4>Address:</h4> <p>{{ organizedEvent.address }}</p>
+      <h4>Guests:</h4>
+      <div *ngFor="let guest of organizedEvent.guests">
+        <p>{{ guest.fullName }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
   <button (click)=eventWindow() class="btn btn-add-event"> + Add new event</button>
   <div *ngIf="createEventWindow" class="create-event-window">
     <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
@@ -51,15 +65,20 @@
       <button class="btn btn-lg btn-submit" type="submit"> Submit </button>
     </form>
 </div>
-<div *ngIf="invitedEvents">
-  {{ organizedEvents.name }}
-  {{ organizedEvents.organizer }}
-</div>
 
-<div class="friend-events">
+
+<div class="event-container friend-events">
   <h3>Friend Events</h3>
-    <div *ngIf="invitedEvents">
-      {{ invitedEvents.name }}
-      {{ invitedEvents.organizer }}
+  <div *ngIf="invitedEvents">
+    <div *ngFor="let invitedEvent of invitedEvents">
+      Event Name: {{ invitedEvent.name }}
+      Organizer: {{ invitedEvent.organizer.fullName }}
+      Address: {{ invitedEvent.address }}
+      Guests:
+      <div *ngFor="let guest of invitedEvent.guests">
+        {{ guest.fullName }}
+      </div>
+
     </div>
+  </div>
 </div>

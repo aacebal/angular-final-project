@@ -15,7 +15,7 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
   var guestArray = [];
 
   req.body.guests.forEach((oneGuest, index) => {
-    guestArray.push({ id: oneGuest.id, fullName: oneGuest.itemName });
+    guestArray.push({ username: oneGuest.id, fullName: oneGuest.itemName });
   });
 
   const thisEvent = new myEvent({
@@ -62,31 +62,34 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
   eventsRoutes.post('/api/get-organized-events', (req, res, next) => {
     console.log(req.body);
     var eventsInfo = [];
-    var organizedEvents = req.body;
 
-    organizedEvents.forEach((oneOrganizedEvent) => {
-      myEvent.findbyId(oneOrganizedEvent, (err, theEvent) => {
+    req.body.forEach((oneOrganizedEvent, index) => {
+      myEvent.findOne({ _id: oneOrganizedEvent }, (err, theEvent) => {
         if (err) {
-          res.status(500).jsonw({ message: 'something went wrong'});
+          res.status(500).json({ message: 'something went wrong'});
         }
         eventsInfo.push(theEvent);
-        res.status(200).json(eventsInfo);
+        if (index === req.body.length -1) {
+          res.status(200).json(eventsInfo);
+        }
       });
     });
   });
 
+
   eventsRoutes.post('/api/get-invited-events', (req, res, next) => {
     console.log(req.body);
     var eventsInfo = [];
-    var invitedEvents = req.body;
 
-    invitedEvents.forEach((oneInvitedEvent) => {
-      myEvent.findbyId(oneInvitedEvent, (err, theEvent) => {
+    req.body.forEach((oneInvitedEvent, index) => {
+      myEvent.findOne({ _id: oneInvitedEvent }, (err, theEvent) => {
         if (err) {
           res.status(500).jsonw({ message: 'something went wrong'});
         }
         eventsInfo.push(theEvent);
-        res.status(200).json(eventsInfo);
+        if (index === req.body.length - 1) {
+          res.status(200).json(eventsInfo);
+        }
       });
     });
   });
