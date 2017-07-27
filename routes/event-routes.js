@@ -59,9 +59,37 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
   });
 });
 
-  eventsRoutes.get('/api/get-events', (req, res, next) => {
+  eventsRoutes.post('/api/get-organized-events', (req, res, next) => {
     console.log(req.body);
-    res.status(200).json(req.body);
+    var eventsInfo = [];
+    var organizedEvents = req.body;
+
+    organizedEvents.forEach((oneOrganizedEvent) => {
+      myEvent.findbyId(oneOrganizedEvent, (err, theEvent) => {
+        if (err) {
+          res.status(500).jsonw({ message: 'something went wrong'});
+        }
+        eventsInfo.push(theEvent);
+        res.status(200).json(eventsInfo);
+      });
+    });
   });
+
+  eventsRoutes.post('/api/get-invited-events', (req, res, next) => {
+    console.log(req.body);
+    var eventsInfo = [];
+    var invitedEvents = req.body;
+
+    invitedEvents.forEach((oneInvitedEvent) => {
+      myEvent.findbyId(oneInvitedEvent, (err, theEvent) => {
+        if (err) {
+          res.status(500).jsonw({ message: 'something went wrong'});
+        }
+        eventsInfo.push(theEvent);
+        res.status(200).json(eventsInfo);
+      });
+    });
+  });
+
 
 module.exports = eventsRoutes;

@@ -45,11 +45,13 @@ export class EventsComponent implements OnInit {
       .then((userInfo) => {
         this.user = userInfo
         this.isLoggedIn = true;
-        this.events = this.user.events;
-        this.eventService.retrieveEvents(this.events)
+        this.eventService.retrieveOrganizedEvents(this.user.events.organized)
           .then((eventsInfo) => {
-            this.organizedEvents = eventsInfo.organized;
-            this.invitedEvents = eventsInfo.invited;
+            this.organizedEvents = eventsInfo;
+          })
+        this.eventService.retrieveInvitedEvents(this.user.events.invited)
+          .then((eventsInfo) => {
+            this.invitedEvents = eventsInfo;
           })
         this.user.friends.forEach((oneFriend) => {
           this.userNames.push({ id: oneFriend.username, itemName: oneFriend.fullName});
