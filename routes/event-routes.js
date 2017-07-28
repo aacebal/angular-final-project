@@ -91,7 +91,7 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
     req.body.forEach((oneInvitedEvent, index) => {
       myEvent.findOne({ _id: oneInvitedEvent }, (err, theEvent) => {
         if (err) {
-          res.status(500).jsonw({ message: 'something went wrong'});
+          res.status(500).json({ message: 'something went wrong'});
         }
         eventsInfo.push(theEvent);
         if (index === req.body.length - 1) {
@@ -99,6 +99,24 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
         }
       });
     });
+  });
+
+  eventsRoutes.post('/api/delete-event', (req, res, next) => {
+    var indexToDelete;
+
+    if (req.user._id == req.body.organizer.id) {
+      User.findOne({ _id: req.user._id }, (err, theUser) => {
+        indexToDelete = theUser.events.organized.indexOf(JSON.stringify(req.body._id));
+
+        theUser.events.organized.splice(indexToDelete, 1);
+        theUser.save((err) => {
+          if (err) {
+            res.status(400).json({ message: 'Something went wrong' });
+          }
+        res.status(200).json(req.user);
+        });
+      });
+    }
   });
 
 

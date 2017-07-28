@@ -36,6 +36,7 @@
               </div>
             </div>
           </div>
+          <button class="btn btn-md" (click)="deleteEvent(organizedEvent)">Delete</button>
         </div>
       </div>
     </div>
@@ -134,8 +135,16 @@
             <h5>Date:</h5>
             <p> {{ invitedEvent.date | date: short }}</p>
           </div>
+          <div class="event-beers col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div *ngIf="invitedEvent.beers">
+              Beers:
+              <div *ngFor="let beer of invitedEvent.beers">
+                <span>{{ beer.name }}</span>
+              </div>
+            </div>
+          </div>
 
-          <button class="btn btn-sm" (click)="deleteEvent(invitedEvent)">Delete</button>
+          <button class="btn btn-md" (click)="deleteEvent(invitedEvent)">Not attending</button>
 
         </div>
       </div>

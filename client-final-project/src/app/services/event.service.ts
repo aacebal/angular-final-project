@@ -37,4 +37,12 @@ export class EventService {
     .then(res => res.json())
   }
 
+  deleteEvent(event) {
+    return this.http.post(`${this.BASE_URL}/api/delete-event`, event,
+    { withCredentials: true }
+  )
+    .toPromise()
+    .then(res => res.json());
+  }
+
 }
