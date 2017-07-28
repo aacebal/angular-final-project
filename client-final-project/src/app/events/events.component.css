@@ -68,3 +68,6 @@ agm-map {
   width: 120px;
   margin: 10px 15px;
 }
+.btn-delete{
+  background-color: #FF5F58;
+}
