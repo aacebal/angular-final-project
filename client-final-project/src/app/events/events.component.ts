@@ -28,12 +28,14 @@ export class EventsComponent implements OnInit {
   private user: User;
   private beersForEvent;
   createEventWindow: boolean = false;
+  invitesOpen: boolean = false;
   private newEvent: Event;
   private userNames: Object[] = [];
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
   private events;
+  ownedBeers: Object[] = [];
   organizedEvents: Event[] = [];
   invitedEvents: Event[] = [];
 
@@ -58,13 +60,16 @@ export class EventsComponent implements OnInit {
         this.user.friends.forEach((oneFriend) => {
           this.userNames.push({ id: oneFriend.username, itemName: oneFriend.fullName});
         });
+        this.user.beers.ownList.forEach((oneBeer) => {
+          this.ownedBeers.push({ id: oneBeer.id, itemName: oneBeer.name})
+        })
       })
       .catch((err) => {
         this.router.navigate(['/']);
       })
       this.dropdownSettings = {
         singleSelection: false,
-        text:"Select Friends",
+        text:"Click to Add",
         selectAllText:'Select All',
         unSelectAllText:'UnSelect All',
         enableSearchFilter: true,
@@ -76,16 +81,30 @@ export class EventsComponent implements OnInit {
     this.createEventWindow = !this.createEventWindow;
   }
 
+  openInvites(){
+    this.invitesOpen = !this.invitesOpen;
+  }
+
   getAddress(place:Object) {
     console.log("Address", place);
  }
 
   onSubmit(event) {
+    console.log(event);
     this.eventService.createEvent(event)
       .then((userInfo) => {
         this.user = userInfo;
         this.events = this.user.events;
       })
+      this.eventService.retrieveOrganizedEvents(this.user.events.organized)
+        .then((eventsInfo) => {
+          this.organizedEvents = eventsInfo;
+          console.log(this.organizedEvents);
+        })
+      this.eventService.retrieveInvitedEvents(this.user.events.invited)
+        .then((eventsInfo) => {
+          this.invitedEvents = eventsInfo;
+        })
       this.eventWindow()
     }
 

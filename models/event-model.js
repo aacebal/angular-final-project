@@ -11,22 +11,20 @@ const userSchema = new Schema({
   date: Date,
   address: String,
   guests: [
-    { id: String,
+    {
+      id: String,
       fullName: String,
       image: String
     }
   ],
   beers: [
     //beers added to the event
-    { id: String,
+    {
+      id: String,
       name: String,
       image: String
-    }],
-    //beers desired for the event
-    wishList: [{ id: String,
-      name: String,
-      image: String
-    }],
+    }
+  ]
 });
 
 const myEvent = mongoose.model('Event', userSchema);

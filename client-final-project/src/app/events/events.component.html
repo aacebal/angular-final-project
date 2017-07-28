@@ -4,7 +4,7 @@
     <div *ngFor="let organizedEvent of organizedEvents">
 
       <div class="btn-group">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-organized btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="event-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h4>{{ organizedEvent.name }}</h4>
           </div>
@@ -28,14 +28,19 @@
             <h5>Date:</h5>
             <p> {{ organizedEvent.date | date: short }} </p>
           </div>
-
+          <div class="event-beers col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div *ngIf="organizedEvent.beers">
+              Beers:
+              <div *ngFor="let beer of organizedEvent.beers">
+                <span>{{ beer.name }}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 
   <button (click)=eventWindow() class="btn btn-add-event"> + Add new event</button>
   <div *ngIf="createEventWindow" class="create-event-window">
@@ -84,6 +89,15 @@
             (onDeSelectAll)="onDeSelectAll($event)">
         </angular2-multiselect>
 
+        <label> Beers: </label>
+
+        <angular2-multiselect [data]="ownedBeers" #myName="ngModel" name="beers" [(ngModel)]="beers"
+            [settings]="dropdownSettings"
+            (onDeSelect)="OnItemDeSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            (onDeSelectAll)="onDeSelectAll($event)">
+        </angular2-multiselect>
+
       </fieldset>
       <button class="btn btn-lg btn-submit" type="submit"> Submit </button>
     </form>
@@ -96,7 +110,7 @@
     <div *ngFor="let invitedEvent of invitedEvents">
 
       <div class="btn-group">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-invited btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="event-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h4>{{ invitedEvent.name }}</h4>
           </div>
@@ -118,8 +132,10 @@
           </div>
           <div class="event-date col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h5>Date:</h5>
-            <p> {{ invitedEvent.date }}</p>
+            <p> {{ invitedEvent.date | date: short }}</p>
           </div>
+
+          <button class="btn btn-sm" (click)="deleteEvent(invitedEvent)">Delete</button>
 
         </div>
       </div>

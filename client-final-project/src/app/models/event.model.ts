@@ -8,7 +8,6 @@ export class Event {
     address: Object;
     date: Date;
     beers?: Beer[];
-    wishList?: Beer[];
     guests: Friend[];
 }
 

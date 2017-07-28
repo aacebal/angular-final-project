@@ -33,18 +33,38 @@ input[type=date], select {
 }
 .btn-submit{
   margin: 20px 10px;
+  color: white;
+  background-color: rgb(248, 211, 53);
 }
 agm-map {
   height: 300px;
 }
 .dropdown-menu{
-  width: 300px;
+  width: 400px;
+}
+.btn-organized{
+  background-color: #88D7FA;
+}
+.btn-invited{
+  background-color: rgba(89, 233, 75, 0.75);
 }
 .dropdown-toggle{
+  color: white;
   margin: 10px 0px;
-  width: 150%;
+  width: 400px;
 }
 .event-container{
   border: 1px solid lightgrey;
   border-radius: 3px;
+}
+.btn{
+  color: white;
+}
+.btn-add-event{
+  background-color: rgb(248, 211, 53);
+}
+
+.btn-sm{
+  width: 80px;
+  margin-left: 15px;
 }

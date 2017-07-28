@@ -13,13 +13,20 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
 
   var organizerFullName = req.user.name + " " + req.user.lastName;
   var guestArray = [];
+  var beerArray = [];
 
   req.body.guests.forEach((oneGuest, index) => {
     guestArray.push({ username: oneGuest.id, fullName: oneGuest.itemName });
   });
 
+  req.body.beers.forEach((oneBeer, index) => {
+    beerArray.push({ name: oneBeer.itemName, id: oneBeer.id });
+  });
+
+
   const thisEvent = new myEvent({
     name: req.body.name,
+    beers: beerArray,
     organizer: {
       id: req.user._id,
       fullName: organizerFullName,
@@ -76,7 +83,6 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
       });
     });
   });
-
 
   eventsRoutes.post('/api/get-invited-events', (req, res, next) => {
     console.log(req.body);
