@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'SlimTony';
     src: url('../../assets/fonts/SlimTony.otf');
@@ -7,23 +8,26 @@
 
 .left-panel{
   margin-top: 50px;
+  float: left;
 }
 .title-container{
-  padding-left: 100px;
+  padding-left: 0px;
   font-family: SlimTony;
   color: rgb(248, 211, 53);
 }
 .title-container > h1{
-  font-size: 45px;
+  font-size: 40px;
 }
 .image-container{
   text-align: center;
 }
 .right-panel{
-  margin-top: 130px;
+  margin-top: 125px;
+  float: right;
+  position: relative;
 }
 .right-panel-login{
-  margin-top: 130px;
+  margin-top: 125px;
 }
 .lower{
   margin-top: 200px;

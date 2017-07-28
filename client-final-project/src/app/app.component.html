@@ -11,5 +11,14 @@
 
   </div>
 </nav>
+<div class="container-fluid image-container">
+  <img src="../assets/images/beer-finder-hops.jpeg" height="550px" style="opacity: 0.9">
+</div>
 
 <router-outlet></router-outlet>
+
+<footer *ngIf="isLoggedIn">
+  <div class="container container-fluid col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+    <img src="../assets/images/beer-finder-footer.jpeg" height="250px">
+  </div>
+</footer>

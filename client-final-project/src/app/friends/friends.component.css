@@ -1,5 +1,9 @@
+h2.ontop {
+  position: relative;
+}
 input[type=text], select {
     width: 70%;
+    background-color: inherit;
     padding: 10px 20px;
     margin: 8px 0;
     border: 1px solid #ccc;
