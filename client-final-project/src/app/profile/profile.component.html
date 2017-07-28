@@ -1,7 +1,12 @@
-<div *ngIf="!profile" class="profile-info profile-container col-lg-8 col-md-8 col-sm-8 col-xs-8">
-  
-</div>
-
 <div *ngIf="profile" class="profile-info profile-container col-lg-8 col-md-8 col-sm-8 col-xs-8">
+  <h1>{{ profile.name }} {{ profile.lastName}}</h1>
+  <h4>{{ profile.username }}</h4>
+  <div class="">
+    <div *ngFor="let ownedBeer of profile.beers.ownList">
+      <li><img class="beer-image" src="{{ownedBeer.image}}"><h5>{{ ownedBeer.name }}
+      </h5><rating [(ngModel)]="starsCount" (click)="onSubmit(ownedBeer, starsCount)"></rating>
 
+      <br/><br/> - <h6>{{ ownedBeer.style }}</h6><br><h6>{{ ownedBeer.brewery }}</h6></li>
+    </div>
+  </div>
 </div>

@@ -6,6 +6,7 @@ import { EventService } from '../services/event.service';
 import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
+import {RatingModule} from "ng2-rating";
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -54,7 +55,9 @@ export class ProfileComponent implements OnInit {
       .catch((err) => {
         this.router.navigate(['/']);
       })
-
+  }
+  onSubmit(beer, rating) {
+    console.log(JSON.stringify(beer) + rating);
   }
 
 }

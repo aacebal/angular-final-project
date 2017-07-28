@@ -4,6 +4,7 @@ export class Beer {
   image?: string;
   style?: string;
   brewery?: string;
+  rating?: string;
 }
 
 export class Beers {

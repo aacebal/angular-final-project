@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { GooglePlaceModule } from 'ng2-google-place-autocomplete';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import {RatingModule} from "ng2-rating";
+
 
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
@@ -41,6 +43,7 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent,
   ],
   imports: [
+    RatingModule,
     AngularMultiSelectModule,
     GooglePlaceModule,
     BrowserModule,

@@ -14,3 +14,22 @@
   border-left: solid 15px #88D7FA;
   border-top: solid 15px #88D7FA;
 }
+.beer-image{
+  width: 40px;
+  margin-right: 10px;
+  float: left;
+
+}
+li{
+  list-style-type: none;
+  clear: both;
+  margin-top: 15px;
+}
+h6{
+  display: inline;
+  margin: 0px;
+}
+h5{
+  display: inline;
+  margin: 0px;
+}
