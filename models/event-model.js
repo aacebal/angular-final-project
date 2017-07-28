@@ -13,6 +13,7 @@ const userSchema = new Schema({
   guests: [
     {
       id: String,
+      username: String,
       fullName: String,
       image: String
     }

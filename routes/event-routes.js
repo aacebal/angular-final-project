@@ -113,10 +113,46 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
           if (err) {
             res.status(400).json({ message: 'Something went wrong' });
           }
-        res.status(200).json(req.user);
+        });
+
+      });
+      req.body.guests.forEach((oneGuest) => {
+        User.findOne({ username: oneGuest.username }, (err, theInvitedUser) => {
+          indexToDelete = theInvitedUser.events.invited.indexOf(JSON.stringify(req.body._id));
+
+          theInvitedUser.events.invited.splice(indexToDelete, 1);
+          theInvitedUser.save((err) => {
+            if (err) {
+              res.status(400).json({ message: 'Something went wrong' });
+            }
+          });
         });
       });
     }
+    else {
+      User.findOne({ _id: req.user._id }, (err, theUser) => {
+        indexToDelete = theUser.events.invited.indexOf(JSON.stringify(req.body._id));
+
+        theUser.events.invited.splice(indexToDelete, 1);
+        theUser.save((err) => {
+          if (err) {
+            res.status(400).json({ message: 'Something went wrong' });
+          }
+        });
+      myEvent.findOne({ _id: req.body._id }, (err, theEvent) => {
+        indexToDelete = theEvent.guests.indexOf({ username: req.user.username });
+
+        theEvent.guests.splice(indexToDelete, 1);
+
+        theEvent.save((err) => {
+          if (err) {
+            res.status(400).json({ message: 'Something went wrong' });
+          }
+        });
+      });
+    });
+  }
+    res.status(200).json(req.user);
   });
 
 
