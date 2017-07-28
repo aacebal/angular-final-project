@@ -2,3 +2,9 @@
   width: 80px;
   margin-right: 5px;
 }
+.profile-beer{
+  max-height: 320px;
+  overflow: scroll;
+  border-left: solid 15px rgb(248, 211, 53);
+  border-top: solid 15px rgb(248, 211, 53);
+}

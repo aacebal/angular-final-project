@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { SessionService } from '../services/session.service';
 import { ProfileService } from '../services/profile.service';
+import { EventService } from '../services/event.service';
 import { User } from '../models/user.model'
 import { Router } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
@@ -21,8 +22,11 @@ export class ProfileComponent implements OnInit {
   private error: string;
   subscription: Subscription;
   contactId: string;
+  organizedEvents: Event[] = [];
+  invitedEvents: Event[] = [];
 
-  constructor(private profileService: ProfileService, private session: SessionService,
+
+  constructor(private profileService: ProfileService, private session: SessionService, private eventService: EventService,
     private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -31,6 +35,14 @@ export class ProfileComponent implements OnInit {
         this.profileService.getProfile(params.id)
         .then((profileInfo) => {
           this.profile = profileInfo;
+          this.eventService.retrieveOrganizedEvents(this.profile.events.organized)
+            .then((eventsInfo) => {
+              this.organizedEvents = eventsInfo;
+            })
+          this.eventService.retrieveInvitedEvents(this.profile.events.invited)
+            .then((eventsInfo) => {
+              this.invitedEvents = eventsInfo;
+            })
         })
     });
 
