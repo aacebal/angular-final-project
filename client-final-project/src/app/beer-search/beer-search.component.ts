@@ -7,6 +7,8 @@ import { Router } from "@angular/router";
 import { HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -32,7 +34,8 @@ export class BeerSearchComponent implements OnInit {
   name: any;
   private newUser;
 
-constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
+
+constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router, private route: ActivatedRoute) {
 this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
 ngOnInit() {

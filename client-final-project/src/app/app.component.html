@@ -1,7 +1,8 @@
 <nav *ngIf="isLoggedIn" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a [routerLink]="['/search']"><h2 class="title-container">Friendly Beer Finder <img style="padding: 0px 0px 12px 10px" src="./assets/images/logo_2.jpg" width="85px;"></h2></a>
+      <a [routerLink]="['/search']" role="button" (click)="reloadData()"><h2 class="title-container">Friendly Beer Finder
+        <img style="padding: 0px 0px 12px 10px" src="./assets/images/logo_2.jpg" width="85px;"></h2></a>
 
     </div>
     <div class="nav navbar-nav navbar-right">

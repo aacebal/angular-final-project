@@ -95,15 +95,6 @@ export class EventsComponent implements OnInit {
       .then((userInfo) => {
         this.user = userInfo;
         this.events = this.user.events;
-        this.eventService.retrieveOrganizedEvents(this.user.events.organized)
-          .then((eventsInfo) => {
-            this.organizedEvents = eventsInfo;
-            console.log(this.organizedEvents);
-          })
-        this.eventService.retrieveInvitedEvents(this.user.events.invited)
-          .then((eventsInfo) => {
-            this.invitedEvents = eventsInfo;
-          })
         this.eventWindow()
       })
     }

@@ -6,7 +6,7 @@ const User = require('../models/user-model');
 const eventsRoutes = express.Router();
 
 eventsRoutes.post('/api/create-event', (req, res, next) => {
-  if (!req.body.name || !req.body.address || !req.body.address) {
+  if (!req.body.name || !req.body.address || !req.body.date) {
     res.status(400).json({ message: "Please complete the form to continue"});
     return;
   }

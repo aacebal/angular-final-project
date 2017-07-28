@@ -17,11 +17,13 @@ export class UserComponent implements OnInit {
   private user: User;
   private error: string;
   subscription: Subscription;
+  
 
   constructor(private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }
 
   ngOnInit() {
+    
     this.session.isLoggedIn()
       .then((userInfo) => {
         this.user = userInfo
