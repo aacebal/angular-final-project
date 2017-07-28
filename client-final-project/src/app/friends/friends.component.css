@@ -1,9 +1,15 @@
+form{
+  margin-top: 5px;
+}
 h2.ontop {
+  position: relative;
+}
+button.ontop{
   position: relative;
 }
 input[type=text], select {
     width: 70%;
-    background-color: inherit;
+    background-color: white;
     padding: 10px 20px;
     margin: 8px 0;
     border: 1px solid #ccc;

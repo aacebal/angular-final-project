@@ -11,8 +11,8 @@
 
   </div>
 </nav>
-<div class="container-fluid image-container">
-  <img src="../assets/images/beer-finder-hops.jpeg" height="550px" style="opacity: 0.9">
+<div *ngIf="isLoggedIn" class="container-fluid image-container">
+  <img src="../assets/images/beer-finder-hops.jpeg" height="650px" style="opacity: 0.5">
 </div>
 
 <router-outlet></router-outlet>
