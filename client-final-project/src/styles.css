@@ -2,3 +2,7 @@ footer{
   background-image: url('/images/beer-finder-footer.jpeg');
   height: 200px;
 }
+.loading-screen{
+  font-family: SlimTony;
+  color: rgb(248, 211, 53);
+}

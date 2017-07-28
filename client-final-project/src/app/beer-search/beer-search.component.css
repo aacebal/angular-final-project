@@ -66,3 +66,7 @@ input[type=password], select {
   position: static;
   bottom: 200px;
 }
+
+.container-fluid{
+  margin-top: 15px;
+}

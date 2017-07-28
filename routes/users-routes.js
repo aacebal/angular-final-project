@@ -11,14 +11,23 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
     var foundId;
     const beerId = req.body.data[0].id;
     const beerName = req.body.data[0].name;
+    const beerStyle = req.body.data[0].style.shortName;
     const beerList = req.params.list;
     var beerImage;
+    var beerBrewery;
 
     if (req.body.data[0].labels) {
       beerImage = req.body.data[0].labels.large;
     }
     else {
       beerImage = "../assets/images/beer-flat.png";
+    }
+
+    if (req.body.data[0].breweries) {
+      beerBrewery = req.body.data[0].breweries[0].name;
+    }
+    else {
+      beerBrewery = "../assets/images/beer-flat.png";
     }
 
     if (beerList === "ownList") {
@@ -28,7 +37,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage });
+        theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery });
       }
 
     }
@@ -40,7 +49,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.wishList.unshift({ id: beerId, name: beerName, image: beerImage });
+        theUser.beers.wishList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery });
     }
 
     }
@@ -51,7 +60,7 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage});
+        theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery });
     }
     }
 
@@ -108,6 +117,8 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       const beerId = req.body.id;
       const beerName = req.body.name;
       const beerImage = req.body.image;
+      const beerStyle = req.body.style;
+      const beerBrewery = req.body.brewery;
       var foundId;
       var idArray = [];
       var foundIdHistory;
@@ -127,7 +138,7 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       foundIdHistory = idArrayHistory.indexOf(beerId);
 
         if (foundIdHistory == -1) {
-          theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage});
+          theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery });
       }
 
       theUser.save((err) => {
@@ -142,6 +153,8 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       const beerId = req.body.id;
       const beerName = req.body.name;
       const beerImage = req.body.image;
+      const beerStyle = req.body.style;
+      const beerBrewery = req.body.brewery;
       var foundId;
       var idArray = [];
       var foundIdOwn;
@@ -161,7 +174,7 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       foundIdOwn = idArrayOwn.indexOf(beerId);
 
         if (foundIdOwn == -1) {
-          theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage});
+          theUser.beers.ownList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery });
       }
 
       theUser.save((err) => {

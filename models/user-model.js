@@ -28,17 +28,23 @@ const userSchema = new Schema({
     ownList: [
       { id: String,
         name: String,
-        image: String
+        image: String,
+        style: String,
+        brewery: String
       }],
     //beers the user wants
     wishList: [{ id: String,
       name: String,
-      image: String
+      image: String,
+      style: String,
+      brewery: String
     }],
     //all the beers the user has tried
     historyList: [{ id: String,
       name: String,
-      image: String
+      image: String,
+      style: String,
+      brewery: String
     }]
   }
 }, {
