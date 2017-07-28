@@ -5,11 +5,14 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from '../models/user.model'
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class UserService {
 
-  BASE_URL: string = 'http://localhost:3000';
+  // BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = environment.BASE_URL;
 
   constructor( private http: Http) { }
 

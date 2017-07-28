@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
 
 import { User } from '../models/user.model'
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -15,7 +16,8 @@ export class SessionService {
 
   loggedIn$ = this.loggedInSource.asObservable();
 
-  BASE_URL: string = 'http://localhost:3000';
+  // BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = environment.BASE_URL;
 
   constructor(private http: Http) { }
 
