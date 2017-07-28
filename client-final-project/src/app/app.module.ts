@@ -13,6 +13,7 @@ import { BeerService } from './services/beer.service';
 import { MapService } from './services/map.service';
 import { FriendsService } from './services/friends.service';
 import { EventService } from './services/event.service';
+import { ProfileService } from './services/profile.service';
 
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { AppComponent } from './app.component';
@@ -25,7 +26,6 @@ import { BrewerySearchComponent } from './brewery-search/brewery-search.componen
 import { SearchPipe } from './pipe/search.pipe';
 import { AgmCoreModule } from '@agm/core';
 import { ProfileComponent } from './profile/profile.component';
-
 
 
 @NgModule({
@@ -53,7 +53,7 @@ import { ProfileComponent } from './profile/profile.component';
       libraries: ["places"]
     })
   ],
-  providers: [SessionService, UserService, BeerService, MapService, FriendsService, EventService],
+  providers: [SessionService, UserService, BeerService, MapService, FriendsService, EventService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

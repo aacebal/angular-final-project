@@ -1,3 +1,10 @@
-<p>
-  profile works!
-</p>
+<div class="profile-info profile-container col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+  <h1>{{ profile.name }} {{ profile.lastName}}</h1>
+  <h4>{{ profile.username }}</h4>
+  <div class="profile-beer profile-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h3>Beers Owned</h3>
+    <div *ngFor="let ownedBeer of profile.beers.ownList">
+      <h4><img class="img-profile" src="{{ownedBeer.image}}"> {{ ownedBeer. name}}</h4>
+    </div>
+  </div>
+</div>

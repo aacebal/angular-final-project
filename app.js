@@ -60,6 +60,9 @@ app.use('/', friendsRoutes);
 const eventsRoutes = require('./routes/event-routes');
 app.use('/', eventsRoutes);
 
+const profileRoutes = require('./routes/profile-routes');
+app.use('/', profileRoutes);
+
 app.use((req, res, next) => {
   res.sendfFile(__dirname + '/public/index.html');
 });
