@@ -18,8 +18,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 export class BeerSearchComponent implements OnInit {
 
   isLoggedIn: boolean;
-  private beer;
-  private beers;
+  public beer;
+  public beers;
   private image;
   private abv;
   private brewery;
@@ -28,8 +28,7 @@ export class BeerSearchComponent implements OnInit {
   private user: User;
   private error: string;
   subscription: Subscription;
-
-
+  name: any;
   private newUser;
 
 constructor(private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {

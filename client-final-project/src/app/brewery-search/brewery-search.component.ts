@@ -19,8 +19,8 @@ export class BrewerySearchComponent implements OnInit {
   isLoggedIn: boolean;
   private beer;
   private image;
-  private brewery;
-  private breweries;
+  public brewery;
+  public breweries;
   private data;
   private user: User;
   private error: string;
@@ -31,6 +31,7 @@ export class BrewerySearchComponent implements OnInit {
   latitude: number;
   longitude: number;
   zoom: number;
+  name: any;
 
   constructor(private mapService: MapService, private BeerService: BeerService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user; }); }

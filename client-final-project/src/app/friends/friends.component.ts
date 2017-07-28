@@ -21,12 +21,13 @@ export class FriendsComponent implements OnInit {
 
   private allUsers;
   private user: User;
-  private friends: Friend[];
-  private userNames: Object[] = [];
-  private notifications: Notification[];
+  public friends: Friend[];
+  public userNames: Object[] = [];
+  public notifications: Notification[];
   foundUser: User;
   subscription: Subscription;
   isLoggedIn: boolean = false;
+  name: any;
 
   constructor(private BeerService: BeerService, private friendsService: FriendsService, private session: SessionService, private userService: UserService, private router: Router) {
   this.subscription = this.session.getUser().subscribe(user => { this.user = user }); }

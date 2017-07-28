@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   private user: User;
-  private profile;
+  public profile;
   private error: string;
   subscription: Subscription;
   contactId: string;
