@@ -24,6 +24,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { AgmCoreModule } from '@agm/core';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -37,6 +38,7 @@ import { AgmCoreModule } from '@agm/core';
     FriendsComponent,
     BrewerySearchComponent,
     SearchPipe,
+    ProfileComponent,
   ],
   imports: [
     AngularMultiSelectModule,

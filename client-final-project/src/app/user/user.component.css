@@ -24,6 +24,10 @@ ul{
 li{
   list-style-type: none;
 }
+a{
+  text-decoration: none;
+  color: black;
+}
 .beers-counter{
   margin: 20px 0px;
   color: white;
