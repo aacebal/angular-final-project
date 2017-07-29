@@ -71,7 +71,6 @@ authRoutes.post('/api/login', (req, res, next) => {
       }
 
       // We are now logged in (notice req.user)
-      console.log("loging in");
       res.status(200).json(req.user);
     });
   })(req, res, next);

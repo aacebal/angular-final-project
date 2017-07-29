@@ -23,4 +23,11 @@ export class ProfileService {
       .toPromise()
       .then(res => res.json());
   }
+
+  rateBeer(beer, rating) {
+    return this.http.post(`${this.BASE_URL}/api/rate-beer/${rating}`, beer,
+    { withCredentials: true })
+      .toPromise()
+      .then(res => res.json());
+  }
 }

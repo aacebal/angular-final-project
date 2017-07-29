@@ -68,7 +68,6 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
 });
 
   eventsRoutes.post('/api/get-organized-events', (req, res, next) => {
-    console.log(req.body);
     var eventsInfo = [];
 
     req.body.forEach((oneOrganizedEvent, index) => {
@@ -85,7 +84,6 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
   });
 
   eventsRoutes.post('/api/get-invited-events', (req, res, next) => {
-    console.log(req.body);
     var eventsInfo = [];
 
     req.body.forEach((oneInvitedEvent, index) => {

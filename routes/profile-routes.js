@@ -15,4 +15,10 @@ profileRoutes.get('/api/profile/:id', (req, res, next) => {
   });
 });
 
+profileRoutes.post('/api/rate-beer/:rating', (req, res, next) => {
+  
+});
+
+
+
 module.exports = profileRoutes;

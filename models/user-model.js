@@ -44,7 +44,8 @@ const userSchema = new Schema({
       name: String,
       image: String,
       style: String,
-      brewery: String
+      brewery: String,
+      rating: Number
     }]
   }
 }, {

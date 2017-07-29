@@ -60,11 +60,11 @@ usersRoutes.post('/api/addBeer/:list', (req, res, next) => {
       foundId = idArray.indexOf(beerId);
 
       if (foundId == -1) {
-        theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery });
+        theUser.beers.historyList.unshift({ id: beerId, name: beerName, image: beerImage, style: beerStyle, brewery: beerBrewery, rating: 0 });
     }
     }
 
-  theUser.save((err) => {
+    theUser.save((err) => {
     res.status(200).json(theUser);
     });
   });
@@ -82,7 +82,7 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       theUser.beers.ownList.forEach((oneBeer) => {
         idArray.push(oneBeer.id);
       });
-      console.log(idArray);
+
       foundId = idArray.indexOf(beerId);
       theUser.beers.ownList.splice(foundId, 1);
     }
@@ -91,7 +91,7 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       theUser.beers.wishList.forEach((oneBeer) => {
         idArray.push(oneBeer.id);
       });
-      console.log(idArray);
+
       foundId = idArray.indexOf(beerId);
       theUser.beers.wishList.splice(foundId, 1);
     }
@@ -100,7 +100,7 @@ usersRoutes.post('/api/delete/:list', (req, res, next) => {
       theUser.beers.historyList.forEach((oneBeer) => {
         idArray.push(oneBeer.id);
       });
-      console.log(idArray);
+
       foundId = idArray.indexOf(beerId);
       theUser.beers.historyList.splice(foundId, 1);
     }

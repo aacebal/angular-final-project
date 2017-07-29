@@ -51,7 +51,6 @@ export class EventsComponent implements OnInit {
         this.eventService.retrieveOrganizedEvents(this.user.events.organized)
           .then((eventsInfo) => {
             this.organizedEvents = eventsInfo;
-            console.log(this.organizedEvents);
           })
         this.eventService.retrieveInvitedEvents(this.user.events.invited)
           .then((eventsInfo) => {
@@ -90,7 +89,6 @@ export class EventsComponent implements OnInit {
  }
 
   onSubmit(event) {
-    console.log(event);
     this.eventService.createEvent(event)
       .then((userInfo) => {
         this.user = userInfo;

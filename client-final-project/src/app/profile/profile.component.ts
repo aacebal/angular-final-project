@@ -56,8 +56,12 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/']);
       })
   }
+
   onSubmit(beer, rating) {
-    console.log(JSON.stringify(beer) + rating);
+    this.profileService.rateBeer(beer, rating)
+      .then((userInfo) => {
+        this.profile = userInfo;
+      })
   }
 
 }
