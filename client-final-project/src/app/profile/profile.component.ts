@@ -35,6 +35,7 @@ export class ProfileComponent implements OnInit {
       .subscribe((params) => {
         this.profileService.getProfile(params.id)
         .then((profileInfo) => {
+          console.log(profileInfo);
           this.profile = profileInfo;
           this.eventService.retrieveOrganizedEvents(this.profile.events.organized)
             .then((eventsInfo) => {
@@ -62,6 +63,21 @@ export class ProfileComponent implements OnInit {
       .then((userInfo) => {
         this.profile = userInfo;
         this.profile.beers.historyList = userInfo.beers.historyList;
+      })
+  }
+
+  deleteEvent(event) {
+    this.eventService.deleteEvent(event)
+      .then((userInfo) => {
+        this.profile = userInfo;
+        this.eventService.retrieveOrganizedEvents(this.profile.events.organized)
+          .then((eventsInfo) => {
+            this.organizedEvents = eventsInfo;
+          })
+        this.eventService.retrieveInvitedEvents(this.profile.events.invited)
+          .then((eventsInfo) => {
+            this.invitedEvents = eventsInfo;
+          })
       })
   }
 

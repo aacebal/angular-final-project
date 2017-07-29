@@ -33,3 +33,11 @@ h5{
   display: inline;
   margin: 0px;
 }
+.btn-md{
+  width: 120px;
+  margin: 10px 15px;
+}
+.btn-delete{
+  background-color: #FF5F58;
+  margin-left: 0px;
+}

@@ -13,36 +13,50 @@
     </div>
   </div>
 
-  <div *ngFor="let organizedEvent of profile.events.organized" class="upcoming-events col-lg-4 col-md-4 col-sm-4 col-xs-4">
-    <h4>{{ organizedEvent.name }}</h4>
-
-  <div class="dropdown-menu">
-    <div class="event-organizer col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <h5>Organized by:</h5>
-      <p>{{ organizedEvent.organizer.fullName}}</p>
-    </div>
-    <div class="event-guests col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <h5>Guests</h5>
+<div class="upcoming-events col-lg-4 col-md-4 col-sm-4 col-xs-4">
+  <div *ngIf="organizedEvents.length > 0">
+  <h1>My events: </h1>
+    <div *ngFor="let organizedEvent of organizedEvents">
+      <h2>{{ organizedEvent.name }}</h2>
+      <h3>Address: {{ organizedEvent.address }}</h3>
+      <h3>Date: {{ organizedEvent. date | date: short }}</h3>
+    <div *ngIf="organizedEvent.guests.length > 0">
+      <h3>Guests: </h3>
       <div *ngFor="let guest of organizedEvent.guests">
-        <p> {{ guest.fullName }}</p>
+        {{ guest.fullName }}
       </div>
     </div>
-    <div class="event-address col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h5>Address:</h5>
-      <p> {{ organizedEvent.address }}</p>
-    </div>
-    <div class="event-date col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h5>Date:</h5>
-      <p> {{ organizedEvent.date | date: short }} </p>
-    </div>
-    <div class="event-beers col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div *ngIf="organizedEvent.beers">
-        Beers:
-        <div *ngFor="let beer of organizedEvent.beers">
-          <span>{{ beer.name }}</span>
-        </div>
+    <div *ngIf="organizedEvent.beers.length > 0">
+      <h3>Beers: </h3>
+      <div *ngFor="let beer of organizedEvent.beers">
+        {{ beer.name }}
       </div>
     </div>
     <button class="btn btn-md btn-delete" (click)="deleteEvent(organizedEvent)">Delete</button>
   </div>
+</div>
+</div>
+
+<div class="invited-events col-lg-4 col-md-4 col-sm-4 col-xs-4">
+  <div *ngIf="invitedEvents.length > 0">
+  <h1>Invited events: </h1>
+    <div *ngFor="let invitedEvent of invitedEvents">
+      <h2>{{ invitedEvent.name }}</h2>
+      <h3>Address: {{ invitedEvent.address }}</h3>
+      <h3>Date: {{ invitedEvent.date | date: short }}</h3>
+    <div *ngIf="organizedEvent.guests.length > 0">
+      <h3>Guests: </h3>
+      <div *ngFor="let guest of invitedEvent.guests">
+        {{ guest.fullName }}
+      </div>
+    </div>
+    <div *ngIf="invitedEvent.beers.length > 0">
+      <h3>Beers: </h3>
+      <div *ngFor="let beer of invitedEvent.beers">
+        {{ beer.name }}
+      </div>
+    </div>
+    <button class="btn btn-md btn-delete" (click)="deleteEvent(invitedEvent)">Delete</button>
+  </div>
+</div>
 </div>
