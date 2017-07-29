@@ -61,6 +61,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.rateBeer(beer, rating)
       .then((userInfo) => {
         this.profile = userInfo;
+        this.profile.beers.historyList = userInfo.beers.historyList;
       })
   }
 

@@ -8,7 +8,7 @@ export class Event {
     address: Object;
     date: Date;
     beers?: Beer[];
-    guests: Friend[];
+    guests?: Friend[];
 }
 
 export class Events {

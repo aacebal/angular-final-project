@@ -35,8 +35,8 @@
                 <span>{{ beer.name }}</span>
               </div>
             </div>
+            <button class="btn btn-md btn-delete" (click)="deleteEvent(organizedEvent)">Delete</button>
           </div>
-          <button class="btn btn-md btn-delete" (click)="deleteEvent(organizedEvent)">Delete</button>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
 
   <button (click)=eventWindow() class="btn btn-add-event"> + Add new event</button>
   <div *ngIf="createEventWindow" class="create-event-window">
-    <form (ngSubmit)="onSubmit(myForm.value); reloadData()"  #myForm="ngForm">
+    <form (ngSubmit)="onSubmit(myForm.value)"  #myForm="ngForm">
       <fieldset>
         <legend> New Event: </legend>
         <label> Location: </label>

@@ -15,13 +15,18 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
   var guestArray = [];
   var beerArray = [];
 
-  req.body.guests.forEach((oneGuest, index) => {
-    guestArray.push({ username: oneGuest.id, fullName: oneGuest.itemName });
-  });
+  if (req.body.guests) {
+    req.body.guests.forEach((oneGuest, index) => {
+      guestArray.push({ username: oneGuest.id, fullName: oneGuest.itemName });
+    });
+  }
 
-  req.body.beers.forEach((oneBeer, index) => {
-    beerArray.push({ name: oneBeer.itemName, id: oneBeer.id });
-  });
+  if (req.body.beers) {
+    req.body.beers.forEach((oneBeer, index) => {
+      beerArray.push({ name: oneBeer.itemName, id: oneBeer.id });
+    });
+  }
+
 
 
   const thisEvent = new myEvent({
@@ -43,17 +48,19 @@ eventsRoutes.post('/api/create-event', (req, res, next) => {
     }
   });
 
-  req.body.guests.forEach((oneGuest) => {
-    User.findOne({ username: oneGuest.id }, (err, theUser) => {
-      theUser.events.invited.push(thisEvent._id);
+  if (req.body.guests) {
+    req.body.guests.forEach((oneGuest) => {
+      User.findOne({ username: oneGuest.id }, (err, theUser) => {
+        theUser.events.invited.push(thisEvent._id);
 
-      theUser.save((err) => {
-        if (err) {
-          res.status(400).json({ message: "Something went wrong" });
-        }
+        theUser.save((err) => {
+          if (err) {
+            res.status(400).json({ message: "Something went wrong" });
+          }
+        });
       });
     });
-  });
+  }
 
   User.findById(req.user._id, (err, theUser) => {
     theUser.events.organized.push(thisEvent._id);
