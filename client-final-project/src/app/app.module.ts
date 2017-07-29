@@ -8,6 +8,7 @@ import { GooglePlaceModule } from 'ng2-google-place-autocomplete';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 import {RatingModule} from "ng2-rating";
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
@@ -56,7 +57,8 @@ import { ProfileComponent } from './profile/profile.component';
       libraries: ["places"]
     })
   ],
-  providers: [SessionService, UserService, BeerService, MapService, FriendsService, EventService, ProfileService],
+  providers: [SessionService, UserService, BeerService, MapService, FriendsService, EventService, ProfileService,
+  {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
