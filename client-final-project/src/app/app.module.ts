@@ -50,7 +50,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     Ng2AutoCompleteModule,
     HttpModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0',
       libraries: ["places"]
