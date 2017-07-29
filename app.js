@@ -42,7 +42,7 @@ app.use(passport.session());
 
 app.use(cors({
   credentials: true,
-  origin: [ 'http://localhost:4200' ]
+  origin: [ 'http://www.friendlybeerfinder.co' ]
 }));
 
 const usersRoutes = require('./routes/users-routes');
