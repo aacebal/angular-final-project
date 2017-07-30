@@ -68,3 +68,6 @@ input[type=password], select {
     box-sizing: border-box;
     font-size: 16px;
 }
+.full-image{
+  width: 200%;
+}

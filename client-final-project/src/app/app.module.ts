@@ -58,7 +58,7 @@ import { ProfileComponent } from './profile/profile.component';
     })
   ],
   providers: [SessionService, UserService, BeerService, MapService, FriendsService, EventService, ProfileService,
-  {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
