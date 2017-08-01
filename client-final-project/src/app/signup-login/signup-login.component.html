@@ -4,22 +4,53 @@
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-          <a [routerLink]="['/search']" role="button" (click)="reloadData()"><h2 class="title-container">Friendly Beer Finder</h2></a>
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+              <a [routerLink]="['/']" role="button" (click)="reloadData()"><h2 class="title-container">Friendly Beer Finder</h2></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
 
             <div class="nav navbar-nav navbar-right">
-
-              <button class="btn btn-sm ontop" (click)="logout()">Log Out</button>
+              <div *ngIf="!isLoggedIn" class="dropdown">
+                <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuLogIn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Log In
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLogIn">
+                  <div class="login-form">
+                    <form>
+                      <input placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="loginUsername"/>
+                      <br>
+                      <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="loginPassword"/>
+                      <br>
+                      <button class="btn btn-lg"(click)="login(); false"> Login </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+                <div *ngIf="!isLoggedIn" class="dropdown">
+                  <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sign Up
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <form>
+                      <input placeholder="Name" type="text" [(ngModel)]="formInfo.name" name="name"/>
+                      <br>
+                      <input placeholder="Last Name" type="text" [(ngModel)]="formInfo.lastName" name="lastName"/>
+                      <br>
+                      <input placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="username"/>
+                      <br>
+                      <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="password"/>
+                      <br>
+                      <button class="btn btn-lg"(click)="signup()"> Signup </button>
+                    </form>
+                  </div>
+                </div>
+              <div *ngIf="isLoggedIn">
+                <button class="btn btn-sm ontop" (click)="logout()">Log Out</button>
+              </div>
             </div>
+
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -38,24 +69,18 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 1</h2>
-                </div>
+                <div class="fill" style="background-image:url('../assets/images/beer-finder-1.jpeg');"></div>
+
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 2</h2>
-                </div>
+                <div class="fill" style="background-image:url('../assets/images/beer-finder-2.jpeg');"></div>
+
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 3</h2>
-                </div>
+                <div class="fill" style="background-image:url('../assets/images/beer-finder-3.jpeg');"></div>
+
             </div>
         </div>
 

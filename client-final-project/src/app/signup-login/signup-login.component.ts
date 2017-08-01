@@ -26,10 +26,17 @@ export class SignupLoginComponent implements OnInit {
 
   errorMessage: string;
 
+  isLoggedIn: boolean = false
+
 constructor(private session: SessionService, private userService: UserService, private router: Router) {
 }
 
-ngOnInit() { }
+ngOnInit() {
+  this.session.loggedIn$.subscribe((userFromApi) => {
+    this.isLoggedIn = true;
+})
+
+}
 
 login() {
   this.session.login(this.formInfo)
@@ -50,10 +57,6 @@ signup() {
       this.session.loggedIn(userFromApi);
     })
 }
-
-switchLoginReady() {
-  this.loginReady = !this.loginReady;
-  }
 
 
 }
