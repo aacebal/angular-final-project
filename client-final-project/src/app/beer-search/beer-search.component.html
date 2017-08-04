@@ -1,9 +1,12 @@
 
-<div class="container col-lg-3 col-md-3 col-sm-3 col-xs-3">
+<div class="container-fluid col-lg-5 col-md-5 col-sm-5 col-xs-5">
   <app-user></app-user>
+  <app-friends></app-friends>
+  <app-events></app-events>
 </div>
 
-<div class="container col-lg-5 col-md-5 col-sm-5 col-xs-5">
+
+<div class="container-fluid col-lg-7 col-md-7 col-sm-7 col-xs-7">
 
   <div class="container search-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
@@ -50,14 +53,6 @@
 
 </div>
 
-
-<div class="container friends-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
-  <app-friends></app-friends>
-</div>
-
-<div style="margin-top: 20px" class="container col-lg-4 col-md-4 col-sm-4 col-xs-4">
-  <app-events></app-events>
-</div>
 
 <footer *ngIf="isLoggedIn">
   <div class="container container-fluid col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
