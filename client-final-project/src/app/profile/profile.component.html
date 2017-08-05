@@ -51,23 +51,23 @@
     </div>
     <!-- /.container -->
 </nav>
+<div class="container-fluid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+  <div *ngIf="profile" class="profile-info profile-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h1>{{ profile.name }} {{ profile.lastName}}</h1>
+      <h4>@{{ profile.username }}</h4>
 
-<div *ngIf="profile" class="profile-info profile-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="container-fluid">
-    <h1>{{ profile.name }} {{ profile.lastName}}</h1>
-    <h4>@{{ profile.username }}</h4>
-  </div>
-
-  <div class="history-beer col-lg-4 col-md-4 col-sm-4 col-xs-4">
-    <h2>Double Click to rate your beers: </h2>
-    <div *ngFor="let historyBeer of profile.beers.historyList">
-      <li><img class="beer-image" src="{{historyBeer.image}}"><h5>{{ historyBeer.name }}</h5>
-      <rating *ngIf="user._id == profile._id" [(ngModel)]="historyBeer.rating" (click)="onSubmit(historyBeer, historyBeer.rating)"></rating>
-      <br/><br/> - <h6>{{ historyBeer.style }}</h6><br><h6>{{ historyBeer.brewery }}</h6></li>
+    <div class="history-beer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h2>Double Click to rate your beers: </h2>
+      <div *ngFor="let historyBeer of profile.beers.historyList">
+        <li><img class="beer-image" src="{{historyBeer.image}}"><h5>{{ historyBeer.name }}</h5>
+        <rating *ngIf="user._id == profile._id" [(ngModel)]="historyBeer.rating" (click)="onSubmit(historyBeer, historyBeer.rating)"></rating>
+        <br/><br/> - <h6>{{ historyBeer.style }}</h6><br><h6>{{ historyBeer.brewery }}</h6></li>
+      </div>
     </div>
   </div>
+</div>
 
-<div class="upcoming-events col-lg-4 col-md-4 col-sm-4 col-xs-4">
+<div class="upcoming-events container-fluid col-lg-8 col-md-8 col-sm-8 col-xs-8">
   <div *ngIf="organizedEvents.length > 0">
   <h1>My events: </h1>
     <div *ngFor="let organizedEvent of organizedEvents">

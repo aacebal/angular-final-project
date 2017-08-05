@@ -117,3 +117,9 @@ h5{
   background-color: #FF5F58;
   margin-left: 0px;
 }
+.container-fluid{
+  border: 1px solid lightgrey;
+  background: white;
+  margin: 75px 0px;
+  padding-bottom: 20px;
+}
