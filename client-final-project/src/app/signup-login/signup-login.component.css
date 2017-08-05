@@ -1,3 +1,6 @@
+form{
+  padding: 10px;
+}
 .navbar-default{
   background-color: white;
 }
@@ -14,7 +17,7 @@
   margin-bottom: 10px;
   background-color: rgb(248, 211, 53);
   color: white;
-  width: 33%;
+  width: 100%;
 }
 .navbar-right{
   margin-right: 0px;
