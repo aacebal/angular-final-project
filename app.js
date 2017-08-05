@@ -42,7 +42,7 @@ app.use(passport.session());
 
 app.use(cors({
   credentials: true,
-  origin: [ 'https://friendlybeerfinder.herokuapp.com' ]
+  origin: [ 'https://friendlybeerfinder.herokuapp.com', 'http://www.friendlybeerfinder.co/' ]
 }));
 
 const usersRoutes = require('./routes/users-routes');
