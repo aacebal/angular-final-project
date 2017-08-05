@@ -54,6 +54,15 @@ ngOnInit() {
       })
 }
 
+logout() {
+  this.session.logout()
+    .then(() => {
+      this.router.navigate(['/']);
+      this.isLoggedIn = false;
+    })
+    .catch(() => {});
+}
+
 onSubmit(myForm) {
   this.beer = "";
   this.BeerService.getBeer(myForm.name)

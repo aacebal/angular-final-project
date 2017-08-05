@@ -73,3 +73,8 @@ agm-map {
   background-color: #FF5F58;
   margin-left: 0px;
 }
+.full-events{
+  border: 1px solid lightgrey;
+  background: white;
+  margin-top: 25px;
+}

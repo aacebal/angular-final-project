@@ -1,3 +1,4 @@
+<div class="container-fluid full-friends">
 
 <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
   <h2 class="ontop">Connect with friends:</h2>
@@ -6,6 +7,7 @@
 
   <button class="btn btn-lg ontop" type="submit"> Search</button>
 </form>
+
 
   <div *ngIf="foundUser">
   <div class="user-information col-lg-9 col-md-9 col-sm-9 col-xs-9">
@@ -46,6 +48,7 @@
   </div>
 </div>
 
+
 <div *ngIf="friends" class="friends col-lg-6 col-md-6 col-sm-6 col-xs-6">
   <div class="btn-group">
   <button type="button" class="btn btn-friends dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,4 +64,6 @@
     </div>
     </div>
   </div>
+</div>
+
 </div>

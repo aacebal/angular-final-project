@@ -7,7 +7,8 @@
 }
 .search-container{
   border: 1px solid lightgrey;
-  border-radius: 4px;
+  background: white;
+  margin-top: 25px;
 }
 .btn-lg{
   margin-bottom: 10px;
@@ -67,5 +68,5 @@ input[type=password], select {
   bottom: 200px;
 }
 .container-fluid{
-  text-align: center;
+  margin-top: 50px;
 }

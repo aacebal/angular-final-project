@@ -1,12 +1,65 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
 
-<div class="container-fluid col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a [routerLink]="['/']" role="button" (click)="reloadData()"><h2 class="title-container">Friendly Beer Finder</h2></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="nav navbar-nav navbar-right">
+          <div *ngIf="!isLoggedIn" class="dropdown">
+            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuLogIn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Log In
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLogIn">
+              <div class="login-form">
+                <form>
+                  <input placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="loginUsername"/>
+                  <br>
+                  <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="loginPassword"/>
+                  <br>
+                  <button class="btn btn-lg"(click)="login(); false"> Login </button>
+                </form>
+              </div>
+            </div>
+          </div>
+            <div *ngIf="!isLoggedIn" class="dropdown">
+              <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign Up
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <form>
+                  <input placeholder="Name" type="text" [(ngModel)]="formInfo.name" name="name"/>
+                  <br>
+                  <input placeholder="Last Name" type="text" [(ngModel)]="formInfo.lastName" name="lastName"/>
+                  <br>
+                  <input placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="username"/>
+                  <br>
+                  <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="password"/>
+                  <br>
+                  <button class="btn btn-lg"(click)="signup()"> Signup </button>
+                </form>
+              </div>
+            </div>
+          <div *ngIf="isLoggedIn">
+            <button class="btn btn-sm ontop" (click)="logout()">Log Out</button>
+          </div>
+        </div>
+
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<div class="container-fluid col-lg-4 col-md-4 col-sm-4 col-xs-4">
   <app-user></app-user>
   <app-friends></app-friends>
   <app-events></app-events>
 </div>
 
 
-<div class="container-fluid col-lg-7 col-md-7 col-sm-7 col-xs-7">
+<div class="container-fluid col-lg-8 col-md-8 col-sm-8 col-xs-8">
 
   <div class="container search-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
@@ -47,15 +100,8 @@
       </div>
   </div>
 
-  <div style="margin-top: 20px" class="container search-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="container search-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <app-brewery-search></app-brewery-search>
   </div>
 
 </div>
-
-
-<footer *ngIf="isLoggedIn">
-  <div class="container container-fluid col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-    <img src="../assets/images/beer-finder-footer.jpeg" height="250px" style="opacity: 0.8">
-  </div>
-</footer>
