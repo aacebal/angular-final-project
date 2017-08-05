@@ -40,10 +40,12 @@ export class ProfileComponent implements OnInit {
           this.eventService.retrieveOrganizedEvents(this.profile.events.organized)
             .then((eventsInfo) => {
               this.organizedEvents = eventsInfo;
+              console.log(this.organizedEvents);
             })
           this.eventService.retrieveInvitedEvents(this.profile.events.invited)
             .then((eventsInfo) => {
               this.invitedEvents = eventsInfo;
+              console.log(this.invitedEvents);
             })
         })
     });

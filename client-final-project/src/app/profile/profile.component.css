@@ -118,8 +118,15 @@ h5{
   margin-left: 0px;
 }
 .container-fluid{
+  margin: 75px 0px;
+}
+.profile-container{
   border: 1px solid lightgrey;
   background: white;
-  margin: 75px 0px;
+  padding-bottom: 20px;
+}
+.all-events{
+  border: 1px solid lightgrey;
+  background: white;
   padding-bottom: 20px;
 }
