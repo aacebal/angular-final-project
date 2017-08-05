@@ -1,3 +1,57 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a [routerLink]="['/search']" role="button"><h2 class="title-container">Friendly Beer Finder</h2></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="nav navbar-nav navbar-right">
+          <div *ngIf="!isLoggedIn" class="dropdown">
+            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuLogIn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Log In
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLogIn">
+              <div class="login-form">
+                <form>
+                  <input placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="loginUsername"/>
+                  <br>
+                  <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="loginPassword"/>
+                  <br>
+                  <button class="btn btn-lg"(click)="login(); false"> Login </button>
+                </form>
+              </div>
+            </div>
+          </div>
+            <div *ngIf="!isLoggedIn" class="dropdown">
+              <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign Up
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <form>
+                  <input placeholder="Name" type="text" [(ngModel)]="formInfo.name" name="name"/>
+                  <br>
+                  <input placeholder="Last Name" type="text" [(ngModel)]="formInfo.lastName" name="lastName"/>
+                  <br>
+                  <input placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="username"/>
+                  <br>
+                  <input placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="password"/>
+                  <br>
+                  <button class="btn btn-lg"(click)="signup()"> Signup </button>
+                </form>
+              </div>
+            </div>
+          <div *ngIf="isLoggedIn">
+            <button class="btn btn-sm ontop" (click)="logout()">Log Out</button>
+          </div>
+        </div>
+
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
 <div *ngIf="profile" class="profile-info profile-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="container-fluid">
     <h1>{{ profile.name }} {{ profile.lastName}}</h1>

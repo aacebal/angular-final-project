@@ -58,6 +58,15 @@ export class ProfileComponent implements OnInit {
       })
   }
 
+  logout() {
+    this.session.logout()
+      .then(() => {
+        this.router.navigate(['/']);
+        this.isLoggedIn = false;
+      })
+      .catch(() => {});
+  }
+
   onSubmit(beer, rating) {
     this.profileService.rateBeer(beer, rating)
       .then((userInfo) => {

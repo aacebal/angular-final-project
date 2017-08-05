@@ -57,8 +57,8 @@ ngOnInit() {
 logout() {
   this.session.logout()
     .then(() => {
-      this.router.navigate(['/']);
       this.isLoggedIn = false;
+      this.router.navigate(['/']);
     })
     .catch(() => {});
 }
