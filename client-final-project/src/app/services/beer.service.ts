@@ -28,6 +28,7 @@ export class BeerService {
     .toPromise()
     .then(res => res.json())
   }
+  
   retrieveNames() {
     return this.http.get(`${this.BASE_URL}/api/getBeers`,
     { withCredentials: true }
