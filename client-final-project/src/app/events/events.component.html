@@ -51,7 +51,7 @@
       <fieldset>
         <legend> New Event: </legend>
         <label> Location: </label>
-        <input name="address" type="text" [(ngModel)]="address"
+        <input name="address" type="text" [(ngModel)]="adr_address"
          [options]='options'
          (setAddress) = "getAddress($event)"
          (street_number) = 'street_number=$event'
