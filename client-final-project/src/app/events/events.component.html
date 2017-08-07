@@ -51,32 +51,7 @@
       <fieldset>
         <legend> New Event: </legend>
         <label> Location: </label>
-        <input name="address" type="text" [(ngModel)]="adr_address"
-         [options]='options'
-         (setAddress) = "getAddress($event)"
-         (street_number) = 'street_number=$event'
-         (street)= 'street=$event'
-         (city)= 'city=$event'
-         (state)='state=$event'
-         (district)='district=$event'
-         (country)='country=$event'
-         (postal_code)='postal_code=$event'
-         (lat)='lat=$event'
-         (lng)='lng=$event'
-         (formatted_address)='formatted_address=$event'
-         (adr_address)='adr_address=$event'
-         (name)='name=$event'
-         (place_id)='place_id=$event'
-         (types)='types=$event'
-         (url)='url=$event'
-         (utc_offset)='utc_offset=$event'
-         (vicinity)='vicinity=$event'
-         (photos)='photos=$event'
-         (airport)='airport=$event'
-         (CountryCodes)='CountryCodes=$event'
-          id="autocomplete"
-         ng2-google-place-autocomplete/>
-         <br>
+        <input type="text" [(ngModel)]="address" name="address" required /><br>
 
         <label> Event Name: </label>
         <input type="text" [(ngModel)]="event" name="name" required /><br>

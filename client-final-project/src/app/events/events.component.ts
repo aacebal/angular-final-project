@@ -89,6 +89,7 @@ export class EventsComponent implements OnInit {
  }
 
   onSubmit(event) {
+    console.log(event);
     this.eventService.createEvent(event)
       .then((userInfo) => {
         this.user = userInfo;

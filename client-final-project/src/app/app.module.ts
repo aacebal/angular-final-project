@@ -53,7 +53,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpModule,
     RouterModule.forRoot(routes, { useHash: true }),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0',
+      apiKey: "AIzaSyDGtzlMxFx05BzfUtpk1GBz3DmwDtWPLl0",
       libraries: ["places"]
     })
   ],
