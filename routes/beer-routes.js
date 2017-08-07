@@ -19,16 +19,39 @@ const MAPS_URL = 'https://maps.googleapis.com/maps/api';
 beerRoutes.get('/api/beers/:name', (req, res, next) => {
   const beerName = req.params.name;
 
-    request(`${BASE_URL}/beers/?name=${beerName}&key=${process.env.API_KEY}/&withBreweries=Y`, (error, response, body) => {
-      res.status(200).json(body);
+  var options = { method: 'GET',
+    url: `${BASE_URL}/beers/`,
+    qs:
+     { key: `${process.env.API_KEY}`,
+       name: beerName,
+       withBreweries: 'Y' },
+    headers:
+     { 'postman-token': 'c704dde5-d052-962a-336c-a22ae9c1c5bf',
+       'cache-control': 'no-cache' } };
+
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    res.status(200).json(body);
     });
   });
 
   beerRoutes.get('/api/breweries/:name', (req, res, next) => {
     const breweryName = req.params.name;
 
-      request(`${BASE_URL}/breweries/?name=${breweryName}&key=${process.env.API_KEY}`, (error, response, body) => {
-        res.status(200).json(body);
+    var options = { method: 'GET',
+      url: `${BASE_URL}/breweries/`,
+      qs:
+       { key: `${process.env.API_KEY}`,
+         name: breweryName },
+      headers:
+       { 'postman-token': 'c772c721-db84-a771-5c21-5b4bcbbf1b55',
+         'cache-control': 'no-cache' } };
+
+      request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      res.status(200).json(body);
       });
     });
 
