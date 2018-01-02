@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { GooglePlaceModule } from 'ng2-google-place-autocomplete';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
-import {RatingModule} from "ng2-rating";
+import { RatingModule } from "ng2-rating";
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
